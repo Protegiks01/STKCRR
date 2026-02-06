@@ -477,7 +477,7 @@ Begin generating questions for `{target_file}` now.
 """
     return prompt
 
-def auditor_prompt(security_question: str) -> str:
+def question_format(security_question: str) -> str:
     """
     Generate a comprehensive security audit prompt for stacks-core.
 
