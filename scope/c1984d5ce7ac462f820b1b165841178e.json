@@ -1,0 +1,5 @@
+[
+  "stacks-core/stacks-node/src/run_loop/neon.rs",
+  "stacks-core/stacks-node/src/syncctl.rs",
+  "stacks-core/stacks-node/src/tenure.rs"
+]
