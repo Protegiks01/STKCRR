@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: stackslib/src/chainstate/stacks/boot/costs-2-testnet.clar] [Function: cost_stx_balance()] [Fixed Cost Risk] Is u1385 correct for STX balance lookup across all account states? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_bc30f44d-4feb-4a88-ae3c-f1d22ca850ad?mode=deep",
+    "timestamp": "2026-02-07 22:28:33.699880",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/chainstate/stacks/boot/costs-2-testnet.clar] [Function: cost_stx_balance()] [I/O Accounting] Does read_count u1 and read_length u1 correctly account for balance data retrieval? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_3020c94e-46a3-4ce6-9a06-756644895179?mode=deep",
+    "timestamp": "2026-02-07 22:28:46.379617",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/chainstate/stacks/boot/costs-2-testnet.clar] [Function: cost_stx_transfer()] [Fixed Cost Risk] Is u1430 sufficient for STX transfer including balance checks and updates? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_c08b3570-f661-4808-8f71-38b484a9a9fc?mode=deep",
+    "timestamp": "2026-02-07 22:28:59.448575",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/chainstate/stacks/boot/costs-2-testnet.clar] [Function: cost_stx_transfer()] [I/O Accounting] Does write_count u1 correctly account for both sender and receiver balance updates? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_1d4991b0-d955-4450-892a-8d06df78d06d?mode=deep",
+    "timestamp": "2026-02-07 22:29:13.906855",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/chainstate/stacks/boot/costs-2-testnet.clar] [Function: cost_ft_mint()] [I/O Accounting] Why is read_count u2 and write_count u2 - does this account for supply and balance updates? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_6230845a-3534-4982-b46d-9c98ed37fde1?mode=deep",
+    "timestamp": "2026-02-07 22:29:28.450570",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/chainstate/stacks/boot/costs-2-testnet.clar] [Function: cost_ft_mint()] [Fixed Cost Risk] Is u1645 sufficient for FT minting including all validation and state updates? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_8d8d166e-e081-4c97-be29-0f4f57a90c03?mode=deep",
+    "timestamp": "2026-02-07 22:29:44.754396",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/chainstate/stacks/boot/costs-2-testnet.clar] [Function: cost_ft_transfer()] [Cost Consistency] Why is FT transfer u612 much cheaper than FT mint u1645 - is this correct? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_7ab6950d-e356-44eb-a9e0-6b34b6092973?mode=deep",
+    "timestamp": "2026-02-07 22:30:02.016879",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/chainstate/stacks/boot/costs-2-testnet.clar] [Function: cost_ft_balance()] [Fixed Cost Risk] Is u547 adequate for FT balance lookup which may require token-specific logic? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_7c6cde72-4db8-4181-8d53-6f038fd55525?mode=deep",
+    "timestamp": "2026-02-07 22:30:20.660497",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/chainstate/stacks/boot/costs-2-testnet.clar] [Function: cost_nft_mint()] [Cost Formula] Does the linear formula (n * 9 + 795) correctly account for NFT asset serialization? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_7744b2b4-34b9-4a1a-8437-1d0099577d8c?mode=deep",
+    "timestamp": "2026-02-07 22:30:40.549813",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/chainstate/stacks/boot/costs-2-testnet.clar] [Function: cost_nft_transfer()] [Cost Consistency] NFT transfer has same cost as mint (n * 9 + 795) - is this intentional? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_d4e817d9-18a6-4f6b-ae4c-207b0bc6520c?mode=deep",
+    "timestamp": "2026-02-07 22:31:01.636503",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/chainstate/stacks/boot/costs-2-testnet.clar] [Function: cost_nft_owner()] [Cost Formula] Does (n * 9 + 795) correctly price NFT ownership lookup? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_8aeaa648-df38-42bb-95ff-d3689a757813?mode=deep",
+    "timestamp": "2026-02-07 22:31:23.254338",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/chainstate/stacks/boot/costs-2-testnet.clar] [Function: cost_ft_get_supply()] [Fixed Cost Risk] Is u483 sufficient for supply lookup which may require aggregation? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_a250177f-a827-47bb-8584-e228e5c90e11?mode=deep",
+    "timestamp": "2026-02-07 22:31:45.409383",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/chainstate/stacks/boot/costs-2-testnet.clar] [Function: cost_ft_burn()] [Cost Consistency] FT burn has same cost as transfer u612 - does burn require additional validation? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_2c0b39a7-5dff-45ad-aea4-a03be0d1f8b4?mode=deep",
+    "timestamp": "2026-02-07 22:32:08.322569",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/chainstate/stacks/boot/costs-2-testnet.clar] [Function: cost_nft_burn()] [Cost Consistency] NFT burn has same formula as transfer/mint (n * 9 + 795) - is this correct? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_b0b7429a-81bd-4a45-a581-244a437b0a0b?mode=deep",
+    "timestamp": "2026-02-07 22:32:32.793551",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/chainstate/stacks/boot/costs-2-testnet.clar] [Function: poison_microblock()] [Fixed Cost Risk] Is u29568 sufficient for microblock poisoning which involves proof verification? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_2efb0643-df69-4cb7-af82-f46822ab17ac?mode=deep",
+    "timestamp": "2026-02-07 22:32:57.271443",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/chainstate/stacks/boot/costs-2-testnet.clar] [Function: poison_microblock()] [I/O Accounting] Does the I/O accounting (read_count u1, write_count u1) correctly model poison proof storage? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_dcb21c06-b161-433c-81c2-db083311a2e5?mode=deep",
+    "timestamp": "2026-02-07 22:33:22.192229",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/chainstate/stacks/boot/costs-2-testnet.clar] [Function: Multiple] [Consensus Divergence] Can discrepancies between analysis costs and runtime costs cause blocks to be accepted during execution but rejected during re-validation? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9b760a38-3e5a-4ff0-a731-76ee0bf57025?mode=deep",
+    "timestamp": "2026-02-07 22:33:49.017700",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/chainstate/stacks/boot/costs-2-testnet.clar] [Function: Multiple] [Cost Consistency] Are costs for similar operations (e.g., all hash functions) consistently priced relative to their actual computational complexity? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_8499a65a-667e-4c15-bafd-b3df5d776343?mode=deep",
+    "timestamp": "2026-02-07 22:34:14.937022",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/chainstate/stacks/boot/costs-2-testnet.clar] [Function: Multiple] [Integer Overflow] Can any combination of operations cause cumulative cost to overflow uint max, wrapping to zero or small values? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_cf0fd3b4-6ccf-45ea-a623-21c2966b79d1?mode=deep",
+    "timestamp": "2026-02-07 22:34:41.744196",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/chainstate/stacks/boot/costs-2-testnet.clar] [Function: runtime()] [Type Safety] Does the cost specification structure enforce non-negative values for all fields? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_59a59944-a471-4f17-9b22-94d89a57f44c?mode=deep",
+    "timestamp": "2026-02-07 22:35:09.790028",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/chainstate/stacks/boot/costs-2-testnet.clar] [Function: Multiple] [Edge Case] How do cost functions handle n=0 - do they return zero, minimum cost, or undefined behavior? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_85996b7c-0799-4554-9a95-df73e33f3573?mode=deep",
+    "timestamp": "2026-02-07 22:35:38.438216",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/chainstate/stacks/boot/costs-2-testnet.clar] [Function: Multiple] [Edge Case] What happens when n approaches uint max - do all formulas handle this safely? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_cce52abf-a2ef-4f8d-8324-f863adc53586?mode=deep",
+    "timestamp": "2026-02-07 22:36:03.292577",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/chainstate/stacks/boot/costs-2-testnet.clar] [Function: cost_analysis_check_tuple_merge()] [DoS] The very high cost (n * 1000 + 1000) could enable griefing by forcing expensive operations with minimal benefit? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_62f22187-97a5-4166-84de-d4391cfb0475?mode=deep",
+    "timestamp": "2026-02-07 22:36:28.533225",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/chainstate/stacks/boot/costs-2-testnet.clar] [Function: cost_fold()] [Critical Underpricing] Fixed cost u483 for fold is extremely dangerous - can attacker pass expensive accumulator function to fold massive lists? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_e712c1cc-8c47-480d-88b1-22bf88d05035?mode=deep",
+    "timestamp": "2026-02-07 22:36:54.199562",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/chainstate/stacks/boot/costs-2-testnet.clar] [Function: cost_filter()] [Critical Underpricing] Fixed cost u460 for filter ignores list size and predicate cost - major DoS vector? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_7e6a76b9-634a-44c8-90d7-ccac5cceb32b?mode=deep",
+    "timestamp": "2026-02-07 22:37:19.965792",
+    "report_generated": false
+  }
+]
