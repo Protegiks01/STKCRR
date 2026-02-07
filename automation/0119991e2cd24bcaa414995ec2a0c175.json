@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: stacks-core/stacks-node/src/nakamoto_node/miner_db.rs] [Function: set_latest_chunk_version()] [Input Validation] Public key pk is not validated before to_hex() call - could malformed StacksPublicKey (all zeros, invalid curve point) be stored and later cause signature verification bypass? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_a8fc1272-fc1f-4f67-8fac-100f255dfd37?mode=deep",
+    "timestamp": "2026-02-07 22:06:51.972922",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-node/src/nakamoto_node/miner_db.rs] [Function: get_latest_chunk_version()] [Input Validation] to_hex() output length not checked - could public key serialize to empty string or non-hex characters, causing query to match wrong rows or all rows? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_a557a0ec-b2da-4ab2-b6ae-5f55787a3c28?mode=deep",
+    "timestamp": "2026-02-07 22:07:05.118138",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-node/src/nakamoto_node/miner_db.rs] [Function: set_latest_chunk_version()] [DoS] No limit on number of (pk, slot_id) pairs that can be stored - could attacker exhaust disk space by repeatedly calling with different slot_ids, causing node crash? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_2082da40-7194-4cf0-ae57-6e21ea096b63?mode=deep",
+    "timestamp": "2026-02-07 22:07:18.468444",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-node/src/nakamoto_node/miner_db.rs] [Function: set_latest_chunk_version()] [Logic Error] INSERT OR REPLACE replaces entire row - if slot_version accidentally set to 0, does this effectively reset tracking for that slot, causing re-processing of old chunks? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_cb07bec6-b1cf-405f-952a-e0dedc0be64b?mode=deep",
+    "timestamp": "2026-02-07 22:07:32.587757",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-node/src/nakamoto_node/miner_db.rs] [CREATE_STACKERDB_TRACKING] [Constraint Violation] PRIMARY KEY (public_key, slot_id) allows same slot_id with different public keys - but StackerDB slots should be globally unique. Could this design flaw allow multiple miners to track same slot independently, causing coordination failures? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_993a12d2-0691-4b98-9d66-8292f05a8099?mode=deep",
+    "timestamp": "2026-02-07 22:07:47.859760",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-node/src/nakamoto_node/miner_db.rs] [Function: get_latest_chunk_version()] [Transaction Safety] Read query has no transaction wrapper - in WAL mode, could concurrent writer cause read to see partial state from uncommitted transaction? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_14510303-da12-4b36-81b8-a6134ccec204?mode=deep",
+    "timestamp": "2026-02-07 22:08:04.687132",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-node/src/nakamoto_node/miner_db.rs] [Function: set_latest_chunk_version()] [Transaction Safety] Write executes without explicit transaction - SQLite auto-commits, but if caller expects to batch multiple sets atomically, could crash between sets leave inconsistent tracking state? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_d0deca10-3793-4ce7-b203-37de7f44dfee?mode=deep",
+    "timestamp": "2026-02-07 22:08:22.490856",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-node/src/nakamoto_node/miner_db.rs] [Function: apply_schema()] [Transaction Safety] Transaction commits at end, but if commit fails due to disk full or I/O error, does MinerDB enter invalid state requiring manual recovery, potentially losing all tracking data? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_20606730-d532-49ce-b338-0281a2cf3ea3?mode=deep",
+    "timestamp": "2026-02-07 22:08:42.793268",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-node/src/nakamoto_node/miner_db.rs] [Function: open()] [Durability] OpenFlags doesn't include SQLITE_OPEN_FULL_MUTEX - in multi-threaded context, could concurrent access cause 'database is locked' errors preventing miner from reading/writing tracking data? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_d4ffe5eb-d1a9-4672-a5c2-d2156c7a2b90?mode=deep",
+    "timestamp": "2026-02-07 22:09:05.293737",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-node/src/nakamoto_node/miner_db.rs] [Function: open()] [Durability] sqlite_open called with fsync=false parameter - could power loss after set_latest_chunk_version() returns Ok but before OS flushes, cause tracking data loss and chunk re-processing? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_f45d1549-b6e0-4d8a-80e0-db0dafd0a714?mode=deep",
+    "timestamp": "2026-02-07 22:09:27.484710",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-node/src/nakamoto_node/miner_db.rs] [Function: set_latest_chunk_version()] [Atomicity] execute() could fail after partial write to database file - does SQLite rollback on error, or could file be left in corrupted state requiring full DB rebuild? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_3ac88201-9177-4021-a4db-898012fb56aa?mode=deep",
+    "timestamp": "2026-02-07 22:09:51.309725",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-node/src/nakamoto_node/miner_db.rs] [Function: get_latest_chunk_version()] [Error Handling] optional() converts NOT FOUND to None, but other query errors become DBError - could transient I/O errors be misinterpreted as 'version not tracked', causing incorrect initialization? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_d87128d1-5658-4789-a4f2-12553f96421c?mode=deep",
+    "timestamp": "2026-02-07 22:10:16.443364",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-node/src/nakamoto_node/miner_db.rs] [Function: set_latest_chunk_version()] [Error Handling] execute() returns usize (rows affected) but this is ignored - if INSERT OR REPLACE silently fails (0 rows affected), caller thinks write succeeded but tracking not updated. How is this detected? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_44cb83f9-e6a3-4d99-a540-1eafa2c209fb?mode=deep",
+    "timestamp": "2026-02-07 22:10:42.800436",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-node/src/nakamoto_node/miner_db.rs] [Function: apply_schema()] [Error Handling] DBError::Corruption returned for unexpected schema version, but no attempt to backup or recover data - does this cause permanent miner downtime until manual intervention? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_20046b0f-2bcc-482a-8b07-e08e3d1dbf40?mode=deep",
+    "timestamp": "2026-02-07 22:11:08.704556",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-node/src/nakamoto_node/miner_db.rs] [Function: apply_schema()] [Error Handling] If apply_schema_changes() returns Err but transaction not rolled back properly, could partial schema be committed, making database unrecoverable without manual SQL fixes? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_0473a74a-2097-405e-b042-28d2a6bb1150?mode=deep",
+    "timestamp": "2026-02-07 22:11:36.219059",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-node/src/nakamoto_node/miner_db.rs] [Function: open()] [Error Handling] If apply_schema() fails after db connection opened, is connection properly closed/dropped, or could this leak file descriptors on repeated open attempts? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_34dfebff-916f-42e3-b4b1-854514ef4171?mode=deep",
+    "timestamp": "2026-02-07 22:12:03.974364",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-node/src/nakamoto_node/miner_db.rs] [Function: get_schema_version()] [Error Handling] query_row() could return Err for malformed query or corrupted database - does caller distinguish between 'no version' and 'database unreadable', or treat both as initialization case? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_d1566e5a-80ce-4b95-a0ab-01b10f2c1c3d?mode=deep",
+    "timestamp": "2026-02-07 22:12:31.399366",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-node/src/nakamoto_node/miner_db.rs] [Function: miner_db_path()] [Path Traversal] config.get_chainstate_path() is controlled by user config - could attacker set path to /etc/passwd or other sensitive file, then set_file_name(MINER_DB_NAME) overwrites it? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_445846ff-283a-40d5-9c2b-0ce65c0fbd32?mode=deep",
+    "timestamp": "2026-02-07 22:12:57.207878",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-node/src/nakamoto_node/miner_db.rs] [Function: miner_db_path()] [Path Traversal] set_file_name() replaces only the filename component - but if chainstate_path is '/tmp/', does this create '/tmp/miner.sqlite' with insecure permissions allowing external modification? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_8ddfc3ec-fd46-4182-9dcd-d82ffcf86750?mode=deep",
+    "timestamp": "2026-02-07 22:13:22.765309",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-node/src/nakamoto_node/miner_db.rs] [Function: open()] [Permissions] SQLITE_OPEN_CREATE creates file with default umask permissions - could world-readable miner.sqlite leak sensitive tracking data about miner's operations to other processes? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_5b44b1b3-7573-4e58-ae41-e095745853a0?mode=deep",
+    "timestamp": "2026-02-07 22:13:49.109386",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-node/src/nakamoto_node/miner_db.rs] [Function: open()] [DoS] If db_path points to non-writable directory or filesystem is full, does open() return clear error, or does it create unusable DB that causes cascading failures in miner logic? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_1eb6dd4b-a002-4b52-977b-7eb84f5aaec0?mode=deep",
+    "timestamp": "2026-02-07 22:14:13.614133",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-node/src/nakamoto_node/miner_db.rs] [Function: open()] [Corruption] If miner.sqlite file exists but is corrupted (truncated, wrong format), does sqlite_open detect this and return error, or proceed to query_row() which panics? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_5daa5326-8004-41f5-b3fe-1831f4a2f6a6?mode=deep",
+    "timestamp": "2026-02-07 22:14:40.114371",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-node/src/nakamoto_node/miner_db.rs] [Function: open_with_config()] [Configuration] Directly uses Config without validation - if config points to same miner.sqlite as another running node instance, could concurrent writes corrupt both databases? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_fb254661-6705-49c0-a5ed-5788ac9f680e?mode=deep",
+    "timestamp": "2026-02-07 22:15:04.767300",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-node/src/nakamoto_node/miner_db.rs] [MINER_DB_NAME] [Hardcoded Path] Static filename 'miner.sqlite' doesn't include network identifier - could testnet and mainnet nodes in same directory overwrite each other's tracking data? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_aa6af7ff-6638-426f-a8cf-10007f0e62c3?mode=deep",
+    "timestamp": "2026-02-07 22:15:31.557406",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-node/src/nakamoto_node/miner_db.rs] [Function: set_latest_chunk_version()] [Consensus Divergence] If miner A sets version 10, crashes, restarts and sees version 10, but StackerDB has version 11 from miner B - could A's stale cache cause it to reject valid chunks, breaking StackerDB consensus? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_321b3329-bb61-4804-b900-37716ff5c5ff?mode=deep",
+    "timestamp": "2026-02-07 22:15:57.822658",
+    "report_generated": false
+  }
+]
