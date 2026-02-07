@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: stacks-core/stacks-common/src/deps_common/bitcoin/network/message_network.rs] [Field: sender] [Address Spoofing] Can an attacker send a VersionMessage with a sender Address that doesn't match the actual source IP of the connection, allowing IP spoofing that could bypass IP-based rate limiting, blacklisting, or peer reputation systems? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_6b6b31d3-2f4a-48c3-b8ae-4f3d7a5923af?mode=deep",
+    "timestamp": "2026-02-07 22:14:08.710632",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/deps_common/bitcoin/network/message_network.rs] [Field: receiver, sender] [DoS] Can an attacker send receiver and sender addresses both pointing to the node itself (loopback or internal IPs), causing the node to treat the connection as a self-connection or triggering loop detection logic incorrectly? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_247d0d4d-b403-4aa6-9d9b-925ece72b9d2?mode=deep",
+    "timestamp": "2026-02-07 22:14:27.954571",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/deps_common/bitcoin/network/message_network.rs] [Field: receiver, sender] [Network Partitioning] Can an attacker send VersionMessages with receiver/sender addresses in private IP ranges (RFC 1918) or other non-routable addresses, causing the node to propagate invalid addresses to other peers or attempt connections to unreachable addresses? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_1f096253-6d3d-413a-bf23-3e6bac563128?mode=deep",
+    "timestamp": "2026-02-07 22:14:47.945334",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/deps_common/bitcoin/network/message_network.rs] [impl_consensus_encoding!] [Consensus Divergence] Does the field order in impl_consensus_encoding! (lines 50-61) exactly match the field declaration order in VersionMessage struct, and if not, can this cause deserialization to map fields incorrectly, leading to consensus failure? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_0d8780e4-a240-43a6-82a8-df7c2a9dd0d2?mode=deep",
+    "timestamp": "2026-02-07 22:15:09.793080",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/deps_common/bitcoin/network/message_network.rs] [impl_consensus_encoding!] [Determinism] Can the consensus encoding of VersionMessage produce different byte representations for the same logical message (e.g., due to String encoding, padding, or endianness issues), violating serialization determinism required for consensus? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_468259c3-65d1-42a6-8e54-7b3b5b3a7c46?mode=deep",
+    "timestamp": "2026-02-07 22:15:33.139108",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/deps_common/bitcoin/network/message_network.rs] [impl_consensus_encoding!] [Parsing] If consensus_decode fails midway through deserializing VersionMessage fields (e.g., invalid timestamp), does it properly clean up partial state and return an error, or can it leave corrupted data in the decoder that affects subsequent operations? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_f2ae35ae-0bf5-4bbf-8843-384a4c12c685?mode=deep",
+    "timestamp": "2026-02-07 22:16:00.444983",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/deps_common/bitcoin/network/message_network.rs] [impl_consensus_encoding!] [DoS] Can an attacker send a partially valid VersionMessage that passes initial header parsing but fails during field deserialization, repeatedly consuming CPU/memory resources for failed deserialization attempts? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_19445499-6210-4821-8a5a-96a13195c792?mode=deep",
+    "timestamp": "2026-02-07 22:16:31.322437",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/deps_common/bitcoin/network/message_network.rs] [Field: user_agent] [VarInt Attack] Since String deserialization uses VarInt-prefixed length encoding, can an attacker send a VarInt length that is valid but causes integer overflow when calculating the allocation size (length * element_size), bypassing MAX_VEC_SIZE checks? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_c8e03537-bb3b-4316-bb9a-b1d5f8498606?mode=deep",
+    "timestamp": "2026-02-07 22:17:10.481634",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/deps_common/bitcoin/network/message_network.rs] [Field: user_agent] [Non-minimal Encoding] Does the String deserialization reject non-minimal VarInt encodings (e.g., encoding length 5 as 0xFD 0x05 0x00 instead of 0x05), and if not, can this cause consensus divergence between nodes that enforce/don't enforce minimal encoding? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_fb70d364-ccf6-4d62-aa5f-812c51aa718c?mode=deep",
+    "timestamp": "2026-02-07 22:17:51.441044",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/deps_common/bitcoin/network/message_network.rs] [Field: user_agent] [UTF-8 Edge Cases] Can an attacker send a user_agent string with valid UTF-8 length-prefix but containing invalid UTF-8 byte sequences, causing deserialization to fail inconsistently across platforms with different UTF-8 validation implementations? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_19815fe8-aa93-4fd7-a543-f5ad91863171?mode=deep",
+    "timestamp": "2026-02-07 22:18:24.491190",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/deps_common/bitcoin/network/message_network.rs] [Test: version_message_test] [Insufficient Coverage] The test only validates a single valid VersionMessage; does this mean malformed messages (negative timestamps, zero nonce, empty user_agent, negative start_height) are not tested and may not be properly handled? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_28e2b606-9e33-4af6-aea1-5a5ee5dfd0be?mode=deep",
+    "timestamp": "2026-02-07 22:19:05.240660",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/deps_common/bitcoin/network/message_network.rs] [Test: version_message_test] [Test Vector Weakness] The test uses a hardcoded message from a Satoshi node; if the Bitcoin P2P protocol changes or stacks-core diverges from Bitcoin encoding, could this test pass while actual message handling fails in production? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_64dd1061-f677-49e0-aff5-4e173689a76a?mode=deep",
+    "timestamp": "2026-02-07 22:19:47.131611",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/deps_common/bitcoin/network/message_network.rs] [Struct: VersionMessage] [State Confusion] Can an attacker send a VersionMessage with internally inconsistent fields (e.g., version=70001 with relay=true, but relay was only introduced in version 70001), causing nodes to interpret the message differently based on which field they check first? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_716cfaaa-3b74-4ca9-bc17-230cdc2670c1?mode=deep",
+    "timestamp": "2026-02-07 22:20:21.100018",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/deps_common/bitcoin/network/message_network.rs] [Struct: VersionMessage] [Memory Exhaustion] If a node stores VersionMessage for all peer connections, can an attacker open many connections with maximum-size user_agent strings to cause the total memory consumption to exceed available RAM? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9943fa60-4d6e-48f4-ab63-30d467ca460b?mode=deep",
+    "timestamp": "2026-02-07 22:21:03.379961",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/deps_common/bitcoin/network/message_network.rs] [Struct: VersionMessage] [Replay Attack] Does the nonce field provide sufficient entropy to prevent replay attacks where an attacker captures a legitimate VersionMessage and replays it to establish a connection that appears to come from a trusted peer? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_a8d27987-c2e1-487e-a7a6-87122887296c?mode=deep",
+    "timestamp": "2026-02-07 22:21:46.668917",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/deps_common/bitcoin/network/message_network.rs] [impl_consensus_encoding!] [Field Order] If a developer reorders fields in VersionMessage struct without updating the impl_consensus_encoding! macro parameters, can this cause silent deserialization corruption where fields are assigned to wrong struct members? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_7d7191a4-5ddd-471d-ba9d-28b1ecef113d?mode=deep",
+    "timestamp": "2026-02-07 22:22:27.609387",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/deps_common/bitcoin/network/message_network.rs] [impl_consensus_encoding!] [Error Propagation] Does the ? operator in consensus_encode properly propagate errors from nested field encoding (e.g., Address encoding), or can errors be silently ignored, resulting in partial message encoding? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_c3d2d7b6-5310-4b67-a227-1d5c84a11895?mode=deep",
+    "timestamp": "2026-02-07 22:23:13.600353",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/deps_common/bitcoin/network/message_network.rs] [impl_consensus_encoding!] [Type Safety] Since the macro is generic over encoder/decoder types, can type confusion occur if a VersionMessage is encoded with one encoder type and decoded with a different decoder type that has different endianness or serialization rules? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_575bf185-f9bf-412f-9562-8f1ec4e5a305?mode=deep",
+    "timestamp": "2026-02-07 22:23:47.220143",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/deps_common/bitcoin/network/message_network.rs] [Field: version, services, nonce] [Endianness] Are version (u32), services (u64), and nonce (u64) consistently encoded as little-endian via .to_le(), and can endianness confusion occur if messages are exchanged with nodes using different byte orders? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_de86a889-0441-4560-a1f9-897589216f02?mode=deep",
+    "timestamp": "2026-02-07 22:24:28.886012",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/deps_common/bitcoin/network/message_network.rs] [Field: timestamp, start_height] [Signed Integer] Since timestamp (i64) and start_height (i32) are signed integers, are they encoded as two's complement, and can this cause issues with platforms or implementations that use different signed integer representations? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_ef0eed0f-91b4-4139-b242-ff52020a81fb?mode=deep",
+    "timestamp": "2026-02-07 22:25:06.255024",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/deps_common/bitcoin/network/message_network.rs] [Struct: VersionMessage] [Peer Selection] If start_height is used to select sync peers, can an attacker with multiple connections advertise different start_height values to manipulate peer selection algorithms or exhaust peer slots for honest nodes? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_26a81811-6139-4486-9f64-e85c16433a80?mode=deep",
+    "timestamp": "2026-02-07 22:25:38.119134",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/deps_common/bitcoin/network/message_network.rs] [Field: services] [Capability Negotiation] If services field determines which message types a peer can send/receive, can an attacker advertise services it doesn't actually support, causing protocol errors or allowing it to receive messages it shouldn't be allowed to receive? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_c1c283c4-56cf-4fd1-a8ca-b33b0f829501?mode=deep",
+    "timestamp": "2026-02-07 22:26:13.541218",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/deps_common/bitcoin/network/message_network.rs] [Field: relay] [Transaction Propagation] If relay field controls transaction forwarding, can an attacker set relay=false on inbound connections but relay=true on outbound connections to create asymmetric transaction propagation and manipulate mempool distribution? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_e2fef273-ac14-4ad1-9d9d-6d5d151f277c?mode=deep",
+    "timestamp": "2026-02-07 22:26:48.333437",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/deps_common/bitcoin/network/message_network.rs] [Field: version] [Soft Fork Bypass] Can an attacker send an older version number to bypass new validation rules introduced in protocol upgrades, allowing them to send messages that would be rejected by newer protocol rules? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_b33f6185-17b4-4385-adef-dc3e15a91a35?mode=deep",
+    "timestamp": "2026-02-07 22:27:23.423289",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/deps_common/bitcoin/network/message_network.rs] [Struct: VersionMessage] [Forward Compatibility] If future protocol versions add new fields to VersionMessage, would old nodes be able to deserialize messages from new nodes, or would this cause deserialization failures and network partitioning? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_ca8860a8-283b-42ad-a541-d3e4bfb0fcff?mode=deep",
+    "timestamp": "2026-02-07 22:28:02.387787",
+    "report_generated": false
+  }
+]
