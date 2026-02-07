@@ -1,0 +1,127 @@
+[
+  {
+    "question": "stacks-core/stackslib/src/core/mempool.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_1863a9e3-224e-4c68-bade-4c4c939ea46a?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/core/mod.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_f7912ba3-ea7c-41f8-96fe-c35e100456de?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/core/nonce_cache.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_d4a27658-14b1-49f6-bd0a-c05713a4cfa9?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/cost_estimates/fee_medians.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_0db4f91a-7ac1-43ca-a443-86be9d2b9221?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/cost_estimates/fee_rate_fuzzer.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_5fa2d134-88b5-4f38-9867-8a8d2e311834?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/cost_estimates/fee_scalar.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_a42d5434-9b08-4b65-93b0-bd37c339fcfa?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/cost_estimates/metrics.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_2f80b558-6e1a-4fff-ab21-b13f6b3c34db?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/cost_estimates/mod.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_97de0eee-2606-49e7-9acc-de6e42829dc4?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/cost_estimates/pessimistic.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_cefe9746-b092-4b35-85c8-d703680c32a3?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/deps/mod.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_69f91c12-d057-48f8-83f0-a9a3c4a3a61e?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/lib.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_dc5d050b-6b88-4f0e-8a71-243a71f33639?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/monitoring/mod.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_92fa8427-17aa-4258-9926-a3aaffc7d34a?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/monitoring/prometheus.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_86241aa6-7a37-4ccc-925a-83cb118c78c3?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/net/api/blockreplay.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_42f747af-8507-4e5e-8ef5-34100a106603?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/net/api/blocksimulate.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_b27e6415-b2a9-4a91-9718-23faf5d67483?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/net/api/callreadonly.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_ea99775e-433b-4e11-bcf1-e572c1e7d650?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/net/api/fastcallreadonly.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_b4e6aa54-0040-4573-82b7-eeff6f3ee0e3?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/net/api/get_tenure_tip_meta.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_e84e3c3c-ae15-4eab-be38-4320f89c73f8?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/net/api/get_tenures_fork_info.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_4e796c77-189b-4d9a-923a-60588996e4ec?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/net/api/getaccount.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_4898757d-711c-4272-9354-970782eebd25?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/net/api/getattachment.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_0a35eee4-9500-421d-addd-1345d6490ed6?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/net/api/getattachmentsinv.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_2503e4f9-05a9-44f4-8f49-6c6b051bf2f2?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/net/api/getblock.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_30ef28b1-e61a-468f-b575-fb0f465bf4de?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/net/api/getblock_v3.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_bcba80d9-01ce-4460-9e2f-43939edfd788?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/net/api/getblockbyheight.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_ec8e52be-89b9-43b7-b0cc-3094dedd51e0?mode=deep",
+    "questions_generated": false
+  }
+]
