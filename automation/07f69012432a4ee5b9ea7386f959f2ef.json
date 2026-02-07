@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: stacks-core/stacks-common/src/address/c32_old.rs] [Function: c32_check_encode()] [Consensus Divergence] At line 175, inserting the version character at position 0 - if `c32_string` is empty, will this produce different results across implementations? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_d086a75c-4739-4533-9061-19bda2ca87e8?mode=deep",
+    "timestamp": "2026-02-07 22:32:40.563144",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/address/c32_old.rs] [Function: c32_check_encode()] [Data Validation] Does the function validate that `data` has a minimum length before computing checksum, or can empty/short data bypass validation checks? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_b333d762-9f92-416d-8ece-cdafb6f113e9?mode=deep",
+    "timestamp": "2026-02-07 22:32:52.598768",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/address/c32_old.rs] [Function: c32_check_decode()] [Length Validation] At line 186, the minimum length check is 2 characters, but is this sufficient to prevent underflow when splitting at line 191 or accessing checksum bytes? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_3010bb42-a2eb-44b9-97d0-2cf62f7dd0ed?mode=deep",
+    "timestamp": "2026-02-07 22:33:05.230154",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/address/c32_old.rs] [Function: c32_check_decode()] [Data Validation] At line 194, if `data_sum_bytes.len() < 5`, the function returns an error, but can an attacker craft input exactly 5 bytes long that bypasses checksum validation? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_5e7edf2f-325b-491c-bce4-c90345ff1e3f?mode=deep",
+    "timestamp": "2026-02-07 22:33:18.401833",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/address/c32_old.rs] [Function: c32_check_decode()] [Array Bounds] At line 198, `split_at(data_sum_bytes.len() - 4)` assumes length ≥ 5, but what if normalization or decoding reduces the length below this threshold after the check at line 194? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_1d4fd2d3-fe9b-452e-a229-246eaf2b14cc?mode=deep",
+    "timestamp": "2026-02-07 22:33:32.789068",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/address/c32_old.rs] [Function: c32_check_decode()] [Checksum Bypass] At lines 204-216, if `computed_sum != expected_sum`, can the error conversion to u32 (little-endian) hide byte-order issues that allow checksum bypass on certain architectures? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_929d1344-62b5-402f-8a50-865f668d22c1?mode=deep",
+    "timestamp": "2026-02-07 22:33:47.599605",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/address/c32_old.rs] [Function: c32_check_decode()] [Consensus Divergence] At line 200, `c32_decode(version)` is called on a single-character string - can this produce different version bytes than intended if normalization affects version characters? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_5490cba3-40d0-4ef7-992e-ed84fe02a022?mode=deep",
+    "timestamp": "2026-02-07 22:34:03.761338",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/address/c32_old.rs] [Function: c32_check_decode()] [Data Validation] At line 218, the version is extracted from `check_data[0]`, but was the decoded version array validated to have at least 1 element? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9884f405-9073-4f66-bb0d-2277bf6c1aa0?mode=deep",
+    "timestamp": "2026-02-07 22:34:20.833276",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/address/c32_old.rs] [Function: c32_check_decode()] [Timing Attack] Do the checksum comparisons at lines 204-216 use constant-time comparison, or can timing differences leak information about valid checksums? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_06f91f97-c286-4747-9575-3cf0d5217830?mode=deep",
+    "timestamp": "2026-02-07 22:34:38.693025",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/address/c32_old.rs] [Function: c32_check_decode()] [Consensus Divergence] If `c32_normalize()` modifies the version character differently than the data portion, can this cause version mismatch between what's encoded in the string and what's validated in the checksum? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_40f8260b-a047-4a1f-a603-76e8255aa66a?mode=deep",
+    "timestamp": "2026-02-07 22:34:57.500073",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/address/c32_old.rs] [Function: c32_address_decode()] [Length Validation] At line 224, the check `c32_address_str.len() <= 5` may be insufficient - what is the minimum valid address length considering version, data, and checksum requirements? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_b1accc3c-00bd-4059-af06-0f580f740bea?mode=deep",
+    "timestamp": "2026-02-07 22:35:15.505840",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/address/c32_old.rs] [Function: c32_address_decode()] [Array Bounds] At line 227, `c32_check_decode(&c32_address_str[1..])` assumes the string has at least 1 character, but the length check at line 224 only ensures > 5 - can an empty string or single char bypass validation? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_6337ea02-69d8-4ae2-b95e-34fa0a5853d8?mode=deep",
+    "timestamp": "2026-02-07 22:35:33.440930",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/address/c32_old.rs] [Function: c32_address_decode()] [Consensus Divergence] The function strips the first character but doesn't validate that it's 'S' - can addresses with different prefixes (T, M, etc.) be decoded identically, causing network/version confusion? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_3a34f4bf-a222-433b-ba83-cac344de3cf7?mode=deep",
+    "timestamp": "2026-02-07 22:35:52.251068",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/address/c32_old.rs] [Function: c32_address_decode()] [Data Validation] Does the function validate that the address uses the expected network prefix before processing, or can testnet addresses be accepted on mainnet? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_24aa209c-e005-41f9-baa6-816214f83dd7?mode=deep",
+    "timestamp": "2026-02-07 22:36:11.019329",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/address/c32_old.rs] [Function: c32_address()] [Consensus Divergence] At line 233, the 'S' prefix is hardcoded - can this function be called with testnet version bytes, creating addresses with incorrect prefixes that are rejected by validators? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_3d6ef349-0b54-45e0-b210-b2cd5301684f?mode=deep",
+    "timestamp": "2026-02-07 22:36:29.717747",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/address/c32_old.rs] [Function: c32_address()] [Version Validation] The function passes `version` directly to `c32_check_encode()` without additional validation - are all version values 0-31 valid for Stacks addresses, or should some be rejected? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9ed6b835-4e83-40bb-ab9c-877be4050373?mode=deep",
+    "timestamp": "2026-02-07 22:36:48.982145",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/address/c32_old.rs] [Function: c32_address()] [Data Validation] Is there a minimum or maximum data length requirement for valid addresses, or can arbitrary-length data be encoded, potentially breaking downstream parsing? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_06959b77-aa63-479b-b6ce-6aa72b55fb6e?mode=deep",
+    "timestamp": "2026-02-07 22:37:08.433529",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/address/c32_old.rs] [Multiple Functions] [Consensus Divergence] Can the composition of `c32_address()` and `c32_address_decode()` be non-bijective, meaning encode(decode(x)) != x or decode(encode(x)) != x for some inputs? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_7efe28fb-a18d-450e-a192-8e8589e98eb2?mode=deep",
+    "timestamp": "2026-02-07 22:37:28.969058",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/address/c32_old.rs] [Multiple Functions] [Consensus Divergence] Do `c32_encode()` and `c32_decode()` handle leading zeros consistently, or can round-trip encoding change the byte representation? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_a9a85f99-edd3-4e37-af39-9e135f7c85dd?mode=deep",
+    "timestamp": "2026-02-07 22:37:50.097133",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/address/c32_old.rs] [Multiple Functions] [Transaction Malleability] Can normalization in `c32_normalize()` create multiple string representations of the same address that all decode to identical bytes but have different transaction signatures? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_598f53d8-24c8-42ae-b4a5-9e2aaeecff1a?mode=deep",
+    "timestamp": "2026-02-07 22:38:11.875012",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/address/c32_old.rs] [Module] [Version Compatibility] The module comment at lines 17-18 states this is for backward compatibility testing only - are there known vulnerabilities in this implementation that were fixed in the new c32 module? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_14098965-ef98-48a3-ac77-5a291c5494f3?mode=deep",
+    "timestamp": "2026-02-07 22:38:34.133274",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/address/c32_old.rs] [Multiple Functions] [Denial of Service] Can an attacker craft addresses with extreme leading zero counts to cause O(n²) behavior in the encoding/decoding loops? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_48925414-1636-4d3a-86a4-bc0bd9aa9948?mode=deep",
+    "timestamp": "2026-02-07 22:38:57.074085",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/address/c32_old.rs] [Multiple Functions] [Checksum Collision] With only 32 bits of checksum (4 bytes), what is the probability of collision for random data, and can this enable practical address spoofing attacks? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9ee8fa15-86cb-4cb5-99c4-73c59966d4ed?mode=deep",
+    "timestamp": "2026-02-07 22:39:20.792432",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/address/c32_old.rs] [Multiple Functions] [Consensus Divergence] If this old module coexists with a new c32 module, can nodes using different modules reach consensus on address validation and transaction ordering? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_fb6699f6-4781-43e1-ae4b-76f0b1462e8f?mode=deep",
+    "timestamp": "2026-02-07 22:39:45.511226",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/address/c32_old.rs] [Constants] [Character Set] The C32_CHARACTERS constant at line 24 omits 'O', 'L', and 'I' - if these characters appear in raw input before normalization, are they handled consistently? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_eaed2370-8a06-4974-ad69-5b96fb070afc?mode=deep",
+    "timestamp": "2026-02-07 22:40:11.724239",
+    "report_generated": false
+  }
+]
