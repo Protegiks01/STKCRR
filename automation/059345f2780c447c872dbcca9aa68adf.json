@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: stackslib/src/net/api/getinfo.rs] [Function: try_parse_request()] [Input Validation] Can an attacker send a request with content-length 0 but non-empty body bytes to bypass the content-length check at line 174, potentially causing inconsistent parsing behavior between the HTTP layer and application layer? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_3b1ee0c0-cce1-456c-9c03-9a8706d9412f?mode=deep",
+    "timestamp": "2026-02-07 22:25:21.990432",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getinfo.rs] [Function: try_parse_request()] [DoS] Can an attacker send requests with extremely large declared content-length values that pass the check at line 174 (expecting 0) to cause resource exhaustion or integer overflow in downstream HTTP processing? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_0ec63fee-fea6-46fa-a9e1-3ac027f94d50?mode=deep",
+    "timestamp": "2026-02-07 22:25:34.518125",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getinfo.rs] [Function: try_parse_request()] [Input Validation] Does the query string parsing at line 179 properly validate and sanitize query parameters, or can malformed query strings cause parsing errors or injection attacks? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_80684d5c-b533-4d21-8662-89b029047118?mode=deep",
+    "timestamp": "2026-02-07 22:25:47.804012",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getinfo.rs] [Function: path_regex()] [DoS] Can the regex pattern at line 158 be exploited with catastrophic backtracking or ReDoS attacks if the path is maliciously crafted, causing CPU exhaustion? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_93604e7a-7758-44c1-9689-d5c769989d3b?mode=deep",
+    "timestamp": "2026-02-07 22:26:01.532785",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getinfo.rs] [Function: from_network()] [Information Disclosure] Does exposing the node's raw public key at line 111-112 via the API response allow attackers to link node identities across network restarts or configuration changes, violating privacy assumptions? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_50635af5-2dee-4f19-8a2d-9c84a56f636d?mode=deep",
+    "timestamp": "2026-02-07 22:26:15.270941",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getinfo.rs] [Function: from_network()] [Information Disclosure] Can the public key hash derived at line 113 and exposed at line 135 be used to perform address grinding attacks or brute-force search for specific node identities? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_54d6b6d6-ab17-42b4-9376-d403d0daa04e?mode=deep",
+    "timestamp": "2026-02-07 22:26:30.992915",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getinfo.rs] [Function: from_network()] [Cryptographic] Does the public key derivation at line 111 using `from_private()` properly handle edge cases where the private key is zero, malformed, or outside the valid secp256k1 curve order? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_a5055728-6b97-4ec2-8e00-52bfabf914c3?mode=deep",
+    "timestamp": "2026-02-07 22:26:46.359649",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getinfo.rs] [Function: from_network()] [Consensus Divergence] Can exposing the `pox_consensus` hash at line 119 allow an attacker to determine if a node is on a minority fork and selectively target it for eclipse attacks? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_00314927-5889-4f28-8099-fcae08460a1f?mode=deep",
+    "timestamp": "2026-02-07 22:27:03.432572",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getinfo.rs] [Function: from_network()] [Consensus Divergence] Does the `stable_pox_consensus` field at line 121 accurately reflect the consensus hash at the stable burn block height, or can there be a mismatch if the chainstate is in an inconsistent state? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_08bf0e0f-af6d-4162-80a8-a83a49953475?mode=deep",
+    "timestamp": "2026-02-07 22:27:20.647655",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getinfo.rs] [Function: from_network()] [Race Condition] Can concurrent modifications to `network.burnchain_tip.consensus_hash` at line 119 cause the returned `pox_consensus` to be inconsistent with other returned fields like `burn_block_height`? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_b346e419-74c3-477e-abed-f91de40b5a07?mode=deep",
+    "timestamp": "2026-02-07 22:27:39.186457",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getinfo.rs] [Function: from_network()] [Data Consistency] Can `burn_block_height` at line 120 be greater than `stable_burn_block_height` at line 122 by more than the expected stability window, indicating a potential consensus bug? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_e9c5b74b-294d-4418-b34d-7cf47db2c012?mode=deep",
+    "timestamp": "2026-02-07 22:27:57.757488",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getinfo.rs] [Function: from_network()] [Consensus Divergence] Can the `stacks_tip_height` at line 126 be inconsistent with the `stacks_tip` block hash at line 127 if there's a race condition during block processing? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_72b26a18-3239-4717-b8a3-b8a476bfba80?mode=deep",
+    "timestamp": "2026-02-07 22:28:17.725797",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getinfo.rs] [Function: from_network()] [Consensus Divergence] Does the `stacks_tip_consensus_hash` at line 128 always match the consensus hash that anchors the block referenced by `stacks_tip`, or can there be a mismatch during reorgs? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_903f3c5f-9de5-4180-a7ae-e623e95f229a?mode=deep",
+    "timestamp": "2026-02-07 22:28:38.415453",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getinfo.rs] [Function: from_network()] [Integer Overflow] Can `tenure_height` derived from `coinbase_height` at line 146 overflow if the coinbase height is at or near u64::MAX? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_b968375d-cbf5-4f3a-a14c-6799e7742420?mode=deep",
+    "timestamp": "2026-02-07 22:28:57.918848",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getinfo.rs] [Function: from_network()] [Race Condition] Can the unconfirmed state check at line 97-109 race with concurrent microblock processing, causing `num_mined_txs()` to return 0 when transactions actually exist? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_fc8c66a4-7217-4d45-a6e9-3d094f6aa12f?mode=deep",
+    "timestamp": "2026-02-07 22:29:18.322863",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getinfo.rs] [Function: from_network()] [Consensus] Does the condition at line 99 checking `num_mined_txs() > 0` correctly handle the case where microblocks exist but have zero transactions, potentially exposing invalid unconfirmed tips? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_c2fe8172-deb0-455b-9a56-42960199371d?mode=deep",
+    "timestamp": "2026-02-07 22:29:39.310098",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getinfo.rs] [Function: from_network()] [Data Integrity] Can the `unconfirmed_chain_tip` cloned at line 101 reference a block that has been invalidated or orphaned since it was set in the unconfirmed state? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_c03c2933-d5ea-40f3-8d38-976b0dbd6244?mode=deep",
+    "timestamp": "2026-02-07 22:29:59.859093",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getinfo.rs] [Function: from_network()] [Integer Overflow] Can `last_mblock_seq` at line 102 wrap around from u16::MAX to 0, causing sequence number confusion in microblock processing? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_8476a9b5-8c3d-4991-b953-c8cb2efe7fcc?mode=deep",
+    "timestamp": "2026-02-07 22:30:20.402991",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getinfo.rs] [Function: from_network()] [Consensus] If `unconfirmed_state` is Some but `num_mined_txs() == 0` at line 99, should the unconfirmed_tip and sequence still be None, or does this hide valid microblock state? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9699792a-f6fe-4f4c-9d9b-9a371ebf151b?mode=deep",
+    "timestamp": "2026-02-07 22:30:41.620113",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getinfo.rs] [Function: from_network()] [Network Isolation] Can an attacker use the exposed `network_id` at line 124 to craft cross-network replay attacks by submitting transactions valid on one network to another? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_2704efe1-06f7-4f3a-860a-b9ea162f631f?mode=deep",
+    "timestamp": "2026-02-07 22:31:04.294913",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getinfo.rs] [Function: from_network()] [Network Isolation] Does the `parent_network_id` at line 125 correctly reflect the Bitcoin network (mainnet/testnet), or can it be spoofed to cause nodes to accept invalid burnchain data? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_333f01f9-f6e7-4fa3-8395-0d41d40e3a21?mode=deep",
+    "timestamp": "2026-02-07 22:31:25.544086",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getinfo.rs] [Function: from_network()] [Version Compatibility] Can the `peer_version` at line 118 be manipulated to cause incompatible nodes to attempt communication, leading to consensus divergence? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_59b6f19c-dcbe-41ca-9378-7bbfd8df9c3e?mode=deep",
+    "timestamp": "2026-02-07 22:31:47.935975",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getinfo.rs] [Function: from_network()] [Information Disclosure] Does the `server_version` string constructed at line 96 leak sensitive build information that could help attackers identify vulnerable node versions? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_a3ca7d24-fc83-4143-b11c-d38e95440e9f?mode=deep",
+    "timestamp": "2026-02-07 22:32:10.679173",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getinfo.rs] [Function: from_network()] [Consensus] Can the `last_anchor_block_hash` at line 137 be inconsistent with the `last_anchor_block_txid` at line 138 if they are updated separately during PoX anchor block processing? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_d45c4964-f749-4f17-baca-55e8116b9456?mode=deep",
+    "timestamp": "2026-02-07 22:32:34.317041",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getinfo.rs] [Function: from_network()] [Data Integrity] Can the PoX anchor data at lines 136-139 reference an anchor block that has been reverted by a Bitcoin reorg but not yet updated in the network state? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_d0210d49-be03-4e9a-a69e-ce591e520779?mode=deep",
+    "timestamp": "2026-02-07 22:32:57.861162",
+    "report_generated": false
+  }
+]
