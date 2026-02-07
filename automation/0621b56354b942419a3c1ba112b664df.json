@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: try_parse_request()] [Authentication Bypass] Can an attacker bypass authentication by sending a request without the 'authorization' header when self.auth is Some, potentially allowing unauthorized block proposal submissions? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_df41f668-88ce-4ebd-8ec1-293e21080f3c?mode=deep",
+    "timestamp": "2026-02-07 22:27:42.372116",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: try_parse_request()] [Authentication Timing Attack] Does the plaintext comparison auth_header != password allow timing attacks to leak the password length and characters, enabling credential discovery? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_7172ff8c-85d1-48e2-8667-9048541d055b?mode=deep",
+    "timestamp": "2026-02-07 22:27:55.323855",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: try_parse_request()] [Authorization Logic Error] If self.auth is None, the function returns Bad Request 400 - can an attacker exploit this to determine if the endpoint is enabled vs disabled, leaking configuration information? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_a336df83-9a13-430f-b380-93947aeb0ae4?mode=deep",
+    "timestamp": "2026-02-07 22:28:08.646065",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: try_parse_request()] [Authentication State Confusion] Can an attacker manipulate the auth field between requests to cause authentication state confusion in concurrent requests? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_bb2feee0-d9dd-4bc3-bda9-2ac23fbe363a?mode=deep",
+    "timestamp": "2026-02-07 22:28:22.781145",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: hex_deser_block()] [Deserialization DoS] Can an attacker send malformed hex strings that cause hex_bytes() to consume excessive CPU/memory during deserialization, leading to DoS? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_c5ff001c-f100-4d4b-a7de-994ed2eb9999?mode=deep",
+    "timestamp": "2026-02-07 22:28:37.914423",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: hex_deser_block()] [Consensus Deserialization Bypass] Can an attacker craft bytes that pass NakamotoBlock::consensus_deserialize but violate consensus rules, causing nodes to accept invalid blocks? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_194eeb30-2a10-4136-bc50-3f06ad547272?mode=deep",
+    "timestamp": "2026-02-07 22:28:53.905516",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: parse_json()] [JSON Parsing DoS] Can an attacker send deeply nested or extremely large JSON payloads that cause serde_json::from_slice to consume excessive resources despite MAX_PAYLOAD_LEN check? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_1b60e4f4-6774-4561-a130-15ce12957d7a?mode=deep",
+    "timestamp": "2026-02-07 22:29:11.292467",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: try_parse_request()] [Content-Length Bypass] Can an attacker send a Content-Length header claiming small size but actual body exceeding MAX_PAYLOAD_LEN, bypassing size validation? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_06467bef-d4f6-4ea8-a35f-467d17499f47?mode=deep",
+    "timestamp": "2026-02-07 22:29:30.361500",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: try_parse_request()] [Shadow Block Detection Bypass] The check block_proposal.block.is_shadow_block() occurs after full deserialization - can this be exploited to DoS nodes before rejection? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_b07d9adb-3a45-4372-adb3-81a6df776ef4?mode=deep",
+    "timestamp": "2026-02-07 22:29:50.466954",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: try_parse_request()] [Content-Type Confusion] Can an attacker send non-JSON content types that bypass validation or cause parser confusion in downstream processing? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_b6189f67-5ba2-4e8b-be22-a75a8e250fa5?mode=deep",
+    "timestamp": "2026-02-07 22:30:12.593444",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: validate()] [Network Mismatch Consensus Split] Can an attacker submit blocks with mismatched chain_id that pass early validation but cause consensus divergence in downstream processing? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_2f043f40-1603-4ac0-8510-23036a6c9a6f?mode=deep",
+    "timestamp": "2026-02-07 22:30:35.586563",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: validate()] [Mainnet/Testnet Confusion] The validation checks mainnet != chainstate.mainnet - can an attacker exploit timing between this check and actual block processing to cause network confusion? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9b7b5255-a914-4501-a781-06b9ced2d495?mode=deep",
+    "timestamp": "2026-02-07 22:31:00.360990",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: validate()] [Chain ID Integer Overflow] Can an attacker send a chain_id value that causes integer overflow when compared to chainstate.chain_id, bypassing validation? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_a3513c23-3843-4d9e-ab68-40fe68da0a60?mode=deep",
+    "timestamp": "2026-02-07 22:31:22.897801",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: validate()] [Block Version Downgrade] The code only emits a warning for mismatched block.header.version - can an attacker submit old version blocks that violate consensus rules but are still accepted? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_eb678992-94d8-4a36-abe6-2d223004ec12?mode=deep",
+    "timestamp": "2026-02-07 22:31:47.123476",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: validate()] [Version Override Vulnerability] The block.header.version is overridden after validation - can this cause the validated version to differ from the actual block version used in consensus? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_62b247ec-fe06-4093-9887-3296ba0ab28c?mode=deep",
+    "timestamp": "2026-02-07 22:32:11.935998",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: validate()] [Unknown Parent Attack] Can an attacker submit blocks with parent_block_id pointing to non-existent blocks to exhaust database lookup resources or cause state inconsistencies? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_b4033020-6d9e-4926-8df7-f37e50fdd2e1?mode=deep",
+    "timestamp": "2026-02-07 22:32:38.478452",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: check_block_builds_on_highest_block_in_tenure()] [Tenure Height Bypass] Can an attacker craft a block whose parent is not the highest in tenure but still passes validation through race conditions or cache inconsistencies? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_2a7c66b8-3424-4824-aed6-416f7eb2e287?mode=deep",
+    "timestamp": "2026-02-07 22:33:05.951454",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: check_block_builds_on_highest_block_in_tenure()] [Parent Header Query Race] The code queries parent_header after highest_header - can concurrent block submissions cause TOCTOU issues where the highest changes between queries? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_3fd64811-7bc6-47dd-8ec4-a2234bf933bb?mode=deep",
+    "timestamp": "2026-02-07 22:33:34.752560",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: check_block_builds_on_highest_block_in_tenure()] [Height Comparison Integer Overflow] Can parent_header.anchored_header.height() or highest_header.anchored_header.height() overflow causing incorrect height comparison? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_b022a2ec-f978-4ee2-b49d-16d335ead166?mode=deep",
+    "timestamp": "2026-02-07 22:34:01.451515",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: check_block_has_valid_parent()] [Tenure Start Detection Bypass] Can an attacker craft a block that passes is_wellformed_tenure_start_block but violates actual tenure start rules, bypassing parent validation? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_8a69be8f-2ad7-402c-a778-22dabd05cc6d?mode=deep",
+    "timestamp": "2026-02-07 22:34:27.641242",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: check_block_has_valid_parent()] [Tenure Start Malleability] For tenure-start blocks, the parent tenure check uses parent_header.consensus_hash - can an attacker manipulate this to build on wrong tenure? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_af87e8c2-0e94-4ba0-b5ff-4dda7b427b72?mode=deep",
+    "timestamp": "2026-02-07 22:34:53.077576",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: check_block_has_valid_tenure()] [Canonical Fork Detection Race] Can an attacker submit a block immediately after a sortition reorganization, exploiting the window where has_consensus_hash might return inconsistent results? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_41b99c2c-ee13-4849-ad69-ea621d7e9796?mode=deep",
+    "timestamp": "2026-02-07 22:35:16.615485",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: check_block_has_valid_tenure()] [Non-Canonical Tenure Acceptance] Can db_handle.has_consensus_hash return true for a tenure that's canonical at check time but becomes non-canonical before block processing? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_8924d820-18e4-4a2c-bf80-5aa2e2767495?mode=deep",
+    "timestamp": "2026-02-07 22:35:40.089891",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: validate()] [Burn View Consensus Hash Manipulation] Can an attacker manipulate NakamotoChainState::get_block_burn_view to return a burn view that differs from the actual burn view used in consensus? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_dd0b7d20-586b-4711-9d6d-9ef8c41e3741?mode=deep",
+    "timestamp": "2026-02-07 22:36:04.720787",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: validate()] [Sortition Snapshot TOCTOU] The code gets sort_tip from get_block_snapshot_consensus - can this snapshot become stale between retrieval and validation usage? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_70aedc28-daae-4b0d-bffb-8571a0a4bcfb?mode=deep",
+    "timestamp": "2026-02-07 22:36:29.061746",
+    "report_generated": false
+  }
+]
