@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: stacks-core/stackslib/src/core/mod.rs] [Constant: HELIUM_BLOCK_LIMIT_20] [Testnet Limits] Could the 10x-100x larger limits in HELIUM_BLOCK_LIMIT_20 at lines 222-229 (100B runtime) allow testnet-specific attacks that break consensus if accidentally used on mainnet? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_e0dbdc6d-87c7-4426-bc7e-37e51b007530?mode=deep",
+    "timestamp": "2026-02-07 22:13:07.363362",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/core/mod.rs] [Constants: FAULT_DISABLE_MICROBLOCKS_*] [Fault Injection] Could the fault injection constants at lines 231-232 (FAULT_DISABLE_MICROBLOCKS_COST_CHECK, FAULT_DISABLE_MICROBLOCKS_BYTES_CHECK) be triggered in production to bypass microblock validation? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_75ffaa95-6fba-4168-b4fc-6c8b328094c9?mode=deep",
+    "timestamp": "2026-02-07 22:13:19.920475",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/core/mod.rs] [Function: check_fault_injection()] [Fault Injection Security] Could an attacker set BITCOIND_TEST=1 environment variable in production at line 238 to enable fault injection and bypass critical validation checks? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_63faaa87-7cd4-45a3-961d-8edeff0473e4?mode=deep",
+    "timestamp": "2026-02-07 22:13:32.828502",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/core/mod.rs] [Function: check_fault_injection()] [Environment Variable] Could the check_fault_injection() function at lines 234-243 be exploited by manipulating environment variables after node startup but before block processing? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_99054a8c-bc80-4cf4-94bb-bd7c5e5070a0?mode=deep",
+    "timestamp": "2026-02-07 22:13:46.218689",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/core/mod.rs] [Function: check_fault_injection()] [Testing Leakage] Could accidentally leaving BITCOIND_TEST=1 and fault_name=1 set in production environment disable microblock cost or byte checks, enabling consensus attacks? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_123aeda8-98d2-48c9-b856-8b1679ab825b?mode=deep",
+    "timestamp": "2026-02-07 22:14:00.231793",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/core/mod.rs] [Constant: STACKS_EPOCHS_MAINNET] [Epoch Contiguity] Could gaps or overlaps in the epoch ranges defined in STACKS_EPOCHS_MAINNET at lines 246-331 cause nodes to have undefined behavior at boundary heights? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_b63024dd-1602-4c95-8430-5263c5a433ca?mode=deep",
+    "timestamp": "2026-02-07 22:14:15.399734",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/core/mod.rs] [Constant: STACKS_EPOCHS_MAINNET] [Epoch 1.0->2.0 Transition] Could the transition from Epoch10 (ending at 666,050) to Epoch20 (starting at 666,050) at lines 248-259 create a boundary condition where blocks are validated under wrong rules? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_33b048bc-1cd1-4ed3-817c-3767e3a5b2c4?mode=deep",
+    "timestamp": "2026-02-07 22:14:32.024484",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/core/mod.rs] [Constant: STACKS_EPOCHS_MAINNET] [Epoch 2.05 Activation] Could the Epoch2_05 activation at height 713,000 (lines 261-266) be exploited if nodes disagree on which block at that exact height should use which epoch rules? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_67ae56a3-5542-42d1-a877-cd988f815ae7?mode=deep",
+    "timestamp": "2026-02-07 22:14:50.370183",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/core/mod.rs] [Constant: STACKS_EPOCHS_MAINNET] [Epoch 2.1 Block Limits] Could an attacker exploit the transition to Epoch21 at height 781,551 (lines 268-273) by submitting blocks just before/after the boundary with costs that are valid in one epoch but invalid in another? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_283401aa-b978-4ae5-986e-709bea1e9679?mode=deep",
+    "timestamp": "2026-02-07 22:15:09.641610",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/core/mod.rs] [Constant: STACKS_EPOCHS_MAINNET] [Same Block Limits] Could epochs 2.2, 2.3, and 2.4 all having identical block limits (BLOCK_LIMIT_MAINNET_21) at lines 275-294 hide a configuration error where one epoch should have different limits? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_4e13fea4-ce16-40b1-ac3f-20f9390bc5ba?mode=deep",
+    "timestamp": "2026-02-07 22:15:30.304506",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/core/mod.rs] [Constant: STACKS_EPOCHS_MAINNET] [Network Epoch Progression] Could the network_epoch values at lines 252-329 (PEER_VERSION_EPOCH_1_0 through 3_3) be mismatched with epoch_id, causing P2P protocol confusion? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_206a83b6-9547-4c85-a22b-6dd9f27afe5e?mode=deep",
+    "timestamp": "2026-02-07 22:15:51.286831",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/core/mod.rs] [Constant: STACKS_EPOCHS_MAINNET] [Epoch 3.0 Nakamoto] Could the Epoch30 activation at height 867,867 (lines 303-308) violate Nakamoto transition safety rules if it falls on a prepare phase or reward cycle boundary? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_7c74b471-9087-4897-9309-6427ba90c735?mode=deep",
+    "timestamp": "2026-02-07 22:16:13.918607",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/core/mod.rs] [Constant: STACKS_EPOCHS_MAINNET] [Epoch 3.3 End Height] Could setting Epoch33's end_height to STACKS_EPOCH_MAX at line 327 cause integer overflow when calculating epoch durations or performing arithmetic with this sentinel value? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9d9e7056-db95-409b-aff5-a7346a92d793?mode=deep",
+    "timestamp": "2026-02-07 22:16:35.404817",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/core/mod.rs] [Constant: STACKS_EPOCHS_MAINNET] [Lazy Static Safety] Could the lazy_static initialization of STACKS_EPOCHS_MAINNET at line 245 fail or initialize incorrectly under certain runtime conditions, leaving epochs undefined? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_641f5101-5fcb-4d4e-b9cb-cefcf6d2b0aa?mode=deep",
+    "timestamp": "2026-02-07 22:16:56.489358",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/core/mod.rs] [Constant: STACKS_EPOCHS_TESTNET] [Testnet Divergence] Could the vastly different epoch heights in STACKS_EPOCHS_TESTNET (lines 334-420) compared to mainnet cause bugs in shared code that assumes certain epoch ordering? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_0cc3a961-990f-4fd3-88f9-f290a16968ae?mode=deep",
+    "timestamp": "2026-02-07 22:17:19.456533",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/core/mod.rs] [Constant: STACKS_EPOCHS_TESTNET] [Epoch 3.0 Testnet] Could testnet Epoch30 starting at 30,000,000 (line 394) cause arithmetic overflow in reward cycle calculations that use this height? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_4cf1a6e4-826a-4b34-a634-fefdff9c76f3?mode=deep",
+    "timestamp": "2026-02-07 22:17:42.306859",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/core/mod.rs] [Constant: STACKS_EPOCHS_TESTNET] [Sequential Heights] Could the sequential testnet epoch 3.x heights (30,000,000, 30,000,001, 30,000,002, 30,000,003 at lines 125-128) violate Nakamoto transition requirements? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_d774e66f-45bb-4a14-b891-05c180bdb830?mode=deep",
+    "timestamp": "2026-02-07 22:18:07.092557",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/core/mod.rs] [Constant: STACKS_EPOCHS_REGTEST] [Epoch 1.0 Overlap] Could having Epoch10 with start_height=0 and end_height=0 at lines 426-430 in STACKS_EPOCHS_REGTEST create ambiguity about which epoch applies at height 0? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_6e90ec01-bc60-48be-9391-ab6d95269303?mode=deep",
+    "timestamp": "2026-02-07 22:18:33.338291",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/core/mod.rs] [Constant: STACKS_EPOCHS_REGTEST] [Rapid Epochs] Could the very short epoch durations in STACKS_EPOCHS_REGTEST (1000 blocks each at lines 434-508) expose race conditions in epoch transition logic? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_ec9a9124-864b-42b9-b418-19b09e239cde?mode=deep",
+    "timestamp": "2026-02-07 22:18:59.393603",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/core/mod.rs] [Constant: STACKS_EPOCHS_REGTEST] [Test Block Limits] Could using HELIUM_BLOCK_LIMIT_20 for most regtest epochs (lines 436-472) accidentally enable DoS attacks in test environments that propagate to production? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_1309d908-2f26-4aac-ab71-803537bb7b91?mode=deep",
+    "timestamp": "2026-02-07 22:19:25.658525",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/core/mod.rs] [Constant: STACKS_EPOCHS_REGTEST] [Epoch 2.5->3.0 Boundary] Could the transition from Epoch25 ending at 7001 to Epoch30 starting at 7001 (lines 476-486) violate the Nakamoto requirement that these must be in different reward cycles? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_144ca6e6-9e13-4ab7-b8ef-0917954893ca?mode=deep",
+    "timestamp": "2026-02-07 22:19:50.427472",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/core/mod.rs] [Constant: STACKS_EPOCH_2_05_MARKER] [Marker Monotonicity] Could an attacker forge block-commits with incorrect epoch markers (0x05 for 2.05 at line 514) to cause nodes to reject valid blocks or accept invalid ones? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_250304ef-f41d-4298-88a1-2e064efee610?mode=deep",
+    "timestamp": "2026-02-07 22:20:17.144668",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/core/mod.rs] [Constant: STACKS_EPOCH_3_1_MARKER] [Marker Skip] Could the gap in STACKS_EPOCH_3_1_MARKER jumping from 0x0b (3.0) to 0x0d (3.1) at line 545 cause issues if nodes check for strict sequential marker incrementing? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_e3394a7a-ba09-4038-9d4f-62986989d29e?mode=deep",
+    "timestamp": "2026-02-07 22:20:43.884793",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/core/mod.rs] [Constant: STACKS_EPOCH_LATEST_MARKER] [Latest Marker] Could the STACKS_EPOCH_LATEST_MARKER at lines 556-557 return None and cause a panic if latest() doesn't match any marker_for_epoch() case? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_92e55c6f-1378-4d8b-bff5-bc9521a17da8?mode=deep",
+    "timestamp": "2026-02-07 22:21:12.315127",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/core/mod.rs] [Function: marker_for_epoch()] [Missing Markers] Could calling marker_for_epoch() at lines 559-574 with Epoch10 or Epoch20 returning None cause validation logic to incorrectly accept block-commits without markers? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_672f2124-5f39-40ce-94ba-227d803f534b?mode=deep",
+    "timestamp": "2026-02-07 22:21:39.368629",
+    "report_generated": false
+  }
+]
