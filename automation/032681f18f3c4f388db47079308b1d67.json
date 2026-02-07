@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: stackslib/src/util_lib/signed_structured_data.rs] [Function: structured_data_hash()] [Consensus Divergence] Does the unwrap() on value.serialize_write() create a consensus risk if different Clarity values serialize non-deterministically or if serialization can fail for valid values, potentially causing nodes to diverge on what constitutes a valid signature? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9d0959b8-ca84-427e-9228-1cfdae3a3b8a?mode=deep",
+    "timestamp": "2026-02-07 22:16:28.222667",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/signed_structured_data.rs] [Function: structured_data_hash()] [DoS] Can an attacker construct deeply nested Clarity values that cause serialize_write() to consume excessive memory or CPU during hashing, leading to node resource exhaustion when processing signed structured data? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_65e42d46-d55f-431f-a877-99de704ab9cd?mode=deep",
+    "timestamp": "2026-02-07 22:16:40.675888",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/signed_structured_data.rs] [Function: structured_data_hash()] [Serialization Non-determinism] If Clarity's serialize_write() implementation has any non-deterministic behavior (e.g., map key ordering), could two nodes produce different hashes for semantically identical values, breaking signature validation consensus? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_66bfbead-9aa9-4eab-b6ab-0cacb97df1c0?mode=deep",
+    "timestamp": "2026-02-07 22:16:53.774150",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/signed_structured_data.rs] [Function: structured_data_hash()] [Type Confusion] Can an attacker leverage Clarity's type system to create two different Value types that serialize to identical bytes, allowing signature reuse across incompatible data types? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_b065b731-9cbb-401d-8a4c-249135280c05?mode=deep",
+    "timestamp": "2026-02-07 22:17:08.155443",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/signed_structured_data.rs] [Function: structured_data_message_hash()] [Signature Replay] Does the message hash construction prevent replay attacks across different domains, or can a signature generated for one application domain be replayed in another with the same structured_data but different domain? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_7036484a-0469-4f25-827c-dae3085b0793?mode=deep",
+    "timestamp": "2026-02-07 22:17:22.678385",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/signed_structured_data.rs] [Function: structured_data_message_hash()] [Domain Separation Failure] Can an attacker craft a structured_data value that, when hashed and concatenated with the prefix and domain hash, produces the same final hash as a different (structured_data, domain) pair, bypassing domain separation? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_a1f22d93-5d23-429f-8e4a-2d880a50b742?mode=deep",
+    "timestamp": "2026-02-07 22:17:37.931824",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/signed_structured_data.rs] [Function: structured_data_message_hash()] [Prefix Collision] Is the STRUCTURED_DATA_PREFIX ('SIP018') sufficient to prevent collision with other signing schemes in the Stacks ecosystem, or could signatures intended for other protocols be misinterpreted as SIP018 signatures? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_546d1937-fedc-4c06-8606-611cd06d7acf?mode=deep",
+    "timestamp": "2026-02-07 22:17:54.192651",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/signed_structured_data.rs] [Function: structured_data_message_hash()] [Message Construction Order] Does the specific concatenation order (prefix || domain_hash || data_hash) prevent length extension attacks or hash collision scenarios where swapping domain and data could produce valid signatures? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_164571bb-75ee-42f1-b581-566dbae6c88f?mode=deep",
+    "timestamp": "2026-02-07 22:18:12.982205",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/signed_structured_data.rs] [Function: structured_data_message_hash()] [Hash Collision] If an attacker finds a SHA256 collision for either structured_data_hash(domain) or structured_data_hash(structured_data), can they substitute malicious values while maintaining a valid signature? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_6a8f841a-7c67-4978-a14c-6531b4e99556?mode=deep",
+    "timestamp": "2026-02-07 22:18:33.943557",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/signed_structured_data.rs] [Function: sign_structured_data()] [Signature Malleability] Does the MessageSignature returned by private_key.sign() prevent signature malleability attacks where an attacker can generate an alternative valid signature for the same message without the private key? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_03889cca-0853-4a39-8aca-b9443427aaf6?mode=deep",
+    "timestamp": "2026-02-07 22:18:55.060528",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/signed_structured_data.rs] [Function: sign_structured_data()] [Error Handling] What causes sign() to return Err(&str), and could an attacker trigger this error condition to cause DoS by repeatedly submitting signing requests that fail but consume resources? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_76e558fa-c762-42d2-a5d7-83cc162ef8a8?mode=deep",
+    "timestamp": "2026-02-07 22:19:15.369061",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/signed_structured_data.rs] [Function: sign_structured_data()] [Private Key Exposure] Does passing private_key as a reference provide adequate protection, or could the signing process leak key material through side channels or error messages? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_ea341168-1726-4292-98dc-a48a81f7939b?mode=deep",
+    "timestamp": "2026-02-07 22:19:39.729799",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/signed_structured_data.rs] [Function: sign_structured_data()] [Replay Across Chains] Can a signature generated with sign_structured_data() for one chain_id be replayed on another chain if the domain tuple doesn't properly encode chain separation? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_eae4ccd1-934d-4b2f-ad02-2b1ae292d448?mode=deep",
+    "timestamp": "2026-02-07 22:20:03.566120",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/signed_structured_data.rs] [Function: make_structured_data_domain()] [Unwrap Panic] The function unwraps Value::string_ascii_from_bytes() for name and version - can an attacker provide non-ASCII strings that cause a panic, leading to node crashes during domain construction? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_cc55ff76-b379-4757-891c-21669b1c18e9?mode=deep",
+    "timestamp": "2026-02-07 22:20:27.650034",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/signed_structured_data.rs] [Function: make_structured_data_domain()] [TupleData Creation Panic] The unwrap() on TupleData::from_data() can panic if tuple creation fails - what conditions cause this failure and could they be triggered by malicious name/version inputs? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_efef218a-e3c9-4f63-b587-a5e56947573b?mode=deep",
+    "timestamp": "2026-02-07 22:20:52.379008",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/signed_structured_data.rs] [Function: make_structured_data_domain()] [Chain ID Overflow] The chain_id parameter is u32 but converted to UInt (u128) - is there any truncation or overflow risk in this conversion that could cause chain ID confusion? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_cfc01188-db8b-4f48-9d6d-17e2a5d2b8dc?mode=deep",
+    "timestamp": "2026-02-07 22:21:19.351732",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/signed_structured_data.rs] [Function: make_structured_data_domain()] [Domain Collision] Can two different (name, version, chain_id) tuples produce identical serialized representations due to padding or encoding ambiguity, allowing signature reuse across different domains? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_dc2f4711-ae24-4cfd-8308-edde57b5d6fa?mode=deep",
+    "timestamp": "2026-02-07 22:21:44.720283",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/signed_structured_data.rs] [Function: make_structured_data_domain()] [String Length Limits] Are there maximum length constraints on name and version strings, and could excessively long strings cause DoS or buffer issues during serialization? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_6fd334b3-5e94-4718-ace2-17bec717746d?mode=deep",
+    "timestamp": "2026-02-07 22:22:09.953578",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/signed_structured_data.rs] [Function: make_structured_data_domain()] [Empty String Attack] Can empty strings for name or version create a degenerate domain that collides with other legitimate domains or bypasses validation checks? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_223a76ef-370d-400c-9486-233729696024?mode=deep",
+    "timestamp": "2026-02-07 22:22:35.484796",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/signed_structured_data.rs] [Function: pox4::make_pox_4_signer_key_message_hash()] [PoX Address Validation] The function calls pox_addr.clone().as_clarity_tuple().expect() which can panic - can an attacker provide an invalid PoxAddress that causes node crashes during signature generation? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_ecc38c13-04f2-4a11-b2c6-51cf4278fce1?mode=deep",
+    "timestamp": "2026-02-07 22:23:00.173686",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/signed_structured_data.rs] [Function: pox4::make_pox_4_signer_key_message_hash()] [Reward Cycle Overflow] The reward_cycle parameter is u128 - can extremely large reward cycle values cause issues in hash computation or create unexpected signature validation behavior in future cycles? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_19010826-24ea-409c-95ff-c404095def90?mode=deep",
+    "timestamp": "2026-02-07 22:23:24.067214",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/signed_structured_data.rs] [Function: pox4::make_pox_4_signer_key_message_hash()] [Period Overflow] The period parameter is u128 - can a period value larger than the maximum valid lock period create signatures that are valid but violate PoX protocol constraints? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_ace1f64a-57d6-424e-9fc7-70b020db255d?mode=deep",
+    "timestamp": "2026-02-07 22:23:48.033694",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/signed_structured_data.rs] [Function: pox4::make_pox_4_signer_key_message_hash()] [Max Amount Overflow] Can setting max_amount to u128::MAX create arithmetic overflow risks when validating actual stacking amounts against this signature authorization? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_fafea7c5-209f-48ea-a70e-b54fbe473bbc?mode=deep",
+    "timestamp": "2026-02-07 22:24:11.762697",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/signed_structured_data.rs] [Function: pox4::make_pox_4_signer_key_message_hash()] [Auth ID Collision] Is the auth_id parameter adequately checked for uniqueness, or could an attacker reuse the same auth_id across multiple signatures to bypass authorization checks? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_26b8e9cb-03f9-44dc-8405-f96776acca12?mode=deep",
+    "timestamp": "2026-02-07 22:24:36.515666",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/signed_structured_data.rs] [Function: pox4::make_pox_4_signer_key_message_hash()] [Topic String Validation] Does topic.get_name_str() always return a valid ASCII string, and could a malformed topic enum variant cause unwrap() to panic during string conversion? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_1851b423-a037-4720-95c3-e1b9ec3e2581?mode=deep",
+    "timestamp": "2026-02-07 22:25:01.135693",
+    "report_generated": false
+  }
+]
