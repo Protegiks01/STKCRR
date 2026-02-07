@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 40-43] [ReDoS] Can the CLARITY_NAME_NO_BOUNDARIES_REGEX_STRING regex pattern be exploited with catastrophic backtracking via crafted input strings containing alternating valid characters and special symbols (e.g., 'a-a-a-a-...'), causing exponential evaluation time and node DoS? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9007ee2b-95e6-4c35-976e-fe3eca6dba40?mode=deep",
+    "timestamp": "2026-02-07 22:23:49.223516",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 44-47] [ReDoS] Can the METADATA_KEY_REGEX_STRING regex with nested capture groups and alternation be exploited with inputs like 'vm-metadata::5::' followed by MAX_STRING_LEN boundary-case strings to cause regex engine timeout and block the RPC handler thread? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_694263a9-ab17-485f-b94a-65a52e1dd432?mode=deep",
+    "timestamp": "2026-02-07 22:24:01.543531",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 75-83] [ReDoS] Can the path_regex() combining STANDARD_PRINCIPAL_REGEX_STRING, CONTRACT_NAME_REGEX_STRING, and METADATA_KEY_REGEX_STRING be exploited with crafted URLs containing interleaved valid/invalid segments to trigger catastrophic backtracking across multiple regex components simultaneously? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_90921976-ff76-449c-8db1-8170bbee34dc?mode=deep",
+    "timestamp": "2026-02-07 22:24:14.729489",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 40-43] [Input Validation Bypass] Can an attacker craft a clarity name exceeding MAX_STRING_LEN by exploiting the regex quantifier {1,MAX_STRING_LEN} boundary conditions, potentially bypassing downstream length checks in Clarity VM operations? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_469d0461-107b-4990-ad48-78a4fed40296?mode=deep",
+    "timestamp": "2026-02-07 22:24:27.811291",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 44-47] [Regex Injection] Can special regex metacharacters in the var_name capture group (parentheses, pipes, etc.) be exploited to alter the matching behavior of METADATA_KEY_REGEX_STRING, allowing unauthorized metadata keys to match valid patterns? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_5e71e34a-18cd-47e7-bf66-1176a0b3a0f9?mode=deep",
+    "timestamp": "2026-02-07 22:24:41.912509",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 96-100] [Input Validation] Does the check for zero content length prevent all forms of smuggled request bodies, including chunked encoding, multipart forms, or content-encoding headers that could bypass the length check while still delivering a payload? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_f3512a33-acfe-448b-bfb2-b8588742303b?mode=deep",
+    "timestamp": "2026-02-07 22:24:57.338088",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 102] [Dependency Vulnerability] Can the request::get_contract_address() function be exploited with malformed address or contract name strings that pass regex validation but cause panics, buffer overflows, or incorrect parsing in the underlying address/contract parsing logic? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9bd18c18-3974-4c0b-8166-3b6cdc24e9a6?mode=deep",
+    "timestamp": "2026-02-07 22:25:13.011929",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 104-111] [Error Handling] Can an attacker send requests without the clarity_metadata_key capture group (despite matching path_regex) to trigger the None branch and potentially expose internal error messages or cause unexpected error propagation? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_3f43b3d7-3eca-4f15-8d65-8498b2e2a25b?mode=deep",
+    "timestamp": "2026-02-07 22:25:30.759377",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 113-147] [Type Confusion] If metadata_key equals 'analysis', validation is skipped entirely. Can an attacker leverage this to inject arbitrary metadata keys by crafting requests with 'analysis' that are later misinterpreted by downstream code expecting validated metadata types? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_f9bd49e8-e656-4246-9f8d-3d77b5925411?mode=deep",
+    "timestamp": "2026-02-07 22:25:48.696285",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 117-120] [Input Validation] Can the StoreType::try_from() conversion be exploited with numeric strings at integer boundaries (e.g., '255', '-1', leading zeros '05') to bypass the allowed StoreType whitelist or trigger integer parsing vulnerabilities? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_dce3096f-4671-4710-92cc-8e4cb5cc96b3?mode=deep",
+    "timestamp": "2026-02-07 22:26:07.910318",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 121-125] [Access Control Bypass] Does the whitelist check for StoreType (DataMapMeta, VariableMeta, FungibleTokenMeta, NonFungibleTokenMeta) prevent access to sensitive internal metadata types that could expose private contract implementation details or intermediate state? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_d06a6346-5927-4d2b-81c9-aee47eb93325?mode=deep",
+    "timestamp": "2026-02-07 22:26:28.449855",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 126-138] [Input Validation] For StoreType::Contract, can the ContractDataVarName::try_from() validation be bypassed with specially crafted var_name strings (e.g., Unicode normalization variants, null bytes, control characters) that pass regex but cause misinterpretation? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_f2a1c539-ed14-4b27-86f5-f632e1a07014?mode=deep",
+    "timestamp": "2026-02-07 22:26:50.078398",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 127-132] [Logic Error] Does the double-Option pattern (and_then returning Option within and_then) correctly handle all None cases, or can specific var_name values cause the is_none() check to incorrectly pass malicious contract metadata variable names? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_ff411d51-59e7-4b56-93f5-df7dc94cccf6?mode=deep",
+    "timestamp": "2026-02-07 22:27:12.344346",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 139-141] [Incomplete Validation] The default match arm rejects StoreTypes not in the whitelist, but are all possible StoreType enum variants considered? Could new StoreType variants be added that bypass this validation due to incomplete match coverage? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_1fd9e7c4-c473-4175-a25b-8a3816f9dbd1?mode=deep",
+    "timestamp": "2026-02-07 22:27:34.239363",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 149-150] [State Mutation] Can concurrent requests cause race conditions where self.contract_identifier and self.clarity_metadata_key are set by one request but read by another, leading to metadata queries for wrong contracts? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_66fa5d47-d689-42ff-8bae-0f598b29fc9f?mode=deep",
+    "timestamp": "2026-02-07 22:27:56.885404",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 152-153] [Query String Handling] Does the query_string(query) method properly sanitize query parameters? Could malicious query strings (e.g., SQL injection patterns, path traversal, oversized parameters) be passed through to downstream processing? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_89b7e004-99d1-4f81-97b6-fcdf7a1a5dbc?mode=deep",
+    "timestamp": "2026-02-07 22:28:20.451318",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 172-177] [State Management] Can the take() operations on contract_identifier and clarity_metadata_key leave the handler in an inconsistent state if try_handle_request is called multiple times, potentially leaking data between requests or causing panics? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_04e13f23-6f6f-44ad-9fa0-c139ca1f3f79?mode=deep",
+    "timestamp": "2026-02-07 22:28:43.505013",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 179-184] [Error Information Leakage] Does node.load_stacks_chain_tip() error response expose sensitive internal state information (e.g., database paths, memory addresses, stack traces) that could aid an attacker in fingerprinting the node or planning further attacks? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_0f7587ea-e241-47cb-8f9b-a9f0d52164b0?mode=deep",
+    "timestamp": "2026-02-07 22:29:06.485957",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 186-202] [Database Query Injection] Can a maliciously crafted contract_identifier or clarity_metadata_key bypass validation and be passed to clarity_db.store.get_metadata(), causing SQL injection, path traversal, or unauthorized metadata access in the underlying storage layer? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_f17ce754-efc2-4c48-a1e5-8dc921a6e64b?mode=deep",
+    "timestamp": "2026-02-07 22:29:29.872676",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 186-202] [Race Condition] Between loading the chain tip (line 179) and querying metadata (lines 186-202), can the chain tip change due to a new block being processed, leading to metadata being read from an inconsistent or non-canonical state? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_60d6683b-cedf-48ba-9549-1bf7739edadb?mode=deep",
+    "timestamp": "2026-02-07 22:29:52.904529",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 188-189] [Error Handling] Can chainstate.maybe_read_only_clarity_tx() fail or return inconsistent results if called during a concurrent write transaction, potentially returning stale or corrupted metadata without proper error indication? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_ab680c91-0ae9-4531-83a0-1bf002896153?mode=deep",
+    "timestamp": "2026-02-07 22:30:16.767712",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 190-201] [Clarity DB Access] Can the read-only clarity_db access be exploited to read metadata from unconfirmed or speculative transactions that should not be exposed via the public API, violating consensus invariants about visible state? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_8f599563-47ab-4200-a191-720dbb6ad143?mode=deep",
+    "timestamp": "2026-02-07 22:30:42.089296",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 193-196] [Error Suppression] Does the .ok().flatten() pattern on get_metadata() silently suppress important errors (e.g., database corruption, I/O failures, permission errors) that should be reported to administrators or logged for debugging? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_b0fdd079-373a-4eda-93f2-3d36a8625fbd?mode=deep",
+    "timestamp": "2026-02-07 22:31:06.047159",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 194-195] [Metadata Parsing] Can the get_metadata() return malformed, corrupted, or oversized data strings that cause downstream parsing failures, resource exhaustion, or injection vulnerabilities when serialized to JSON? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_b114ee45-adcd-47c7-877b-2bc65ee9670c?mode=deep",
+    "timestamp": "2026-02-07 22:31:28.675329",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 204-222] [Error Handling Logic] Can the nested Option pattern Ok(Some(Some)), Ok(Some(None)), Ok(None), Err(_) be exploited with specific error conditions to return incorrect HTTP status codes or leak information about internal node state? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_78f67763-0434-4b0b-aff3-9dfd131d00ed?mode=deep",
+    "timestamp": "2026-02-07 22:31:51.562406",
+    "report_generated": false
+  }
+]
