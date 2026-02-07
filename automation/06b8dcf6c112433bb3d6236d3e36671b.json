@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: stackslib/src/net/stackerdb/config.rs] [Function: eval_hint_replicas()] [FATAL Messages] Lines 291, 296, 301 use expect() with",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_738ebac1-77eb-4b2e-a757-055e944e00b8?mode=deep",
+    "timestamp": "2026-02-07 22:30:07.489524",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/stackerdb/config.rs] [Function: eval_hint_replicas()] [List Iteration] At lines 286-371, the function iterates through hint_replicas_list without checking if the list length exceeds MAX_HINT_REPLICAS (128) - is this validated by the type system at line 94-109 in REQUIRED_FUNCTIONS, or could a malicious contract bypass this? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_7c4c41b2-8f74-4d8d-a918-2f27fe5545c2?mode=deep",
+    "timestamp": "2026-02-07 22:30:19.815189",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/stackerdb/config.rs] [Function: eval_config()] [Integer Truncation] At line 497, chunk_size (u128) is cast to u64 with 'as u64' - if chunk_size is between u64::MAX and u128::MAX, this will silently truncate. Is the check at line 410 sufficient to prevent this? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_f3d606f9-5db5-4a6f-a22e-c4d9ac99256b?mode=deep",
+    "timestamp": "2026-02-07 22:30:32.731194",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/stackerdb/config.rs] [Function: eval_config()] [Type Validation] At lines 404-408, config_tuple.get(",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_c478b1cc-9d82-4cf7-81fb-3766c4bfc680?mode=deep",
+    "timestamp": "2026-02-07 22:30:45.996831",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/stackerdb/config.rs] [Function: eval_config()] [Write Frequency Overflow] At lines 427-437, write_freq is checked against u64::MAX before casting at line 499, but what happens if write_freq is exactly u64::MAX and later arithmetic operations on write_freq cause overflow? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_838bb4b1-7f26-47dc-b4a9-770a6d6425e6?mode=deep",
+    "timestamp": "2026-02-07 22:31:01.129733",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/stackerdb/config.rs] [Function: eval_config()] [Max Writes Validation] At lines 444-454, max_writes is checked against u32::MAX and cast at line 500 - could an attacker set max_writes to 0 to disable write limits entirely, or is there validation elsewhere that prevents this? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_e56bab74-1662-4bee-8b5e-144e05ae9bb2?mode=deep",
+    "timestamp": "2026-02-07 22:31:16.196952",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/stackerdb/config.rs] [Function: eval_config()] [Neighbors Override] At lines 474-482, if max_neighbors from the contract exceeds local_max_neighbors, the local value is used - but could an attacker set a contract max_neighbors to 0 to force the override logic and potentially cause issues? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_0464e2a6-6083-486e-8f67-11902046282e?mode=deep",
+    "timestamp": "2026-02-07 22:31:32.907807",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/stackerdb/config.rs] [Function: eval_config()] [Hint Replicas Override] At lines 484-494, local_hint_replicas completely replaces contract-specified replicas if present - could this create a DoS vector where an operator must manually specify replicas for every StackerDB, or fail to load the DB? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_7a7828d9-ae0a-4301-97f2-53bfa84cfa08?mode=deep",
+    "timestamp": "2026-02-07 22:31:49.915191",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/stackerdb/config.rs] [Function: eval_config()] [usize Conversion] At line 502, max_neighbors is cast from u128 to usize - on 32-bit systems, if max_neighbors is between u32::MAX and u128::MAX, could this cause integer truncation despite the check at line 462? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_d3a149cd-2caf-4b65-b429-6509a56f8901?mode=deep",
+    "timestamp": "2026-02-07 22:32:07.168883",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/stackerdb/config.rs] [Function: eval_config()] [Contract Execution Error] At lines 388-400, if the contract returns Err, the error code is extracted with expect_u128() - could a malicious contract return a different error type to cause a panic during error handling? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_59c1a81a-fdd8-4b5d-9ed4-c2ca9db26931?mode=deep",
+    "timestamp": "2026-02-07 22:32:26.176508",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/stackerdb/config.rs] [Function: eval_config()] [Chunk Size Validation] At lines 410-420, STACKERDB_MAX_CHUNK_SIZE is checked, but what is the minimum valid chunk_size? Could an attacker set chunk_size to 0 or 1 to cause DoS or memory exhaustion when allocating chunk buffers? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_0d29d43e-1cb2-4ff3-bd14-8f94ceddd147?mode=deep",
+    "timestamp": "2026-02-07 22:32:45.421295",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/stackerdb/config.rs] [Function: eval_config()] [Signers Parameter] The signers Vec is passed in at line 380 but never validated for emptiness - could an attacker pass an empty signers list that was validated by eval_signer_slots() but causes issues in the resulting StackerDBConfig? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_c227b536-2038-4894-b1f6-fb4442d97391?mode=deep",
+    "timestamp": "2026-02-07 22:33:06.876860",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/stackerdb/config.rs] [Function: from_smart_contract()] [Chain Tip Race] At lines 515-517, the canonical block header is fetched, but between this call and the subsequent eval_read_only() calls, could the chain tip change causing inconsistent state reads? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_0aa726ca-64f4-49e6-970c-a500b5975c6c?mode=deep",
+    "timestamp": "2026-02-07 22:33:28.647332",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/stackerdb/config.rs] [Function: from_smart_contract()] [Missing Snapshot] At lines 519-523, get_block_snapshot_consensus() uses expect(",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_e217be87-d6b3-43e9-b9fa-5273f4f50857?mode=deep",
+    "timestamp": "2026-02-07 22:33:51.178239",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/stackerdb/config.rs] [Function: from_smart_contract()] [Epoch Determination] At lines 529-530, get_stacks_epoch() uses expect(",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_a8c30cea-0d3d-486a-892a-d81c73dd3885?mode=deep",
+    "timestamp": "2026-02-07 22:34:14.614078",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/stackerdb/config.rs] [Function: from_smart_contract()] [Read-Only Transaction] At lines 535-559, with_read_only_clarity_tx() is used - could a malicious contract use side effects or state changes that persist despite the read-only context? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_d57f06a8-d80e-43d6-85fe-4b7ac3db3a6c?mode=deep",
+    "timestamp": "2026-02-07 22:34:39.442068",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/stackerdb/config.rs] [Function: from_smart_contract()] [Contract Analysis Load] At lines 539-541, load_contract_analysis() returns None if the contract doesn't exist - but could a race condition allow a contract to be deployed after the initial check but before analysis loading? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_c2848bbd-400f-43de-bddd-1c970a2f5d45?mode=deep",
+    "timestamp": "2026-02-07 22:35:01.067998",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/stackerdb/config.rs] [Function: from_smart_contract()] [None Result Handling] At lines 561-570, if with_read_only_clarity_tx() returns None, an error is returned, but is this path reachable in normal operation or only during catastrophic failures? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_a55496c8-f712-4de0-8e67-27f513701d74?mode=deep",
+    "timestamp": "2026-02-07 22:35:22.430364",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/stackerdb/config.rs] [Function: from_smart_contract()] [Boot Contract Logging] At lines 572-583, boot contracts get debug-level logging while user contracts get warn-level - could this inconsistency in error visibility allow boot contract issues to go unnoticed in production? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_48bb3376-e5c8-4903-b4f7-f69e9dfb49fc?mode=deep",
+    "timestamp": "2026-02-07 22:35:45.357072",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/stackerdb/config.rs] [Function: from_smart_contract()] [Signer Slots Before Config] At lines 587-596, eval_signer_slots() is called before eval_config(), but both functions call eval_read_only() - could the contract state change between these two calls if it tracks call counts or has time-dependent logic? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_ba970128-1e0f-46a8-8ace-3e80e9b1a102?mode=deep",
+    "timestamp": "2026-02-07 22:36:09.389298",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/stackerdb/config.rs] [Function: from_smart_contract()] [Index Handle] At line 532, index_handle_at_block() is called with chain_tip_hash - if this fails, what guarantees exist that the failure is caught before being passed to eval functions? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_6335c690-35da-47f0-a16b-12a09807b33b?mode=deep",
+    "timestamp": "2026-02-07 22:36:32.460770",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/stackerdb/config.rs] [Constant: REQUIRED_FUNCTIONS] [List Size Mismatch] At line 77, STACKERDB_PAGE_LIST_MAX is used for the signer slots list maximum, but could a contract return a list that's dynamically larger than this limit and bypass validation? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_e5a80fe8-b730-4652-a606-73c6803e79c4?mode=deep",
+    "timestamp": "2026-02-07 22:36:57.079509",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/stackerdb/config.rs] [Constant: REQUIRED_FUNCTIONS] [Tuple Type Construction] At lines 71-76, TupleTypeSignature::try_from() has an expect(",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_575b2702-a9da-49e2-af7a-9d8ac2f9871c?mode=deep",
+    "timestamp": "2026-02-07 22:37:21.941533",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/stackerdb/config.rs] [Constant: REQUIRED_FUNCTIONS] [Buffer Length] At line 104, BufferLength::try_from(20u32) is used - could a contract return a different buffer length that still passes admits_type() validation but causes issues during expect_buff_padded()? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_44107eaa-b3e6-4ce4-b1fa-f714ac94266c?mode=deep",
+    "timestamp": "2026-02-07 22:37:47.559332",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/stackerdb/config.rs] [Constant: REQUIRED_FUNCTIONS] [Response Type Validation] Lines 69-82 and 88-113 define response types with UIntType as the error type - could a contract use a different error type that still satisfies TypeSignature validation? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_94d1d42d-c117-4ff7-baaa-f37b2c87ae7b?mode=deep",
+    "timestamp": "2026-02-07 22:38:13.147589",
+    "report_generated": false
+  }
+]
