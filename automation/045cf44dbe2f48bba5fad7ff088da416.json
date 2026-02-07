@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: stacks-core/stackslib/src/net/unsolicited.rs] [Function: need_block_or_microblock_stream()] [Consensus Divergence] If SortitionDB::get_block_snapshot_consensus returns a snapshot where sn.sortition is false (no winner), the function sets block_hash_opt to None. Does chainstate.get_blocks_inventory handle None correctly, or could this cause incorrect inventory checks? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_15d5784a-e486-49a2-b24c-1bd271f72dc7?mode=deep",
+    "timestamp": "2026-02-07 22:18:54.028018",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/unsolicited.rs] [Function: need_block_or_microblock_stream()] [State Inconsistency] When bitvec_entry is 0 (indicating we don't have the data), does this account for the case where we previously had the data but it was invalidated during a reorg? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_b15595e3-16f9-48c8-8d93-13fe4bfd3ae3?mode=deep",
+    "timestamp": "2026-02-07 22:19:06.205521",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/unsolicited.rs] [Function: need_block_or_microblock_stream()] [Error Handling] If get_blocks_inventory returns an empty bitvec, the function returns NetError::InvalidState. Can an attacker trigger this by querying for consensus hashes at boundary conditions? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_163dcee0-0904-4719-a561-7512ffdd293d?mode=deep",
+    "timestamp": "2026-02-07 22:19:18.868709",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/unsolicited.rs] [Function: need_block_or_microblock_stream()] [Logic Error] The function checks bitvec.first() for blocks vs microblocks, but does it verify that the bitvec actually corresponds to the queried consensus_hash and isn't stale data? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9550a658-8372-40a6-9adb-579a25832f45?mode=deep",
+    "timestamp": "2026-02-07 22:19:32.725398",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/unsolicited.rs] [Function: handle_unsolicited_BlocksAvailable()] [Access Control] The function only accepts BlocksAvailable from outbound peers, but can an attacker who controls both an inbound and outbound connection exploit the find_outbound_neighbor check to bypass this restriction? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_680153fd-39f4-4ef1-b7d0-6c6eb1212d86?mode=deep",
+    "timestamp": "2026-02-07 22:19:46.462506",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/unsolicited.rs] [Function: handle_unsolicited_BlocksAvailable()] [DoS] For each consensus_hash in new_blocks.available, the function calls handle_unsolicited_inv_update_epoch2x and need_block_or_microblock_stream. Can an attacker send BlocksAvailable with thousands of entries to cause expensive database queries? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_d2a179ae-6cd2-49e3-a283-39fba1d8cfa8?mode=deep",
+    "timestamp": "2026-02-07 22:20:01.114818",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/unsolicited.rs] [Function: handle_unsolicited_BlocksAvailable()] [Consensus Bypass] When handle_unsolicited_inv_update_epoch2x returns Err(NetError::NotFoundError) and buffer is true, the message is marked for buffering. Can an attacker send BlocksAvailable for non-existent consensus hashes to fill the buffer with invalid data? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_5c828068-0dc3-4513-a114-a8cab21c56b9?mode=deep",
+    "timestamp": "2026-02-07 22:20:16.581741",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/unsolicited.rs] [Function: handle_unsolicited_BlocksAvailable()] [State Inconsistency] The function sets self.have_data_to_download = true when need_block is true, but does it verify that the downloader is in a state where it can actually process this hint? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_254aacf0-c026-40f4-bc50-d64d5263df1e?mode=deep",
+    "timestamp": "2026-02-07 22:20:33.789018",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/unsolicited.rs] [Function: handle_unsolicited_BlocksAvailable()] [Race Condition] Between checking need_block_or_microblock_stream and calling downloader.hint_block_sortition_height_available, can another thread download the block, causing the hint to become stale? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_2b31156a-1eb1-4237-814b-36f9166b29c5?mode=deep",
+    "timestamp": "2026-02-07 22:20:51.012261",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/unsolicited.rs] [Function: handle_unsolicited_BlocksAvailable()] [Logic Error] When self.work_state == PeerNetworkWorkState::BlockInvSync, the function logs that it will 'advance directly to block download', but doesn't actually change work_state. Is this a logic bug? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_ec428d79-2e20-417e-9fd8-e44c64f36170?mode=deep",
+    "timestamp": "2026-02-07 22:21:10.068885",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/unsolicited.rs] [Function: handle_unsolicited_BlocksAvailable()] [DoS] If an attacker sends BlocksAvailable for blocks we already have (need_block = false), does the function still update inventory and consume CPU, allowing a low-cost DoS? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_743d5e5f-8f74-4a74-a629-1162173eedfe?mode=deep",
+    "timestamp": "2026-02-07 22:21:29.484802",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/unsolicited.rs] [Function: handle_unsolicited_BlocksAvailable()] [Buffer Logic] The function sets to_buffer = true when any single entry returns NotFoundError, causing the entire BlocksAvailable message to be buffered. Can an attacker include one invalid consensus_hash to force buffering of otherwise valid data? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_db12f7d6-7f3d-4465-b3eb-95dcca3e6ea0?mode=deep",
+    "timestamp": "2026-02-07 22:21:50.607834",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/unsolicited.rs] [Function: handle_unsolicited_MicroblocksAvailable()] [Consensus Divergence] Does the function verify that microblocks are only accepted for the current tenure's anchor block, or can an attacker announce microblocks for old tenures to cause unnecessary downloads? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_35d2f95f-b607-4baa-bbfa-5646e6f0a202?mode=deep",
+    "timestamp": "2026-02-07 22:22:11.257613",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/unsolicited.rs] [Function: handle_unsolicited_MicroblocksAvailable()] [DoS] Similar to BlocksAvailable, can an attacker send MicroblocksAvailable with many entries to trigger expensive sortdb queries and chainstate checks for each entry? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_cf6a084b-52c5-4cc7-bb75-9c9a83481b51?mode=deep",
+    "timestamp": "2026-02-07 22:22:33.278649",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/unsolicited.rs] [Function: handle_unsolicited_MicroblocksAvailable()] [State Inconsistency] When hint_microblock_sortition_height_available is called, does the downloader verify that microblocks for this sortition height haven't already been downloaded via a different peer? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_81370732-09bb-4c7c-ade8-dfceeab008bb?mode=deep",
+    "timestamp": "2026-02-07 22:22:55.431692",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/unsolicited.rs] [Function: handle_unsolicited_MicroblocksAvailable()] [Logic Duplication] This function has nearly identical logic to handle_unsolicited_BlocksAvailable. Are there edge cases where microblock-specific validation is missing? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_0b132b5f-dae3-4e0d-8da1-b1114ded53a2?mode=deep",
+    "timestamp": "2026-02-07 22:23:20.133135",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/unsolicited.rs] [Function: handle_unsolicited_BlocksData()] [Consensus Divergence] The function checks sn.pox_valid before proceeding, but can an attacker send blocks from an invalid PoX fork that passes this check due to race conditions in sortition processing? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_8d1f1340-ca81-4072-8395-c0428bd5e740?mode=deep",
+    "timestamp": "2026-02-07 22:23:42.693759",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/unsolicited.rs] [Function: handle_unsolicited_BlocksData()] [Consensus Bypass] When sn.winning_stacks_block_hash != block.block_hash(), the function ignores the block but still returns to_buffer without erroring. Can an attacker send incorrect blocks that get buffered and retried unnecessarily? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_6f655241-626c-446b-babd-27db94f60183?mode=deep",
+    "timestamp": "2026-02-07 22:24:06.259461",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/unsolicited.rs] [Function: handle_unsolicited_BlocksData()] [State Inconsistency] The function only updates inventory if outbound_neighbor_key_opt.is_some(), but it processes the block data regardless. Can inbound-only peers send blocks that affect local state without inventory tracking? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_55ea0e29-96f1-44cf-a7fc-40a386c1b9ee?mode=deep",
+    "timestamp": "2026-02-07 22:24:28.986878",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/unsolicited.rs] [Function: handle_unsolicited_BlocksData()] [DoS] If buffer is true and many blocks have unrecognized consensus hashes, the function logs each one and sets to_buffer = true. Can an attacker flood logs with unrecognized blocks? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_de0048f6-ba19-4231-baa7-fdd878d8c0aa?mode=deep",
+    "timestamp": "2026-02-07 22:24:52.836448",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/unsolicited.rs] [Function: handle_unsolicited_BlocksData()] [Logic Error] The function continues processing remaining blocks even after detecting an invalid block. Should it stop and ban the peer immediately instead? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_751ec485-a037-443f-84ed-8142bdd4a5c0?mode=deep",
+    "timestamp": "2026-02-07 22:25:15.900628",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/unsolicited.rs] [Function: handle_unsolicited_BlocksData()] [Consensus Validation] Does the function verify that the block header hash matches the block content, or does it rely on downstream validation that could be bypassed? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_33125b2d-d317-4a0c-8236-3940b04cc3b2?mode=deep",
+    "timestamp": "2026-02-07 22:25:40.085793",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/unsolicited.rs] [Function: handle_unsolicited_BlocksData()] [Buffer Logic] When to_buffer is set to true, does the function ensure the entire BlocksData message is buffered, or just the individual blocks that failed validation? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_00ff663f-e5dd-467a-a38b-329f5a9cf3cc?mode=deep",
+    "timestamp": "2026-02-07 22:26:04.043637",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/unsolicited.rs] [Function: handle_unsolicited_MicroblocksData()] [Consensus Bypass] The function checks if chainstate has the index_anchor_block, but does it verify that this anchor block is on the canonical chain and not a fork? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9c078755-abe0-42c4-9af0-7c6f3b8d1b9a?mode=deep",
+    "timestamp": "2026-02-07 22:26:28.107681",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/unsolicited.rs] [Function: handle_unsolicited_MicroblocksData()] [Logic Error] When chainstate.get_block_header_hashes returns Ok(Some(_)), the function returns !buffer. Is this correct, or should it return true to process immediately? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_8b13f42a-f89f-4005-8b7b-a8f386edb949?mode=deep",
+    "timestamp": "2026-02-07 22:26:50.064656",
+    "report_generated": false
+  }
+]
