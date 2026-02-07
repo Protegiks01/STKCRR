@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: stacks-node/src/event_dispatcher/payloads.rs] [Function: serialize_u128_as_string()] [Data Integrity] Could the to_string() conversion for u128 values produce non-deterministic output across different platforms or Rust versions, potentially causing event consumers to compute different hashes or merkle roots for the same blockchain state? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_e9c85434-9035-4e42-870d-8541efb9eeb9?mode=deep",
+    "timestamp": "2026-02-07 22:18:03.343410",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-node/src/event_dispatcher/payloads.rs] [Function: serialize_u128_as_string()] [Integer Overflow] Does the string serialization of u128 values handle the maximum value (2^128-1) correctly without truncation, and could overflow in downstream parsers cause incorrect reward calculations or balance tracking? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_dc2a7640-4561-45c8-b183-c5ad4f1167c1?mode=deep",
+    "timestamp": "2026-02-07 22:18:16.282303",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-node/src/event_dispatcher/payloads.rs] [Function: serialize_pox_addresses()] [Data Validation] Can the to_b58() conversion for PoxAddress fail or produce invalid base58 strings for malformed addresses, and would this cause the entire event serialization to fail, potentially blocking valid events? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_558d7220-3dc4-4018-8692-a40db9dbd6e8?mode=deep",
+    "timestamp": "2026-02-07 22:18:31.687196",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-node/src/event_dispatcher/payloads.rs] [Function: serialize_pox_addresses()] [Consensus Divergence] If two nodes have slightly different PoxAddress internal representations that serialize to different base58 strings, could this cause divergence in event-based indexing or off-chain monitoring systems? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_132d4da0-7ee8-4d9a-aeea-457ca65c8c2b?mode=deep",
+    "timestamp": "2026-02-07 22:18:45.512865",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-node/src/event_dispatcher/payloads.rs] [Function: serialize_optional_u128_as_string()] [Data Integrity] Could the serialization of Option<u128> as either a string or null introduce ambiguity when None is serialized versus when Some(0) is serialized in pox_ustx_threshold, affecting PoX threshold validation? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_8d933eb0-96a7-4e33-90aa-b7b677ce5209?mode=deep",
+    "timestamp": "2026-02-07 22:19:00.379400",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-node/src/event_dispatcher/payloads.rs] [Function: hex_serialize()] [Data Validation] Does the hex serialization of the 33-byte signing_key enforce that the bytes represent a valid compressed secp256k1 public key, or could invalid key bytes be propagated through events, causing signature verification failures later? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_cb2f8d7e-beaa-4f80-a2ec-db62ad27072f?mode=deep",
+    "timestamp": "2026-02-07 22:19:16.311989",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-node/src/event_dispatcher/payloads.rs] [Function: make_new_block_txs_payload()] [Transaction Status Mapping] In the status determination logic (lines 248-269), if a transaction result is a Response type but post_condition_aborted is false and committed is false, it returns STATUS_RESP_NOT_COMMITTED - could this incorrect status hide actual transaction failures and mislead indexers about fund movements? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_cf22d123-9e3e-4000-9466-f5af97a5d96e?mode=deep",
+    "timestamp": "2026-02-07 22:19:33.152074",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-node/src/event_dispatcher/payloads.rs] [Function: make_new_block_txs_payload()] [Panic Condition] The unreachable!() macro at line 265 assumes only PoisonMicroblock transactions can have non-Response results - could other transaction types (contract deploys, token transfers) trigger this panic during edge cases like VM errors or cost overflows? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_59044a17-9376-4097-9e4b-e0eae1c6c966?mode=deep",
+    "timestamp": "2026-02-07 22:19:52.883065",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-node/src/event_dispatcher/payloads.rs] [Function: make_new_block_txs_payload()] [Status Mapping] Could a transaction that is both post_condition_aborted (true) and has a committed Response lead to ambiguous status reporting where STATUS_RESP_POST_CONDITION is returned but funds were actually moved? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_329e6b33-053b-4a3f-89a7-fc07b6efe030?mode=deep",
+    "timestamp": "2026-02-07 22:20:13.430248",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-node/src/event_dispatcher/payloads.rs] [Function: make_new_block_txs_payload()] [Pattern Match Gap] The pattern match at lines 248-269 doesn't explicitly handle the case where receipt.result is not a Value::Response and the transaction is not a PoisonMicroblock - could other consensus-critical transaction types fall through to the unreachable branch? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_b0b27476-19f9-4740-9b23-2fb2b9167454?mode=deep",
+    "timestamp": "2026-02-07 22:20:35.381212",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-node/src/event_dispatcher/payloads.rs] [Function: make_new_block_txs_payload()] [Data Cloning] The function clones receipt.result, receipt.execution_cost, and potentially large burnchain_op data (lines 284-299) - could repeated cloning of large contract analysis data or execution results cause memory exhaustion during block processing? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_0debdceb-b14e-4697-86f4-de82cdcc09ab?mode=deep",
+    "timestamp": "2026-02-07 22:20:58.275785",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-node/src/event_dispatcher/payloads.rs] [Function: make_new_block_txs_payload()] [FATAL Panic] The expect() call at line 288 when building contract_interface will panic the node if contract serialization fails - could a malformed contract_analysis from the Clarity VM cause node crashes during event emission? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_484a0d02-b575-4e92-8617-99fd4e86b533?mode=deep",
+    "timestamp": "2026-02-07 22:21:22.844732",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-node/src/event_dispatcher/payloads.rs] [Function: make_new_block_txs_payload()] [Transaction Serialization] When serializing a Stacks transaction to hex (line 275), could the serialize_to_vec() method produce non-deterministic output for identical transactions, causing different event payloads across nodes? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9ba4781a-da6f-4c1c-a54d-b01b4b227442?mode=deep",
+    "timestamp": "2026-02-07 22:21:47.769562",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-node/src/event_dispatcher/payloads.rs] [Function: make_new_block_txs_payload()] [Burn Transaction Handling] For burn transactions, the raw_tx is hardcoded to",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9051c4e0-d415-4d0d-b9e6-1a1506d492f0?mode=deep",
+    "timestamp": "2026-02-07 22:22:13.203276",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-node/src/event_dispatcher/payloads.rs] [Function: make_new_block_txs_payload()] [Optional Field Logic] The microblock_sequence, microblock_hash, and microblock_parent_hash are all derived from receipt.microblock_header (lines 292-297) - if microblock_header is Some but contains invalid data, could this propagate incorrect microblock linking information? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_b0aab431-32dd-4aa6-bfb8-08031e76107b?mode=deep",
+    "timestamp": "2026-02-07 22:22:40.276588",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-node/src/event_dispatcher/payloads.rs] [Function: make_new_block_txs_payload()] [VM Error Propagation] The vm_error field is cloned directly from the receipt (line 298) - if the error string is unbounded or contains sensitive information, could this cause DoS or information leakage through event APIs? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_ad5754bf-ceef-405d-869b-70f911cb8617?mode=deep",
+    "timestamp": "2026-02-07 22:23:08.033101",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-node/src/event_dispatcher/payloads.rs] [Function: make_new_block_processed_payload()] [Integer Conversion] The conversion from usize to u32 for tx_index at lines 351-353 uses expect() with a panic message - if a block has more than U32::MAX receipts, could this crash the node rather than rejecting the invalid block? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_22323085-29ec-4ed3-b153-ccd936162236?mode=deep",
+    "timestamp": "2026-02-07 22:23:34.905078",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-node/src/event_dispatcher/payloads.rs] [Function: make_new_block_processed_payload()] [Error Suppression] Multiple unwrap_or_default() calls at lines 360, 366, 367, and 417 silently replace serialization errors with default values - could this hide critical failures in signer_bitvec, reward_set, cycle_number, or signer_signature serialization? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_a5188e70-1bfe-48f6-a919-89861f368af9?mode=deep",
+    "timestamp": "2026-02-07 22:24:02.883974",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-node/src/event_dispatcher/payloads.rs] [Function: make_new_block_processed_payload()] [Panic on JSON] The unwrap() call at line 404 on payload.as_object_mut() assumes the JSON construction always produces an Object - could any of the prior json!() macro invocations produce a non-Object type, causing a panic? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_1283e18b-8db5-4bd3-893c-0e0f20aa2603?mode=deep",
+    "timestamp": "2026-02-07 22:24:32.467630",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-node/src/event_dispatcher/payloads.rs] [Function: make_new_block_processed_payload()] [Event Serialization] The json_serialize() call at line 342 uses unwrap() - if any StacksTransactionEvent fails to serialize (e.g., due to invalid data), could this panic during block processing and halt the node? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_899b87e0-572a-413e-89f0-a7627c1a9fa2?mode=deep",
+    "timestamp": "2026-02-07 22:25:02.525585",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-node/src/event_dispatcher/payloads.rs] [Function: make_new_block_processed_payload()] [Signer Bitvec Handling] If signer_bitvec_opt contains a bitvec that fails serde_json::to_value() at line 360, it defaults to serde_json::Value::Null - could this cause off-chain systems to incorrectly assume no signers participated in the block? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_5415803b-12de-453d-952f-f47a3886f280?mode=deep",
+    "timestamp": "2026-02-07 22:25:32.845227",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-node/src/event_dispatcher/payloads.rs] [Function: make_new_block_processed_payload()] [Reward Set Data] When reward_set_data is None, both reward_set and cycle_number are set to Value::Null (line 369) - could downstream consumers misinterpret this as cycle 0 with no rewards versus truly missing reward set data? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_db67c30c-61c5-4422-be2d-3e1fbb64e592?mode=deep",
+    "timestamp": "2026-02-07 22:26:03.517551",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-node/src/event_dispatcher/payloads.rs] [Function: make_new_block_processed_payload()] [Timestamp Handling] The block_time field accepts Option<u64> and serializes None as null (line 376) - could inconsistent timestamp availability between Epoch 2.x and Nakamoto blocks cause indexing issues? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_e3221bcb-6720-4095-95fc-f66a5ada67de?mode=deep",
+    "timestamp": "2026-02-07 22:26:33.608098",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-node/src/event_dispatcher/payloads.rs] [Function: make_new_block_processed_payload()] [Parent Block References] The function references both parent_index_hash (StacksBlockId) and parent_block_hash (BlockHeaderHash) at lines 323, 382-383 - could these references be inconsistent if the parent block data is corrupted or manipulated? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_503a7e03-8013-48e8-ac58-9b40459990f5?mode=deep",
+    "timestamp": "2026-02-07 22:27:03.715670",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-node/src/event_dispatcher/payloads.rs] [Function: make_new_block_processed_payload()] [Execution Cost Cloning] Both anchored_consumed and mblock_confirmed_consumed ExecutionCost structures are included at lines 392-393 - could cloning these structures lose precision or fail to represent actual resource consumption? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_90769394-de50-4350-a7ca-c744453ff419?mode=deep",
+    "timestamp": "2026-02-07 22:27:35.645075",
+    "report_generated": false
+  }
+]
