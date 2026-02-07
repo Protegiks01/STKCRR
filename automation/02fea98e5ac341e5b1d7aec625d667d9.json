@@ -1,0 +1,140 @@
+[
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: try_parse_response()] [Size Limit Bypass] At line 206, parse_bytes uses MAX_MESSAGE_LEN as the limit, but this is checked per HTTP response - could an attacker send multiple requests to download more than MAX_MESSAGE_LEN worth of microblocks by splitting them across requests? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_f81ec81d-7331-4b34-8553-55cf8b36d392?mode=deep",
+    "timestamp": "2026-02-07 22:14:50.916550",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: restart()] [State Management] The restart() function at lines 136-139 only resets parent_block_id and start_sequence - are there other fields in the handler that should be reset to prevent state leakage between requests? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_e91eabd5-f89e-497f-8414-c57e743ea723?mode=deep",
+    "timestamp": "2026-02-07 22:15:03.255726",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: new_getmicroblocks_unconfirmed()] [Request Construction] At line 273, the format! macro constructs the URL path, but does it properly handle edge cases like parent_block_id with special characters or extremely large seq values that could break URL parsing? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_3384f03c-8242-4bdc-8e03-fbf7405ce785?mode=deep",
+    "timestamp": "2026-02-07 22:15:17.371447",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: try_handle_request()] [HTTP Streaming] The response at line 190-193 uses HttpContentType::Bytes for streaming - does the HTTP layer properly handle backpressure if the client reads slowly, or could this cause unbounded memory buffering? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_65767c58-1ebf-4163-8d11-c9b1f50126ea?mode=deep",
+    "timestamp": "2026-02-07 22:15:30.683267",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: hint_chunk_size()] [Resource Allocation] The hint_chunk_size returns 4096 bytes at line 214, but actual microblocks can be much larger - could this cause inefficient buffering or multiple small allocations that impact performance under load? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_897e04a3-5222-4cb4-b2b2-914e8af4162a?mode=deep",
+    "timestamp": "2026-02-07 22:15:45.227577",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: generate_next_chunk()] [Empty Stream] If start_sequence points to the last microblock in a chain (no descendants), does the stream correctly return that single microblock and then set finished=true, or could it return empty data immediately? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_b60c694e-67f4-4e32-bd99-fdda8da89b63?mode=deep",
+    "timestamp": "2026-02-07 22:16:00.157382",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: decode_microblocks_unconfirmed()] [Zero-Length Response] If the HTTP response body is empty (zero bytes), does the decoding loop at lines 290-309 handle this correctly, or could it return an error when an empty microblock list is valid? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_f40c1a4f-0e25-4d73-a884-575dd7852383?mode=deep",
+    "timestamp": "2026-02-07 22:16:16.099007",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: try_parse_request()] [Sequence Zero] If start_sequence is 0, does this query the first microblock in the chain, or could there be special handling needed since microblock sequences typically start at 0 - is there an off-by-one error? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_3e58aa28-80b2-4172-8417-20af2c3d79b0?mode=deep",
+    "timestamp": "2026-02-07 22:16:33.318134",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: generate_next_chunk()] [Single Microblock Chain] For a chain with exactly one microblock, does the stream logic at lines 245-258 correctly handle the case where next_mblock_opt is None on the first iteration? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_a2a51ff4-08d7-4a13-91fc-aa90d7acda18?mode=deep",
+    "timestamp": "2026-02-07 22:16:49.916331",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: decode_microblocks_unconfirmed()] [Exact Limit] If the stream contains exactly MAX_MICROBLOCKS_UNCONFIRMED microblocks, does the break at line 307 occur before or after reading the last microblock - could there be an off-by-one error? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_90a7901d-a621-4196-bd92-85c7f25f557f?mode=deep",
+    "timestamp": "2026-02-07 22:17:09.381288",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: generate_next_chunk()] [Concurrent Modification] If the chainstate database is modified (new microblocks added or chain reorg) while a stream is active at line 234-242, could this cause the stream to return an inconsistent view or crash? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_e1de10bc-e2ce-4c11-94c0-41c5c4b9a314?mode=deep",
+    "timestamp": "2026-02-07 22:17:29.550705",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: try_handle_request()] [TOCTOU] The parent_block_id validity is checked at stream creation time (line 159), but could the block be removed from chainstate between check and first read, causing undefined behavior? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9d945d5c-31d0-4cbd-a92e-863b4ec3c73c?mode=deep",
+    "timestamp": "2026-02-07 22:17:50.599460",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: new()] [Database Snapshot] Does chainstate.reopen_db() at line 84 create a snapshot view of the database, or could concurrent writes affect the consistency of microblocks returned by the stream? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9d931cc6-a333-4b07-9120-d96c6284da5d?mode=deep",
+    "timestamp": "2026-02-07 22:18:12.447439",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: restart()] [Thread Safety] If multiple threads call restart() concurrently on a shared handler instance, could there be race conditions in setting parent_block_id and start_sequence at lines 137-138? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_c30d74ee-0e34-4d95-a453-5020ca7003fd?mode=deep",
+    "timestamp": "2026-02-07 22:18:33.489598",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: try_handle_request()] [Amplification Attack] An attacker can request microblock streams for any valid parent_block_id - could this be used as an amplification vector where small requests generate large responses, exhausting bandwidth? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_4a6028fd-bcda-4523-8a5d-544b84e6fc8e?mode=deep",
+    "timestamp": "2026-02-07 22:18:54.541206",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: generate_next_chunk()] [Slow Read Attack] If a client opens many connections and reads chunks very slowly, would each keep a database connection and stream state open indefinitely, exhausting server resources? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_22a07ccc-8066-4161-bd4d-67aa45a19ff9?mode=deep",
+    "timestamp": "2026-02-07 22:19:16.010895",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: decode_microblocks_unconfirmed()] [CPU Exhaustion] The deserialization loop at lines 291-303 deserializes each microblock fully - could an attacker send pathological microblock data that takes excessive CPU to deserialize? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_bf613a1c-7f4d-498c-be24-d43933a32818?mode=deep",
+    "timestamp": "2026-02-07 22:19:38.118596",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: path_regex()] [ReDoS] Could the regex pattern at line 96 be vulnerable to Regular Expression Denial of Service (ReDoS) with crafted input strings, even though it appears simple? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_f09bc620-3e98-4313-a530-167a23b1a853?mode=deep",
+    "timestamp": "2026-02-07 22:20:00.867330",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: generate_next_chunk()] [Finality Violation] If microblocks are served before being fully validated or confirmed, could this allow clients to act on invalid state that might later be reverted? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_3a6326cc-e13d-4ec3-8181-aad6f6b220cb?mode=deep",
+    "timestamp": "2026-02-07 22:20:23.402309",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: decode_microblocks_unconfirmed()] [Missing Validation] The decoded microblocks are returned directly at line 311 without any validation - should there be checks for well-formedness, correct parent references, or other invariants before returning to the caller? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_705c10e5-df2d-4baa-a2ea-1213b5aabcf2?mode=deep",
+    "timestamp": "2026-02-07 22:20:45.882568",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: try_handle_request()] [Cache Poisoning] If the node caches HTTP responses, could an attacker poison the cache with outdated or incorrect microblock data for a given parent_block_id/sequence pair? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_bc9e2669-2ba5-49e6-a4dc-e5104613ead9?mode=deep",
+    "timestamp": "2026-02-07 22:21:06.881298",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: new()] [Orphan Microblocks] Does the stream check whether the parent_block_id corresponds to the current chain tip, or could it serve microblocks from orphaned/stale forks? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_da6070b8-edd3-468d-84ae-b112efcacb0b?mode=deep",
+    "timestamp": "2026-02-07 22:21:29.637348",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: generate_next_chunk()] [Determinism] Is the order of microblocks returned deterministic across different node implementations, or could inconsistent ordering cause consensus issues when clients process them? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_39802559-9cb4-433e-90c8-fadc3b223a49?mode=deep",
+    "timestamp": "2026-02-07 22:21:52.654525",
+    "report_generated": false
+  }
+]
