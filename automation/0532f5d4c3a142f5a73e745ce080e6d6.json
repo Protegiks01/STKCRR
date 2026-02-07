@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: path_regex()] [Input Validation] Can the regex pattern `^/v2/microblocks/unconfirmed/(?P<parent_block_id>[0-9a-f]{64})/(?P<start_sequence>[0-9]{1,6})$` be bypassed with hex values containing uppercase letters (A-F), and would this cause lookups to fail for valid block IDs that are stored with different casing? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_f4911075-03dd-4140-b99b-46cf1884539f?mode=deep",
+    "timestamp": "2026-02-07 22:24:33.262013",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: try_parse_request()] [DoS Attack] If start_sequence is provided as '999999' (maximum 6 digits allowed by regex), can an attacker cause excessive iteration or memory allocation when the stream attempts to load microblocks from sequence 0 to 999999? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_cfcba2d4-4b8a-48a2-ae65-0a5c8d2a2c56?mode=deep",
+    "timestamp": "2026-02-07 22:24:45.569775",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: try_parse_request()] [Integer Overflow] At line 121-122, when start_sequence_u32 equals exactly u16::MAX (65535), the bounds check passes, but could there be off-by-one errors in subsequent sequence increment logic that assumes the sequence can always be incremented? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_dbd60e90-4688-43d8-9782-d83c7bd0bd5a?mode=deep",
+    "timestamp": "2026-02-07 22:24:58.386998",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: try_parse_request()] [Protocol Violation] The content-length check at line 112 returns a generic error message mentioning 'GetInfo' instead of the correct endpoint name - could this confuse clients or leak information about code reuse from other endpoints? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_ac652aab-ff85-42a5-ac1f-4e2bfe1ff593?mode=deep",
+    "timestamp": "2026-02-07 22:25:11.723756",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: try_parse_request()] [Resource Exhaustion] Does the lack of rate limiting on this endpoint allow an attacker to repeatedly query with invalid parent_block_id values, causing excessive database lookups and potential DoS? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_5204f5e2-ee80-4d52-8108-1b09156913e7?mode=deep",
+    "timestamp": "2026-02-07 22:25:26.536338",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: generate_next_chunk()] [Integer Overflow] At lines 227-232, when self.seq equals u16::MAX, the function returns an error, but what happens if a malicious node provides a microblock with sequence u16::MAX-1 and the stream attempts to load the next one - could this cause a panic or undefined behavior? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_78e01229-a0c5-44a8-92e2-aa5ae78da182?mode=deep",
+    "timestamp": "2026-02-07 22:25:41.269749",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: generate_next_chunk()] [Consensus Divergence] The sequence increment at line 231 uses `x + 1` without checking if the resulting sequence actually exists in the chainstate - could this cause the stream to skip valid microblocks or return an incomplete chain? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_454dc253-0a94-4bff-a692-c22acda54b5b?mode=deep",
+    "timestamp": "2026-02-07 22:25:56.861775",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: new()] [Chain Continuity] When loading the initial microblock at line 69-74, if the requested sequence number is not the first microblock in the chain, does the stream verify that previous microblocks exist, or could an attacker query from the middle and receive an incomplete/invalid microblock sequence? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_d118e172-f52c-46be-931a-4413ec409cd1?mode=deep",
+    "timestamp": "2026-02-07 22:26:14.830944",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: generate_next_chunk()] [State Consistency] At line 234-242, when load_next_descendant_microblock fails, the error is logged but the stream's internal state (self.seq, self.microblock_hash) is not rolled back - could this leave the stream in an inconsistent state if called again? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_4be03748-a2dc-427f-a548-3daffc844235?mode=deep",
+    "timestamp": "2026-02-07 22:26:33.342215",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: generate_next_chunk()] [Fork Safety] Does the stream verify that all returned microblocks belong to the same microblock fork, or could a chainstate reorganization during streaming cause microblocks from different forks to be mixed in the response? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_8b0661c5-ee76-41a1-b7f9-e5e51c202af6?mode=deep",
+    "timestamp": "2026-02-07 22:26:52.048057",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: generate_next_chunk()] [Memory Exhaustion] The serialize_to_vec() call at line 244 allocates memory for each microblock without an upper bound check - could an attacker craft microblocks near MAX_MESSAGE_LEN size to cause OOM when multiple chunks are buffered? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_1b13e268-5d78-48b7-b704-bab9c2208cb2?mode=deep",
+    "timestamp": "2026-02-07 22:27:10.184617",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: generate_next_chunk()] [Data Race] The finished flag is set at line 257, but if generate_next_chunk() is called concurrently from multiple threads, could there be a race condition where the stream serves duplicate microblocks or skips blocks? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_36a1c713-82e2-4904-a3f8-eb1e2c2f47a6?mode=deep",
+    "timestamp": "2026-02-07 22:27:28.354290",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: decode_microblocks_unconfirmed()] [Deserialization Attack] At lines 291-303, the loop reads microblocks until UnexpectedEof without validating that the stream ends at a microblock boundary - could partial/truncated microblock data cause deserialization to succeed with corrupted data? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_df55f54c-c6fa-43ba-87fa-21de44c6475f?mode=deep",
+    "timestamp": "2026-02-07 22:27:48.592792",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: decode_microblocks_unconfirmed()] [DoS via Malformed Data] The BoundReader at line 288-289 uses MAX_MESSAGE_LEN, but does this limit apply per-microblock or to the entire stream - could an attacker send MAX_MICROBLOCKS_UNCONFIRMED microblocks each near MAX_MESSAGE_LEN to cause excessive memory allocation? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9303fbb7-8e36-46f2-90dc-baa304e65d39?mode=deep",
+    "timestamp": "2026-02-07 22:28:09.712039",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: decode_microblocks_unconfirmed()] [Protocol Violation] At line 306, the loop breaks when MAX_MICROBLOCKS_UNCONFIRMED is reached, but are remaining bytes validated to ensure the stream ended cleanly, or could extra data be silently ignored allowing protocol violations? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_faf1e0d2-cace-4720-a2a6-b0d9ef0263ae?mode=deep",
+    "timestamp": "2026-02-07 22:28:31.281738",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: try_handle_request()] [Information Disclosure] At lines 165-181, different error types (NoSuchBlockError vs other ChainError) return different HTTP status codes (404 vs 500) - could an attacker use timing or error responses to enumerate valid vs invalid block IDs in the chainstate? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_067a16fa-7256-4629-8e11-ba179070b3ac?mode=deep",
+    "timestamp": "2026-02-07 22:28:52.731726",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: new()] [Resource Leak] At line 84, chainstate.reopen_db() creates a new database connection that's stored in the stream - is this connection properly closed when the stream is dropped, or could abandoned HTTP requests leak database connections? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_dbfb8ce6-7648-4906-8d43-3c9e45f23120?mode=deep",
+    "timestamp": "2026-02-07 22:29:14.353944",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: try_handle_request()] [State Consistency] The take() calls at lines 148-155 consume the parent_block_id and start_sequence, but if try_handle_request fails and is retried, these values are None - could this cause the handler to be in an invalid state for subsequent requests? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_94bddf36-4838-49e6-89b9-146c1eac961b?mode=deep",
+    "timestamp": "2026-02-07 22:29:36.047953",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: generate_next_chunk()] [Database Lock] When load_next_descendant_microblock is called at line 234, does it acquire read locks on the chainstate database - could slow network connections cause long-held database locks that block other operations? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9491e37d-6aee-4074-9a64-428ef73bea07?mode=deep",
+    "timestamp": "2026-02-07 22:29:57.817125",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: new()] [Error Handling] If load_next_descendant_microblock returns Ok(None) at line 69-74, NoSuchBlockError is returned, but what if the sequence exists but the microblock data is corrupted - would this return a different error that's not properly handled by the caller? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9b0b03e5-d520-4979-9b45-751ebeead8bd?mode=deep",
+    "timestamp": "2026-02-07 22:30:20.965785",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: generate_next_chunk()] [Microblock Validation] Does the stream verify that each returned microblock correctly chains to the previous one via parent_hash and sequence numbers, or could database corruption or a reorg cause non-sequential microblocks to be returned? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9c57cad8-2988-41cc-a14c-ef7ac9c4d2c4?mode=deep",
+    "timestamp": "2026-02-07 22:30:44.678048",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: new()] [Tenure Validation] Are the returned microblocks verified to belong to the current unconfirmed tenure, or could an attacker request microblocks from a confirmed block's parent_block_id and receive microblocks that should be considered confirmed? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_7f361550-3c8b-4715-a9cb-9f62de85a83c?mode=deep",
+    "timestamp": "2026-02-07 22:31:07.729735",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: decode_microblocks_unconfirmed()] [Chain Validation] When decoding the microblock stream at lines 282-312, is there any validation that the microblocks form a valid chain (correct parent hashes, sequential sequence numbers), or could an attacker send an invalid sequence that clients accept? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_d28983b1-a03e-4266-9b9d-fe1b013ffdcd?mode=deep",
+    "timestamp": "2026-02-07 22:31:30.788345",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: generate_next_chunk()] [Signature Verification] Does the stream verify microblock signatures before returning them, or is signature verification deferred to the caller - could this allow unsigned/invalid microblocks to propagate through the network? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_bde07c69-36c1-4a10-af07-1985688e411d?mode=deep",
+    "timestamp": "2026-02-07 22:31:54.196762",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getmicroblocks_unconfirmed.rs] [Function: try_handle_request()] [Leader Validation] Is there any check that the microblocks were produced by the legitimate tenure leader, or could microblocks from an unauthorized miner be served if they exist in the chainstate database? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_e0aa0334-f4fd-4fe1-a8c8-dad979f84f00?mode=deep",
+    "timestamp": "2026-02-07 22:32:16.832645",
+    "report_generated": false
+  }
+]
