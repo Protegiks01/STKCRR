@@ -1,0 +1,134 @@
+[
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getheaders.rs] [Function: try_handle_request()] [Information Disclosure] Does the error message 'Failed to load block header: {:?}' reveal internal ChainError details that could aid attackers in fingerprinting node state? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_dc3ed9ca-bd61-43bd-820d-f217ab6b0db1?mode=deep",
+    "timestamp": "2026-02-07 22:17:09.507860",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getheaders.rs] [Function: generate_next_chunk()] [Information Disclosure] When serde_json serialization fails, does the error message expose sensitive header field values or memory addresses? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_a1d38f1f-b0ad-4ac1-af90-d348328e16df?mode=deep",
+    "timestamp": "2026-02-07 22:17:22.232158",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getheaders.rs] [Function: try_handle_request()] [Information Disclosure] Does HttpNotFound::new(format!('No such block {:?}', &tip)) leak the full StacksBlockId which could reveal chain analysis information? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_406a2f0f-69d5-4311-9eaf-56f180d2ad0d?mode=deep",
+    "timestamp": "2026-02-07 22:17:35.390137",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getheaders.rs] [Function: metrics_identifier()] [Monitoring] Does using a static identifier '/v2/headers/:height' prevent proper per-request metrics that could detect DoS patterns based on quantity values? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_7ea8d496-5ae4-425f-8b23-d9cb556fcc5b?mode=deep",
+    "timestamp": "2026-02-07 22:17:50.194274",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getheaders.rs] [Function: try_parse_request()] [HTTP Compliance] If get_content_length() returns a non-zero value, is the body properly consumed and discarded to prevent HTTP request smuggling? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_5074274d-5727-412a-b13a-807c66b79d8c?mode=deep",
+    "timestamp": "2026-02-07 22:18:04.760579",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getheaders.rs] [Function: try_parse_request()] [Protocol Violation] Could an attacker send a chunked transfer encoding with content-length 0 to bypass the body validation check? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_34b27233-82de-4efa-a7af-259b9826a6bf?mode=deep",
+    "timestamp": "2026-02-07 22:18:20.410409",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getheaders.rs] [Function: try_parse_request()] [Input Processing] Is the query string passed to HttpRequestContents::query_string() properly validated, or could it contain tip specifications that override the default behavior? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_0c4fc337-f0ea-40da-8a44-5cef9e053ff6?mode=deep",
+    "timestamp": "2026-02-07 22:18:37.190895",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getheaders.rs] [Function: try_parse_request()] [Injection] Could query string parameters be used to inject additional commands or alter the tip selection logic in load_stacks_chain_tip()? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_7f4bf2d0-8fd0-4b2b-9809-0cf086910a7a?mode=deep",
+    "timestamp": "2026-02-07 22:18:55.982910",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getheaders.rs] [Function: generate_next_chunk()] [Protocol Violation] If an error occurs after the opening '[' is sent but before all headers are transmitted, will clients receive malformed JSON? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_e3e43ae3-a12a-4ec3-9229-c86731ce8ed2?mode=deep",
+    "timestamp": "2026-02-07 22:19:15.455138",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getheaders.rs] [Function: generate_next_chunk()] [Stream Integrity] Is there any mechanism to detect if the stream was interrupted mid-transmission, allowing clients to request retransmission? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_c2c75d78-3b3e-479e-9c9c-4269aaab1fdd?mode=deep",
+    "timestamp": "2026-02-07 22:19:36.165102",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getheaders.rs] [Function: generate_next_chunk()] [TOCTOU] Between reading each header in the parent chain walk, could concurrent chain reorganizations cause the stream to serve inconsistent snapshots? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_ee23ada6-d493-403b-87ea-235cf52372e0?mode=deep",
+    "timestamp": "2026-02-07 22:19:56.907530",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getheaders.rs] [Function: StacksHeaderStream::new()] [Database Isolation] Does reopen_db() create a new connection with a snapshot isolation level, or could other transactions affect the headers being streamed? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_4ff54026-2585-4eb1-bc88-677224055742?mode=deep",
+    "timestamp": "2026-02-07 22:20:18.857123",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getheaders.rs] [Function: generate_next_chunk()] [Chain Consistency] When following parent_block_id links, is there validation that each parent's height is exactly one less than its child's height? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_20d7c497-7e50-4859-8b45-0b3cb55db6dc?mode=deep",
+    "timestamp": "2026-02-07 22:20:40.485153",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getheaders.rs] [Function: generate_next_chunk()] [Consensus Safety] Could a maliciously crafted block with a parent_block_id pointing to a future block cause the stream to traverse forward instead of backward? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_65b6bdec-0d88-4fc8-aa95-b8a44ba825e1?mode=deep",
+    "timestamp": "2026-02-07 22:21:03.530210",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getheaders.rs] [Function: generate_next_chunk()] [Loop Termination] Is there a maximum iteration count to prevent infinite loops if the parent chain contains cycles due to database corruption? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_41ed62eb-201d-4c5b-82bc-962efc058360?mode=deep",
+    "timestamp": "2026-02-07 22:21:26.669151",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getheaders.rs] [Function: generate_next_chunk()] [Type Safety] When casting header_bytes.len() to u64 for total_bytes accumulation, could extremely large headers cause the cast to overflow on 32-bit platforms? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_7f1ec091-c7aa-4608-a82f-c0e3dc17163f?mode=deep",
+    "timestamp": "2026-02-07 22:21:51.035598",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getheaders.rs] [Function: StacksHeaderStream::new()] [Type Safety] Is the conversion from header_info.height (u64) to num_headers (u32) properly saturating, or does it silently truncate? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_5c6ad3cb-ba0a-4859-8c91-6ea25bf81ecf?mode=deep",
+    "timestamp": "2026-02-07 22:22:15.683654",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getheaders.rs] [Struct: RPCHeadersRequestHandler] [Memory Safety] Does the Clone implementation for RPCHeadersRequestHandler properly deep-copy all state, or could shared state cause aliasing bugs? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_68633685-25c5-4fa3-9341-7c997deb208f?mode=deep",
+    "timestamp": "2026-02-07 22:22:40.966238",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getheaders.rs] [Function: StacksHeaderStream::new()] [Memory Safety] When cloning index_block_hash via tip.clone(), is this a deep copy or could modifications affect the original tip reference? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_32e47ae0-d649-495e-b25b-45e618876192?mode=deep",
+    "timestamp": "2026-02-07 22:23:06.689344",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getheaders.rs] [Function: verb()] [Protocol Safety] Does the HTTP layer enforce that only GET requests match this handler, or could POST/PUT requests with the same path be accepted? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_054b47e5-3d79-4924-b229-12671b34a519?mode=deep",
+    "timestamp": "2026-02-07 22:23:32.604149",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getheaders.rs] [Struct: StacksHeaderStream] [State Management] Is the offset field actually used in the current implementation, and if not, could removing it cause issues if future code depends on it? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_a46ea7d1-07cb-4dca-9b1f-53ffa3e0ec53?mode=deep",
+    "timestamp": "2026-02-07 22:23:58.111903",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getheaders.rs] [Struct: StacksHeaderStream] [Consistency] Does offset accurately track the position in the stream, or could it become desynchronized from total_bytes in error conditions? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_21aa2da0-b2f5-48bd-8569-60345f0905a9?mode=deep",
+    "timestamp": "2026-02-07 22:24:24.854077",
+    "report_generated": false
+  }
+]
