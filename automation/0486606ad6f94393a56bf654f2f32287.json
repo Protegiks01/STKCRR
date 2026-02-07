@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: stacks-core/stackslib/src/net/relay.rs] [Function: Relayer::process_pushed_nakamoto_blocks()] [Drain Side Effect] Does nakamoto_blocks_data.blocks.drain(..) at line 1686 modify the original data structure, causing issues if the same data is referenced elsewhere? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9b3f0d35-f8e6-4334-8329-eddf93b365e8?mode=deep",
+    "timestamp": "2026-02-07 22:20:40.842158",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/relay.rs] [Function: Relayer::static_check_problematic_relayed_tx()] [AST Check Bypass] Can ast_check_size at line 1799 be bypassed for transactions with extremely deep expression stacks that don't match ExpressionStackDepthTooDeep or VaryExpressionStackDepthTooDeep patterns at lines 1804-1805? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_1047c903-ffe7-49d5-8500-737529f93c5e?mode=deep",
+    "timestamp": "2026-02-07 22:20:53.023431",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/relay.rs] [Function: Relayer::static_check_problematic_relayed_tx()] [Clarity Version Selection] Can clarity_version_opt.unwrap_or(ClarityVersion::default_for_epoch(epoch_id)) at line 1776 be exploited by omitting the version to bypass stricter validation rules in newer Clarity versions? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_d403b1f4-70db-4d0e-99b0-df32f6db17ab?mode=deep",
+    "timestamp": "2026-02-07 22:21:05.753882",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/relay.rs] [Function: Relayer::static_check_problematic_relayed_tx()] [Contract Principal Panic] Can the panic at line 1791 be triggered in production if a malformed transaction has a contract principal as origin, causing node crashes? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_ad3a3bb3-f0ca-411b-8c93-8c571e85d675?mode=deep",
+    "timestamp": "2026-02-07 22:21:18.973488",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/relay.rs] [Function: Relayer::static_check_problematic_relayed_tx()] [Parse Error Handling] Do parse errors other than ExpressionStackDepthTooDeep at line 1810 get ignored, allowing problematic transactions with other parsing issues to pass validation? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_4596b824-b4fa-4d8f-b212-aa6572f06f28?mode=deep",
+    "timestamp": "2026-02-07 22:21:33.975408",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/relay.rs] [Function: Relayer::static_check_problematic_relayed_block()] [Block Rejection] Does returning false at line 1834 after finding one problematic tx reject the entire block, preventing valid transactions in the same block from being processed? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_3fec2f2a-4f12-44bc-856d-ff41b28e38c0?mode=deep",
+    "timestamp": "2026-02-07 22:21:48.890488",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/relay.rs] [Function: Relayer::static_check_problematic_relayed_nakamoto_block()] [Consistency] Is the validation logic at lines 1845-1861 identical to static_check_problematic_relayed_block, and can any differences cause consensus divergence between epoch2 and epoch3? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_f33ede0c-1d24-4e1a-921b-871564d58e5c?mode=deep",
+    "timestamp": "2026-02-07 22:22:04.548536",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/relay.rs] [Function: Relayer::static_check_problematic_relayed_microblock()] [Microblock Rejection] Does returning false at line 1880 prevent the entire microblock stream from being processed, or only the specific problematic microblock? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_bbe62d24-ef4c-43f6-b5e6-67fc76b27b8e?mode=deep",
+    "timestamp": "2026-02-07 22:22:21.805758",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/relay.rs] [Function: Relayer::do_static_problematic_checks()] [Test Mode Bypass] Can STACKS_DISABLE_TX_PROBLEMATIC_CHECK environment variable at line 1890 be set in production to disable all problematic transaction checks, allowing consensus violations? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_7e832950-eef4-4e82-a1b2-6bca2d233c22?mode=deep",
+    "timestamp": "2026-02-07 22:22:38.915338",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/relay.rs] [Function: Relayer::filter_problematic_transactions()] [Epoch ID Consistency] Is the epoch_id from SortitionDB at line 2190 guaranteed to match the epoch at which transactions will execute, or can epoch transitions cause mismatched validation? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_f9e813b1-6cd0-4143-a45b-4a3bd78b6a63?mode=deep",
+    "timestamp": "2026-02-07 22:22:57.477912",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/relay.rs] [Function: Relayer::filter_problematic_transactions()] [Transaction Drop] Do transactions filtered out at lines 2133-2141 and 2150-2159 get logged sufficiently for debugging, or can silent drops hide consensus issues? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_14bb26a7-19c8-42b1-9938-132a9ea3d4d2?mode=deep",
+    "timestamp": "2026-02-07 22:23:16.928627",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/relay.rs] [Function: Relayer::process_transactions()] [Chain Tip Check] Can the None case at line 2183 drop all transactions if there's no Stacks chain tip, and is this behavior correct for initial node startup? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_10c7015d-e75a-4d67-9f52-3aef8c8324c2?mode=deep",
+    "timestamp": "2026-02-07 22:23:37.200015",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/relay.rs] [Function: Relayer::process_transactions()] [Mempool Storage Error] Does the error handling at line 2204 after PeerNetwork::store_transactions failure properly prevent relay of transactions that weren't stored? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_8aefc752-00e9-438f-af91-80de7a3ee782?mode=deep",
+    "timestamp": "2026-02-07 22:23:58.061308",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/relay.rs] [Function: Relayer::process_transactions()] [Garbage Collection] Can garbage_collect at line 2222 remove transactions that were just added, causing relay failures if GC is too aggressive? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_08760352-8bb9-4d87-8b48-331e53098f6a?mode=deep",
+    "timestamp": "2026-02-07 22:24:20.545616",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/relay.rs] [Function: Relayer::process_uploaded_stackerdb_chunks()] [Stale Chunk Drop] Can the stale chunk check at line 2354 be exploited where chunk.rc_consensus_hash != *rc_consensus_hash allows attackers to flood stale chunks, causing processing overhead? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_4cbcff81-b894-403c-956d-17300ec10ade?mode=deep",
+    "timestamp": "2026-02-07 22:24:42.321283",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/relay.rs] [Function: Relayer::process_uploaded_stackerdb_chunks()] [Event Aggregation] Does the all_events HashMap at line 2350 grow unbounded if many chunks for different contracts are uploaded, causing memory exhaustion? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_19d94f8d-c0d5-4ba4-88b4-82021871ca3a?mode=deep",
+    "timestamp": "2026-02-07 22:25:05.425278",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/relay.rs] [Function: Relayer::process_stacker_db_chunks()] [Transaction Batching] Can the tx.commit() at line 2456 fail after some chunks are stored but before others, causing partial StackerDB state and inconsistent chunk availability? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9aa69260-a2d0-4127-b304-7b97b935b469?mode=deep",
+    "timestamp": "2026-02-07 22:25:28.912022",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/relay.rs] [Function: Relayer::process_stacker_db_chunks()] [Stale Chunk Handling] Does the StaleChunk error at line 2414 get logged at debug level, making it hard to detect DoS attacks that flood stale chunks? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_8e24c5bc-777a-41c9-8532-fad389c2c47b?mode=deep",
+    "timestamp": "2026-02-07 22:25:53.893228",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/relay.rs] [Function: Relayer::process_stacker_db_chunks()] [Unconfigured StackerDB] Can chunks for unconfigured StackerDB replicas at line 2458 be exploited to waste processing time and bandwidth without being stored? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_6fe06695-b0dd-4736-b8c0-cde2010344db?mode=deep",
+    "timestamp": "2026-02-07 22:26:17.289897",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/relay.rs] [Function: Relayer::process_pushed_stacker_db_chunks()] [Chunk Synthesis] Does StackerDBSyncResult::from_pushed_chunk at line 2484 correctly validate pushed chunks, or can malicious peers push invalid chunk data that passes synthesis? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_30b8807d-3291-4264-870f-2af3e361831c?mode=deep",
+    "timestamp": "2026-02-07 22:26:41.152888",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/relay.rs] [Function: Relayer::process_new_blocks()] [Coordinator Notification] Can the coord_comms.announce_new_stacks_block at line 2000 fail silently without returning error, causing the coordinator to miss block notifications? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9f7511e1-73da-41a6-bc16-ddff17673c6f?mode=deep",
+    "timestamp": "2026-02-07 22:27:04.968848",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/relay.rs] [Function: Relayer::process_new_blocks()] [Error Handling] Do errors from preprocess_downloaded_blocks and preprocess_pushed_blocks at lines 1925-1950 properly propagate bad_neighbors for peer banning? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_d8178de3-50c3-441f-9aff-122a8db041bf?mode=deep",
+    "timestamp": "2026-02-07 22:27:29.199352",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/relay.rs] [Function: Relayer::process_new_blocks()] [Uploaded Block Validation] Do uploaded blocks at lines 1956-1976 skip some validation that pushed/downloaded blocks undergo, creating a bypass for invalid blocks? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_f2cf1312-f669-4ebd-b6fd-7243b1714a23?mode=deep",
+    "timestamp": "2026-02-07 22:27:52.580310",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/relay.rs] [Function: Relayer::load_blocks_available_data()] [Snapshot Missing] Can the continue at line 2111 silently skip blocks whose snapshots are missing, causing incomplete BlocksAvailableMap and preventing valid blocks from being announced? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_7f906b93-0e6d-4fbc-8957-137bb5398637?mode=deep",
+    "timestamp": "2026-02-07 22:28:15.741590",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/relay.rs] [Function: Relayer::relay_epoch2_blocks()] [Advertize Error] Do errors from p2p.advertize_blocks at line 2512 and p2p.advertize_microblocks at line 2530 get logged but not propagated, allowing silent relay failures? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_c8ddde87-f8b9-4268-9e77-6c5a43a18baa?mode=deep",
+    "timestamp": "2026-02-07 22:28:39.977435",
+    "report_generated": false
+  }
+]
