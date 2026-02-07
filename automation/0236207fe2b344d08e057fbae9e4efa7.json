@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: stackslib/src/util_lib/strings.rs] [Function: StacksString::consensus_deserialize()] [Integer Overflow] Can a malicious peer send a Vec<u8> length prefix that causes integer overflow when combined with MAX_MESSAGE_LEN, bypassing the BoundReader limit and causing nodes to allocate excessive memory? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_f89a339d-3756-4b1c-872d-e04e84a94537?mode=deep",
+    "timestamp": "2026-02-07 22:12:25.201056",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/strings.rs] [Function: StacksString::consensus_deserialize()] [Consensus Divergence] If read_next() returns a Vec<u8> with length exactly MAX_MESSAGE_LEN, could different implementations handle the boundary differently, leading to some nodes accepting and others rejecting the same serialized StacksString? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_857706a8-553f-401d-a61e-a4ec22b96bc3?mode=deep",
+    "timestamp": "2026-02-07 22:12:38.239777",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/strings.rs] [Function: StacksString::consensus_deserialize()] [UTF-8 Validation] Can an attacker craft a byte sequence that passes String::from_utf8() but contains overlong UTF-8 encodings or surrogate pairs that are later interpreted differently by downstream Clarity code, causing consensus divergence? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_c3b1b0d7-7015-4507-ae55-a0920c7fa7c5?mode=deep",
+    "timestamp": "2026-02-07 22:12:51.690904",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/strings.rs] [Function: StacksString::consensus_deserialize()] [Validation Order] Since UTF-8 validation occurs before is_valid_string() check, can an attacker send valid UTF-8 but non-ASCII characters that pass from_utf8() but fail the ASCII check, causing unnecessary allocation and processing before rejection? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_58471e9a-47ef-4b75-9f73-194bd0f63be7?mode=deep",
+    "timestamp": "2026-02-07 22:13:05.272498",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/strings.rs] [Function: StacksString::consensus_deserialize()] [DoS - Memory] Can an attacker send the maximum allowed vector length (MAX_MESSAGE_LEN bytes) repeatedly to force nodes to allocate ~4GB of memory per message, exhausting node memory and causing crashes? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_82915872-e5de-40fc-9fe3-6cd8c8cf2163?mode=deep",
+    "timestamp": "2026-02-07 22:13:20.052139",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/strings.rs] [Function: StacksString::is_printable()] [Off-by-One] The printable range check allows 0x20-0x7e plus tab (0x09) and newline (0x0a), but does it correctly reject carriage return (0x0d) which could cause line-ending confusion in contract source or logs leading to injection attacks? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_33a1694c-226a-4240-b9fa-9eb628ddfd3f?mode=deep",
+    "timestamp": "2026-02-07 22:13:35.792520",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/strings.rs] [Function: StacksString::is_printable()] [Boundary Condition] Can a byte value of exactly 0x7f (DEL character) bypass the validation since the check is *c > 0x7e, and would this non-printable character cause issues in Clarity contract display or execution? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_58195615-e194-4633-9e6d-dc438251e9b4?mode=deep",
+    "timestamp": "2026-02-07 22:13:53.181651",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/strings.rs] [Function: StacksString::is_printable()] [Control Character] The validation explicitly allows tab (0x09) and newline (0x0a) - can these characters be abused in contract names or variable names to create visually identical but distinct identifiers, enabling shadowing attacks? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_3cb29a65-e782-4f79-b80c-45478bc19e43?mode=deep",
+    "timestamp": "2026-02-07 22:14:10.867201",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/strings.rs] [Function: StacksString::is_printable()] [ASCII Validation] The function checks is_ascii() first, then validates printability - but could a string contain valid ASCII bytes that form invalid UTF-8 sequences when interpreted by external systems, causing cross-system inconsistencies? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_15a1deaf-a259-4c47-8c52-56e5914b649c?mode=deep",
+    "timestamp": "2026-02-07 22:14:31.115116",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/strings.rs] [Function: StacksString::is_valid_string()] [Double Check] This function calls both is_ascii() and is_printable() where is_printable() also checks is_ascii() - does this redundancy mask a validation gap where certain byte sequences could bypass one check but not the other? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_afeb632f-6962-4bc9-876e-499ba8c1ad15?mode=deep",
+    "timestamp": "2026-02-07 22:14:52.159359",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/strings.rs] [Function: StacksString::is_valid_string()] [Empty String] Does is_valid_string() correctly handle empty strings, and could an empty StacksString cause issues in consensus-critical contexts like transaction memos or contract identifiers? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_21f7f924-7474-40b6-8e31-693f9d7e22b7?mode=deep",
+    "timestamp": "2026-02-07 22:15:12.579290",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/strings.rs] [Function: StacksString::consensus_serialize()] [Length Prefix] The serialization uses write_next() which likely adds a 4-byte length prefix - can this length value overflow when the Vec<u8> size approaches u32::MAX, causing truncation and consensus divergence? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_3435b0b7-9b4f-4c6d-b424-87c648aaf341?mode=deep",
+    "timestamp": "2026-02-07 22:15:35.933969",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/strings.rs] [Function: StacksString::consensus_serialize()] [Determinism] Does consensus_serialize() produce deterministic output for StacksStrings with identical content but different internal Vec<u8> capacities, ensuring all nodes compute identical hashes? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_7792d158-bd6f-41e3-a5db-3b6ebae8eb6a?mode=deep",
+    "timestamp": "2026-02-07 22:16:00.126150",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/strings.rs] [Function: StacksString::from_string()] [Null Bytes] Can a String containing null bytes (0x00) pass is_valid_string() since 0x00 < 0x20 but might not be caught if validation has bugs, allowing null byte injection in serialized data? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_50c57211-bfd3-4217-8a88-60ad233cadf5?mode=deep",
+    "timestamp": "2026-02-07 22:16:24.381255",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/strings.rs] [Function: StacksString::from_str()] [Length Limit] Neither from_str() nor from_string() enforce any maximum length - can an attacker create a StacksString with gigabytes of data that passes validation but causes DoS during serialization or processing? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_79407695-b473-4b70-938a-179d23e4982f?mode=deep",
+    "timestamp": "2026-02-07 22:16:48.703765",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/strings.rs] [Function: StacksString::from_str()] [Clone Cost] Both functions call s.as_bytes().to_vec() which clones the data - can this be exploited to cause excessive allocations if called repeatedly with large strings in a transaction batch? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_65a863fe-2894-4a8d-b9c8-c661a3242871?mode=deep",
+    "timestamp": "2026-02-07 22:17:13.349503",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/strings.rs] [Function: StacksString::to_string()] [Panic Safety] The function uses unwrap() assuming ASCII strings always convert to UTF-8, but could a corrupted StacksString (e.g., via unsafe code elsewhere) with invalid bytes cause a panic that crashes the node? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_bc19e3a2-93b5-4a63-9324-0c56df73524c?mode=deep",
+    "timestamp": "2026-02-07 22:17:36.872165",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/strings.rs] [Function: StacksString::to_string()] [Clone Overhead] This function clones self.0 before calling String::from_utf8() - can repeated calls in hot paths cause performance degradation, and could an attacker trigger excessive to_string() calls via RPC endpoints? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_057969ea-8cab-42ad-97b0-3118194c5bc5?mode=deep",
+    "timestamp": "2026-02-07 22:17:58.917312",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/strings.rs] [Function: From<ClarityName>] [Validation Gap] The conversion from ClarityName uses unwrap() assuming ClarityName is always valid for StacksString, but are ClarityName validation rules strictly more restrictive than StacksString rules, or could there be edge cases? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_2eed9d01-a1b8-492e-8de8-fc4a23b82fba?mode=deep",
+    "timestamp": "2026-02-07 22:18:21.045973",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/strings.rs] [Function: From<ContractName>] [Validation Gap] The conversion from ContractName uses unwrap() assuming safety, but do ContractName and StacksString have identical character set requirements, or could differences cause unexpected panics? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_b12e8f36-8991-46da-91b5-6de7fa902d67?mode=deep",
+    "timestamp": "2026-02-07 22:18:45.072660",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/strings.rs] [Function: UrlString::consensus_deserialize()] [Length Validation] The function reads a u8 length byte and checks len_byte > CLARITY_MAX_STRING_LENGTH, but since both are u8 types with max 255, can an attacker send len_byte=255 which might exceed the actual CLARITY_MAX_STRING_LENGTH constant? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_a074215a-4a9a-4a48-99bc-a945a7aee435?mode=deep",
+    "timestamp": "2026-02-07 22:19:08.158795",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/strings.rs] [Function: UrlString::consensus_deserialize()] [Buffer Allocation] After reading len_byte, the code allocates vec![0u8; len_byte as usize] without checking available memory - can an attacker send max-length URLs repeatedly to exhaust memory? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_0d148f6d-8428-487b-bd46-728a4f4080b4?mode=deep",
+    "timestamp": "2026-02-07 22:19:32.903226",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/strings.rs] [Function: UrlString::consensus_deserialize()] [Empty URL Bypass] The code allows empty URLs and skips parse_to_block_url() validation for them - can an attacker use empty UrlStrings in contexts where a valid block URL is required, bypassing security checks? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_f6d62e89-37d1-4f0b-95d6-ed4ad8442e4a?mode=deep",
+    "timestamp": "2026-02-07 22:19:57.323286",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/strings.rs] [Function: UrlString::consensus_deserialize()] [UTF-8 Validation] The String::from_utf8() call could accept valid UTF-8 that contains non-ASCII characters not matched by URL_STRING_REGEX - does the subsequent UrlString::try_from() catch all invalid characters, or could some slip through? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_8a099ef0-5514-45e9-8a48-462f09c86b90?mode=deep",
+    "timestamp": "2026-02-07 22:20:23.454310",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/util_lib/strings.rs] [Function: UrlString::consensus_deserialize()] [Consensus Divergence] If parse_to_block_url() uses external url crate with different versions on different nodes, could URL parsing differences cause some nodes to accept URLs that others reject? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_6b1fc424-9fd0-4360-b998-d24c95c86e38?mode=deep",
+    "timestamp": "2026-02-07 22:20:49.422734",
+    "report_generated": false
+  }
+]
