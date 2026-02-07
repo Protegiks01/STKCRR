@@ -1,0 +1,68 @@
+[
+  {
+    "question": "[File: stacks-core/stackslib/src/util_lib/boot.rs] [All Functions] [Mainnet Parameter] Is there any validation that ensures the mainnet boolean is consistent across all boot code function calls within a single transaction or block processing context? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_203c43a6-b1c3-4e1e-ae69-b718a33a9435?mode=deep",
+    "timestamp": "2026-02-07 22:15:43.159007",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/util_lib/boot.rs] [All Functions] [Boot Code Authority] Do these utility functions ensure that only authorized system processes can create boot code contracts, or could an external attacker call these functions to impersonate boot code? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_bc537397-c8b8-40d5-a919-17d5af31781b?mode=deep",
+    "timestamp": "2026-02-07 22:15:55.733852",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/util_lib/boot.rs] [All Functions] [Burn Address Security] Is the burn address mechanism secure against private key generation or collision attacks that could allow an attacker to control the boot code address? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_2f44c2ae-5a81-44ca-a844-bec6019ec696?mode=deep",
+    "timestamp": "2026-02-07 22:16:08.729879",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/util_lib/boot.rs] [Function: boot_code_test_addr()] [Test Code Leakage] Could the boot_code_test_addr() function accidentally be called in production code paths, causing mainnet to use testnet boot addresses? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_532c8c78-cb51-435b-8a53-332f20136b2e?mode=deep",
+    "timestamp": "2026-02-07 22:16:23.055312",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/util_lib/boot.rs] [Function: boot_code_test_addr()] [Conditional Compilation] Is the #[cfg(test)] annotation sufficient to prevent this test helper from being compiled into production binaries? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_adf30948-03de-451d-9a55-92423d720ecf?mode=deep",
+    "timestamp": "2026-02-07 22:16:37.390288",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/util_lib/boot.rs] [Module Level] [Import Security] Are all imported types (STXBalance, PrincipalData, MessageSignature, etc.) from trusted modules that maintain consensus-critical invariants? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_1b3cd279-d1c4-43ed-8f33-d20df34c2ff8?mode=deep",
+    "timestamp": "2026-02-07 22:16:52.523348",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/util_lib/boot.rs] [Module Level] [Boot Contract Uniqueness] Is there any mechanism to ensure that boot contract identifiers created by boot_code_id() are unique and cannot collide with user-deployed contracts? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_991671fe-62b4-46fc-a9a1-ff63fe9f8fe2?mode=deep",
+    "timestamp": "2026-02-07 22:17:09.811137",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/util_lib/boot.rs] [Module Level] [Deterministic Construction] Are all object constructions in this module guaranteed to be deterministic across different node implementations, architectures, and Rust compiler versions? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_a7a09315-41f6-4f8c-bc4f-f1f590219397?mode=deep",
+    "timestamp": "2026-02-07 22:17:27.903602",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/util_lib/boot.rs] [Module Level] [Error Handling] The module has no explicit error handling - could this lead to panics in production if any underlying function (like ContractName::try_from()) fails? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_b37bb36e-4c5e-4996-9fa3-191721e21f36?mode=deep",
+    "timestamp": "2026-02-07 22:17:47.560839",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/util_lib/boot.rs] [Module Level] [Hardcoded Constants] Are the hardcoded values (nonce=0, tx_fee=0, empty signature, P2PKH hash mode, Uncompressed encoding) documented as security-critical consensus constants that must never change? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_ed0af1c3-c07c-4144-80ba-8e1ff1bd664c?mode=deep",
+    "timestamp": "2026-02-07 22:18:08.400812",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/util_lib/boot.rs] [Module Level] [Boot Code Privilege] Do these utilities properly enforce that boot code has special privileges (zero fees, unsigned transactions) only during system initialization and not during normal operation? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_5496eade-8ec4-4bd1-9cba-a901b6dfb333?mode=deep",
+    "timestamp": "2026-02-07 22:18:29.846525",
+    "report_generated": false
+  }
+]
