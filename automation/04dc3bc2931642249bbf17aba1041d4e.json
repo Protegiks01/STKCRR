@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: stackslib/src/net/server.rs] [Function: register_http()] [PeerHost Fallback] At line 238, if try_from_url() fails, it falls back to from_socketaddr(); can an attacker provide a URL that causes the fallback, bypassing hostname-based access controls? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_436f4087-3560-457f-83fe-1cdbfde8607b?mode=deep",
+    "timestamp": "2026-02-07 22:23:02.460535",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/server.rs] [Function: register_http()] [Request Sending Before Registration] The initial request is sent at line 259 before inserting the conversation into self.peers at line 275; if node_state or other code expects the conversation to be registered before receiving messages, can this cause race conditions? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_89372da0-9573-4bf9-bc0a-7417c5208f5d?mode=deep",
+    "timestamp": "2026-02-07 22:23:14.968236",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/server.rs] [Function: deregister_http()] [Socket vs Connecting Cleanup] At lines 285-296, sockets and connecting are cleaned up separately; if a socket exists in both (due to a bug), does the function handle this correctly, or can one cleanup affect the other? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_976bca4f-6e45-40c7-a98a-e37bbd5c7d42?mode=deep",
+    "timestamp": "2026-02-07 22:23:27.919980",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/server.rs] [Function: disconnect_unresponsive()] [Time Comparison] The comparisons at lines 304, 325-326 use addition with timeout values; if timeouts are u64::MAX or very large, can addition overflow, causing all or no connections to be disconnected? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_c1642694-caec-45b0-a926-5c42f15fd11f?mode=deep",
+    "timestamp": "2026-02-07 22:23:42.215267",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/server.rs] [Function: disconnect_unresponsive()] [Connection Time Initialization] At lines 316 and 322, get_connection_time() is used as a fallback; if connection_time is 0 or uninitialized, can this cause immediate disconnection on the first disconnect_unresponsive() call? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_62e5495f-75a8-433d-b072-ff0c1a7feb72?mode=deep",
+    "timestamp": "2026-02-07 22:23:56.512794",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/server.rs] [Function: saturate_http_socket()] [Partial Send State] If convo.send() partially sends data and then returns Ok(0) or an error, is the conversation's send buffer state correctly tracked, or can subsequent send attempts resend already-sent data? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_64272a0f-abd6-473e-8c4f-8e03a35a20a5?mode=deep",
+    "timestamp": "2026-02-07 22:24:11.918147",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/server.rs] [Function: process_new_sockets()] [Event ID Reuse] If an event_id at line 391 already exists in self.peers, it's logged and the socket is deregistered; but is the old conversation in self.peers also deregistered, or does it remain, preventing the event_id from ever being reused? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_c2e56227-ac6a-4dfd-a894-140676138265?mode=deep",
+    "timestamp": "2026-02-07 22:24:28.810501",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/server.rs] [Function: process_http_conversation()] [Error Message Priority] When multiple errors occur (recv error, chat error, saturate error), which error is reported to the caller, and can lower-priority errors mask more critical issues? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_698b5dcd-03d9-4d3a-98c6-abff4bad0716?mode=deep",
+    "timestamp": "2026-02-07 22:24:47.022212",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/server.rs] [Function: process_http_conversation()] [Node State Mutation] node_state is passed to convo.chat() at line 471; if chat() mutates node_state in a way that affects subsequent conversations, can one malicious client affect processing of other clients' requests? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_080aa92e-ba56-4d51-ac9c-4c6fcb5b73e7?mode=deep",
+    "timestamp": "2026-02-07 22:25:05.937509",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/server.rs] [Function: process_connecting_sockets()] [Initial Request Preservation] The initial_request_opt from connecting is passed to register_http() at line 521; if register_http() fails, is the request lost, and should it be retried or is connection loss acceptable? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_06f18ae1-1f8d-4f3c-9228-10695971f914?mode=deep",
+    "timestamp": "2026-02-07 22:25:26.037798",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/server.rs] [Function: process_ready_sockets()] [Event ID Removal Order] Events are removed in to_remove after iteration completes; if an event_id should be removed but appears again in a subsequent poll_state.ready, can it be processed twice? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_4110af81-8499-42df-b3d6-2c7641422975?mode=deep",
+    "timestamp": "2026-02-07 22:25:46.447688",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/server.rs] [Function: flush_conversations()] [Iterator Consistency] Iterating over self.peers.iter_mut() at line 584 while building a close list; if peers contains millions of entries, can this iteration take significant time, delaying connection closure? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_3f1dfbb1-b265-492d-8132-85d4cfbe73c3?mode=deep",
+    "timestamp": "2026-02-07 22:26:08.753054",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/server.rs] [Function: run()] [Message Return Ordering] Messages from process_ready_sockets() are returned directly at line 640; if message ordering affects consensus (e.g., block vs transaction announcements), can non-deterministic HashMap iteration affect message processing order? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_44ac6e0a-17b2-468d-afab-5c51c6f94226?mode=deep",
+    "timestamp": "2026-02-07 22:26:31.439096",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/server.rs] [Function: run()] [Stacks Messages Validation] Are the returned StacksMessageType values from HTTP conversations validated before being processed as P2P messages, or can HTTP clients inject arbitrary P2P messages into the network layer? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9cd8c1b3-06f1-4291-a331-02bb636e52b2?mode=deep",
+    "timestamp": "2026-02-07 22:26:54.446037",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/server.rs] [Function: run()] [Repeated Error Events] If the same event_id appears in error_events multiple times, does deregister_http() at line 622 handle repeated calls safely, or can double-deregistration cause issues? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_e6bcb79d-2cf6-4f8a-8011-9c0fb33cca33?mode=deep",
+    "timestamp": "2026-02-07 22:27:18.125687",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/server.rs] [Function: connect_http()] [Epoch Time Reliability] get_epoch_time_secs() is called at line 147 to timestamp the connection; if system time is incorrect or changes (e.g., NTP sync), can this affect timeout calculations or connection tracking? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9ee67321-ec67-4e34-bdd0-65328564e6cc?mode=deep",
+    "timestamp": "2026-02-07 22:27:41.562594",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/server.rs] [Function: count_inbound_ip_addrs()] [Count Type Safety] The function returns u64 which is compared against connection_opts.max_http_clients; if max_http_clients has a different type or can be set to 0, can this cause division by zero or wrap-around issues? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_7784a03d-2191-4c9c-84df-8141e358caa0?mode=deep",
+    "timestamp": "2026-02-07 22:28:04.713142",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/server.rs] [Function: can_register_http()] [Limit Enforcement Asymmetry] Inbound connections are limited by both total peers and per-IP, but outbound connections are not explicitly limited; can this asymmetry be exploited to exhaust resources via outbound connection storms? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_a83a3a34-cfe2-464d-a743-d272f8237b6c?mode=deep",
+    "timestamp": "2026-02-07 22:28:29.913732",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/server.rs] [Function: register_http()] [ConversationHttp State] The ConversationHttp created at line 243 includes event_id; if event_id changes or is reused before the conversation is destroyed, can this cause event routing confusion? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_4df68339-4154-4135-a63a-1cefc6b98692?mode=deep",
+    "timestamp": "2026-02-07 22:28:55.354529",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/server.rs] [Function: deregister_http()] [Cleanup Atomicity] The function removes from peers, sockets, and connecting sequentially at lines 283-296; if a panic or error occurs mid-cleanup, can this leave partial state that causes future operations to fail? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_f4fe8925-83e0-4b75-ac83-d5f4af2f60d2?mode=deep",
+    "timestamp": "2026-02-07 22:29:22.111775",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/server.rs] [Function: disconnect_unresponsive()] [Removal During Iteration] to_remove is built while iterating over connecting and peers at lines 303-332; does Rust's iterator prevent modification during iteration, or can removal operations affect the iteration? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_308473dd-19fe-4571-95bc-46c95327d2b0?mode=deep",
+    "timestamp": "2026-02-07 22:29:47.894144",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/server.rs] [Function: saturate_http_socket()] [Backpressure Handling] When send() returns Ok(0) at line 354, the function returns Ok(()); does the caller implement backpressure or rate limiting, or can senders keep trying to send without delay, wasting CPU? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_a59d1350-bf33-463b-a011-661ab18ca06a?mode=deep",
+    "timestamp": "2026-02-07 22:30:13.197972",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/server.rs] [Function: process_new_sockets()] [Registration Retry] If register_http() fails at line 402, should the socket be retried later, or is immediate failure correct? Can transient errors (e.g., temporary resource exhaustion) cause permanent connection loss? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_25979c83-716d-4e80-ae6d-02f386e77fc4?mode=deep",
+    "timestamp": "2026-02-07 22:30:39.017735",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/server.rs] [Function: process_http_conversation()] [InvalidMessage Handling] When InvalidMessage occurs at line 437, a 400 response is queued at line 441; if the client has already sent more data, can the 400 response be interleaved with ongoing request processing, corrupting the HTTP stream? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_a4a998d3-4b56-4273-b639-ba6bba4ab98e?mode=deep",
+    "timestamp": "2026-02-07 22:31:03.766725",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/server.rs] [Function: process_http_conversation()] [Conversation Draining] The comment at line 470 mentions 'drain the conversation inbox' even if recv() failed; if the inbox contains malicious messages from before the error, can draining them propagate malicious data? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9b9d31d7-7959-427d-8b80-e78d3545a0f8?mode=deep",
+    "timestamp": "2026-02-07 22:31:27.732824",
+    "report_generated": false
+  }
+]
