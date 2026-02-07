@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: stackslib/src/net/neighbors/db.rs] [Function: PeerDBNeighborWalk::check_neighbor_denied()] [NeighborKey Usage] The nk parameter contains network_id, addrbytes, and port - if any of these fields are malformed or out of valid ranges, can is_peer_denied fail to detect denied peers? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_b6f70dbe-5c91-476f-896d-0d1cb6c09da1?mode=deep",
+    "timestamp": "2026-02-07 22:03:44.460174",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/neighbors/db.rs] [Function: NeighborWalkDB::get_next_walk_neighbor()] [Median Calculation] On line 263, the median is calculated as next_neighbors.len() / 2 - for an odd-length list, does this correctly identify the median, or can off-by-one errors bias neighbor selection? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_7e7033a5-efa7-4d1a-8976-93c9bef1e060?mode=deep",
+    "timestamp": "2026-02-07 22:03:57.346310",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/neighbors/db.rs] [Function: PeerDBNeighborWalk::get_fresh_random_neighbors()] [Connection Options] The max_neighbor_age is read from network.connection_opts - can modification of connection_opts during runtime cause inconsistent freshness checks across different function calls? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_3a0df8cc-577c-40c4-b767-bba8d017f06f?mode=deep",
+    "timestamp": "2026-02-07 22:04:11.105739",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/neighbors/db.rs] [Function: PeerDBNeighborWalk::save_neighbor_from_handshake()] [Handshake Data Validation] The data.handshake is passed directly to load_and_update without validation - can malformed HandshakeData cause database errors or state corruption? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_ce5ad6ca-38c2-4742-8076-24209da0579c?mode=deep",
+    "timestamp": "2026-02-07 22:04:24.804201",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/neighbors/db.rs] [Function: PeerDBNeighborWalk::update_neighbor()] [Smart Contracts Slice] On line 555, smart_contracts.as_slice() is called - if smart_contracts is extremely large, can this cause memory issues or slow database operations? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_41485524-ade3-4ed1-903d-8c016577e508?mode=deep",
+    "timestamp": "2026-02-07 22:04:39.537349",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/neighbors/db.rs] [Function: NeighborReplacements::get_neighbor()] [Lifetime Management] The function returns Option<&Neighbor> with a borrowed reference - can the lifetime of this reference outlive the NeighborReplacements structure, causing use-after-free if the structure is dropped? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_823fc586-7a8d-4309-8733-831dc1cbe5df?mode=deep",
+    "timestamp": "2026-02-07 22:04:55.598878",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/neighbors/db.rs] [Function: NeighborWalkDB::pick_walk_neighbors()] [Debug Logging] On lines 197-201, a debug message is logged when no neighbors are available - can excessive logging in this path cause disk I/O exhaustion during neighbor shortage conditions? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_b71fc4a0-f2ec-4c2c-bbe8-92bd114ffd86?mode=deep",
+    "timestamp": "2026-02-07 22:05:12.963051",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/neighbors/db.rs] [Function: PeerDBNeighborWalk::lookup_stale_neighbors()] [Three DB Queries] For each address, up to three database queries can occur (lines 327, 346, and implicit checks) - can an attacker provide a large address list to trigger O(n³) query complexity? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9a9381f5-ef94-4ca7-905c-c66e4535a730?mode=deep",
+    "timestamp": "2026-02-07 22:05:32.040556",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/neighbors/db.rs] [Function: PeerDBNeighborWalk::replace_neighbors()] [Commit Timing] The tx.commit() happens on line 503 after all replacements - if the commit fails, are all DropNeighbor events added to result on lines 496-500 incorrectly reported as successful? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_f07d2bcc-86a6-428e-88e1-b9f7dc7f7be9?mode=deep",
+    "timestamp": "2026-02-07 22:05:53.231893",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/neighbors/db.rs] [Function: NeighborWalkDB::get_next_walk_neighbor()] [Collection Allocation] On line 245, next_neighbors is collected into a Vec - for a large number of neighbors, can this allocation fail or cause memory pressure? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_1bb20090-bd61-452d-b02c-bf3871d0f592?mode=deep",
+    "timestamp": "2026-02-07 22:06:14.220042",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/neighbors/db.rs] [Function: PeerDBNeighborWalk::get_asn_count()] [ASN Parameter] The asn parameter is u32 - are there any invalid ASN values (like 0 or reserved ranges) that should return a different default than 1? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_95a1e8d7-ff75-411d-b5fa-1a164c7ce389?mode=deep",
+    "timestamp": "2026-02-07 22:06:35.176194",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/neighbors/db.rs] [Function: PeerDBNeighborWalk::add_or_schedule_replace_neighbor()] [NeighborAddress::from_neighbor] On line 416, NeighborAddress is constructed from the neighbor - if this conversion is lossy or incorrect, can it cause the wrong neighbor to be looked up later? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_09598093-cb9a-4e9f-bef1-4a5357bd2611?mode=deep",
+    "timestamp": "2026-02-07 22:06:58.996579",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/neighbors/db.rs] [Function: NeighborWalkDB::get_next_walk_neighbor()] [Filter Performance] The filter_map on lines 247-255 processes every neighbor in db_neighbors - for large neighbor counts, can this filtering operation cause performance issues? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_1eadfb16-1e73-43b3-b0b5-68fa4563c0d6?mode=deep",
+    "timestamp": "2026-02-07 22:07:21.726891",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/neighbors/db.rs] [Function: PeerDBNeighborWalk::neighbor_from_handshake()] [Preamble Trust] The preamble is used directly without validation - can a malicious peer send a crafted preamble to cause neighbor_from_handshake to return incorrect or malicious neighbor data? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_46136d80-0cbf-4de0-b228-3dffd72f04bc?mode=deep",
+    "timestamp": "2026-02-07 22:07:44.100857",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/neighbors/db.rs] [Function: NeighborReplacements] [Memory Layout] The struct contains two HashMaps with NeighborAddress keys - if NeighborAddress hashing is expensive or poorly distributed, can this cause performance degradation in all operations? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_87c656e8-c60b-4ddd-9102-07651afe9194?mode=deep",
+    "timestamp": "2026-02-07 22:08:06.231935",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/neighbors/db.rs] [Function: PeerDBNeighborWalk::find_replaced_neighbor_slot()] [Shuffle Determinism] The shuffle operation on line 300 uses thread_rng which is non-deterministic - can different nodes make different replacement decisions for the same neighbor set, causing network inconsistency? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_d4ec7279-691f-4672-b063-3215a0fd5dab?mode=deep",
+    "timestamp": "2026-02-07 22:08:29.732911",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/neighbors/db.rs] [Function: PeerDBNeighborWalk::lookup_stale_neighbors()] [HashMap Growth] The resolved HashMap is built incrementally without capacity hints - can this cause multiple rehashing operations for large address lists, affecting performance? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_7ec7e090-212e-4be8-ae28-de2579dc68a1?mode=deep",
+    "timestamp": "2026-02-07 22:08:53.287598",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/neighbors/db.rs] [Function: NeighborWalkDB::pick_walk_neighbors()] [Peer Version Check] On line 189, network.peer_version is used - can version mismatches between the node and database cause no neighbors to be returned even when valid neighbors exist? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_316219b2-20d5-450b-a7dc-59c401284939?mode=deep",
+    "timestamp": "2026-02-07 22:09:17.049245",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/neighbors/db.rs] [Function: PeerDBNeighborWalk::replace_neighbors()] [Network Mutable Borrow] The network parameter is &mut PeerNetwork - can this exclusive borrow prevent other parts of the code from accessing network state during replacement, causing deadlocks? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_f5c2deeb-0551-4453-b767-7044a06c878a?mode=deep",
+    "timestamp": "2026-02-07 22:09:42.134711",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/neighbors/db.rs] [Function: PeerDBNeighborWalk::check_neighbor_denied()] [Deny List Timing] The denial check is synchronous - if the deny list is very large or stored inefficiently, can this check become a bottleneck during neighbor walks? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_29979b08-4b91-432c-9b8a-e837e67ac5ed?mode=deep",
+    "timestamp": "2026-02-07 22:10:08.450918",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/neighbors/db.rs] [Function: NeighborWalkDB::get_next_walk_neighbor()] [Inspect Error Side Effects] On lines 224-229 and 235-240, inspect_err is used to log errors - can the logging itself fail or cause side effects that affect the error handling logic? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_04a13bbb-8eba-4863-90cd-003f38925cda?mode=deep",
+    "timestamp": "2026-02-07 22:10:34.470658",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/neighbors/db.rs] [Function: PeerDBNeighborWalk::update_neighbor()] [Double Save] On lines 555 and 557, save_update is called with different parameters - can calling save_update twice in one transaction cause database constraint violations or duplicate entries? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_b2412386-fbb4-48ed-b463-deb7d0e9db19?mode=deep",
+    "timestamp": "2026-02-07 22:11:02.320980",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/neighbors/db.rs] [Function: PeerDBNeighborWalk::save_neighbor_from_handshake()] [Transaction Lifetime] The tx is created on line 529 and committed on line 537 - if an exception occurs between these lines (in external code called), is the transaction automatically rolled back? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_a58a3199-3585-4cc8-a3a7-559214afcf79?mode=deep",
+    "timestamp": "2026-02-07 22:11:27.865866",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/neighbors/db.rs] [Function: NeighborReplacements::add_neighbor()] [Clone Cost] The naddr is cloned on line 50 - if NeighborAddress contains large data structures, can repeated cloning cause performance issues? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_28c9d295-1c6a-430a-8532-fbfed02cf28c?mode=deep",
+    "timestamp": "2026-02-07 22:11:52.580022",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/neighbors/db.rs] [Function: PeerDBNeighborWalk::get_initial_walk_neighbors()] [Bootstrap Randomization] The get_bootstrap_peers and get_always_allowed_peers are said to return randomized results - can the randomization be biased to favor certain peers, affecting network fairness? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_d7ac052e-c407-4656-b593-97f89e2d0aff?mode=deep",
+    "timestamp": "2026-02-07 22:12:17.286590",
+    "report_generated": false
+  }
+]
