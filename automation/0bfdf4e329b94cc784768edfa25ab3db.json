@@ -1,0 +1,14 @@
+[
+  {
+    "question": "[File: stacks-core/stackslib/src/net/prune.rs] [Scenario: Concurrent Pruning] Can concurrent calls to `prune_frontier` from multiple threads cause race conditions in peer removal, leading to double-free or use-after-free conditions? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_c5af435b-7a24-46d2-8379-649d6141b87a?mode=deep",
+    "timestamp": "2026-02-07 22:41:15.866443",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/prune.rs] [Scenario: Asymmetric Pruning] If two nodes prune each other's connections non-deterministically due to RNG differences, can this lead to network instability or partitioning? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_e8c40356-7e6b-4388-959d-00b7d962f579?mode=deep",
+    "timestamp": "2026-02-07 22:41:28.418197",
+    "report_generated": false
+  }
+]
