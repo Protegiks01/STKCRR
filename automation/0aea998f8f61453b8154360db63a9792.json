@@ -1,0 +1,32 @@
+[
+  {
+    "question": "[File: stacks-core/stacks-node/src/burnchains/rpc/mod.rs] [Module: bitcoin_rpc_client] [Access Control] Does the public visibility of the bitcoin_rpc_client module expose internal burnchain RPC implementation details that could be exploited by malicious code in other parts of the codebase to bypass intended security boundaries or directly manipulate Bitcoin RPC calls? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_bbd09eae-ead0-4412-b1e8-15f384111dad?mode=deep",
+    "timestamp": "2026-02-07 22:39:28.647997",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-node/src/burnchains/rpc/mod.rs] [Module: rpc_transport] [Access Control] Does the public visibility of the rpc_transport module allow unauthorized components to directly instantiate or manipulate RPC transport mechanisms, potentially bypassing authentication, rate limiting, or consensus-critical validation logic? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_d4d219d5-738f-43b0-995b-8f752abc7bcb?mode=deep",
+    "timestamp": "2026-02-07 22:39:41.172577",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-node/src/burnchains/rpc/mod.rs] [Module Organization] [Privilege Escalation] Could the public exposure of both bitcoin_rpc_client and rpc_transport modules create an attack surface where malicious code can combine functionality from both modules to craft unauthorized Bitcoin RPC requests that bypass intended security controls in the burnchain layer? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_6bb41928-1416-41fa-b249-bbeb96369d14?mode=deep",
+    "timestamp": "2026-02-07 22:39:54.367650",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-node/src/burnchains/rpc/mod.rs] [Module Visibility] [Information Disclosure] Does declaring these modules as public expose internal burnchain RPC implementation details (error messages, connection states, or Bitcoin node information) that could aid an attacker in reconnaissance or targeted attacks against the Bitcoin anchoring mechanism? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_8a381279-97da-4041-9f4b-529b8e7f836f?mode=deep",
+    "timestamp": "2026-02-07 22:40:07.879895",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-node/src/burnchains/rpc/mod.rs] [Module Architecture] [Consensus Safety] Could the lack of additional access controls or abstraction layers at the module level allow components outside the burnchains subsystem to directly interact with Bitcoin RPC functionality in ways that could lead to consensus divergence, incorrect sortition, or invalid PoX state? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_47aba2ed-fb3f-4443-a351-c41a1c113b0f?mode=deep",
+    "timestamp": "2026-02-07 22:40:22.222983",
+    "report_generated": false
+  }
+]
