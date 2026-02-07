@@ -1,0 +1,127 @@
+[
+  {
+    "question": "stacks-core/stacks-common/build.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_a62ef0d2-5f46-416b-9e97-26df1f1893e8?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stacks-common/src/address/b58.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_59b0ff36-a34a-424c-87df-83371e20a357?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stacks-common/src/address/c32.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_6a960511-4c1b-42d5-872b-58b98fd991d1?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stacks-common/src/address/c32_old.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_e77fd1d4-7561-439e-afee-a1dc241d3510?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stacks-common/src/address/mod.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_d0a04652-056e-490e-b58d-da2895c09b14?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stacks-common/src/bitvec.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_4e334f30-96b5-4e19-9059-978a56454c15?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stacks-common/src/codec/macros.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_1b07bcc3-3c18-456a-b5be-9f8c72a11000?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stacks-common/src/codec/mod.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_0ad79921-4eb0-4bf1-a3d1-190be6cf15fc?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stacks-common/src/deps_common/bech32/mod.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_c5b9053f-bbcb-46b3-8993-b7592ea49d39?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stacks-common/src/deps_common/bitcoin/blockdata/block.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_f87d2614-1cf8-4041-b6d5-d9030ab07697?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stacks-common/src/deps_common/bitcoin/blockdata/constants.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_e949b2d9-da9b-48f7-9949-98dcb3b67c39?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stacks-common/src/deps_common/bitcoin/blockdata/mod.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_1634e5d8-0c5c-4684-a7cf-daee6a2858f0?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stacks-common/src/deps_common/bitcoin/blockdata/opcodes.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_0246cb5d-e544-4297-8429-040fd3e1c56d?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stacks-common/src/deps_common/bitcoin/blockdata/script.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_45bb29de-83cc-4560-88ac-abbbef9151f6?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stacks-common/src/deps_common/bitcoin/blockdata/transaction.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_b18b3d25-fd73-4226-a5d7-200f5776cea9?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stacks-common/src/deps_common/bitcoin/internal_macros.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_eb26779a-01bb-4a52-9053-6b8cd0d30254?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stacks-common/src/deps_common/bitcoin/mod.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_956feff6-0574-4df8-bba0-366282592047?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stacks-common/src/deps_common/bitcoin/network/address.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_a9e880ab-0e94-4b0f-ba39-1fc7d8b90068?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stacks-common/src/deps_common/bitcoin/network/constants.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_0810548a-1f3d-499f-a458-f841134ca555?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stacks-common/src/deps_common/bitcoin/network/encodable.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_62e1c0e6-e9c3-45eb-b097-deae24fb6e80?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stacks-common/src/deps_common/bitcoin/network/message.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_9391cdd3-2cec-4a4a-ba11-a7fa863ec2aa?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stacks-common/src/deps_common/bitcoin/network/message_blockdata.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_cf9369b5-4a48-413a-95ba-c800d2b52485?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stacks-common/src/deps_common/bitcoin/network/message_network.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_5e58bcee-d18d-41b5-9af7-51fa891e5e3c?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stacks-common/src/deps_common/bitcoin/network/mod.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_41e9a453-a2b0-486e-943c-c41c90ed59ef?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stacks-common/src/deps_common/bitcoin/network/serialize.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_6dd54a9e-1f26-426d-91f4-30e539ac73fd?mode=deep",
+    "questions_generated": false
+  }
+]
