@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 206-212] [Information Disclosure] Does returning HttpNotFound for missing metadata reveal whether a contract exists but has no metadata, potentially leaking information about contract deployment status or internal structure? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_dcdb4d66-5602-4489-8aec-d9786defe4ef?mode=deep",
+    "timestamp": "2026-02-07 22:26:56.233640",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 214-221] [Error Ambiguity] Does lumping Ok(None) and Err(_) together with the same 'Chain tip not found' message obscure critical errors (e.g., database failures, permission issues) that should trigger alerts or different handling? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_5407e892-f719-4ec4-9aad-7f818a4b3b1d?mode=deep",
+    "timestamp": "2026-02-07 22:27:08.449826",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 224-226] [JSON Serialization] Can the HttpResponseContents::try_from_json(&data_resp) serialization fail or produce non-deterministic output if data_resp.data contains non-UTF-8 bytes, null characters, or JSON control characters requiring escaping? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_49cbf1a2-8fa1-4ef7-b785-28f10f3e338d?mode=deep",
+    "timestamp": "2026-02-07 22:27:22.053548",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 232-239] [JSON Deserialization] Can the parse_json(preamble, body) function be exploited with deeply nested JSON objects, excessively long strings, or numeric overflow values to cause stack overflow, heap exhaustion, or integer overflow during parsing? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_b835be1f-4485-483f-aa11-9678f4514229?mode=deep",
+    "timestamp": "2026-02-07 22:27:35.109818",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 237] [Type Safety] Can the ClarityMetadataResponse deserialization accept unexpected JSON structures (e.g., arrays instead of objects, additional fields, missing fields) that could cause type confusion or uninitialized memory access? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_5f29bf34-900d-418f-8897-81746c9d96b1?mode=deep",
+    "timestamp": "2026-02-07 22:27:49.340664",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 238] [Error Propagation] Does HttpResponsePayload::try_from_json() properly validate that the parsed metadata is structurally correct and doesn't contain malicious payloads that could exploit downstream consumers of this response? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9a79c984-751f-4d65-8216-57f4bb12d260?mode=deep",
+    "timestamp": "2026-02-07 22:28:04.384925",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 243-260] [Input Validation] In new_getclaritymetadata(), can the format! macro be exploited with contract_addr, contract_name, or clarity_metadata_key containing format string specifiers or path traversal sequences (../, //, %2e) to manipulate the URL? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_bcf5bc83-94b7-46d9-b16a-064826eaab61?mode=deep",
+    "timestamp": "2026-02-07 22:28:20.720287",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 253-256] [URL Injection] Can special characters in contract_addr or contract_name (e.g., /, ?, #, @) be exploited to inject additional path segments, query parameters, or fragments that alter the request target? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_c939301e-a78d-4940-8e59-f65f992e310c?mode=deep",
+    "timestamp": "2026-02-07 22:28:37.625931",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 259] [Error Handling] Does the expect() on StacksHttpRequest construction properly handle all failure cases, or can specific input combinations cause panics that weren't anticipated as 'infallible data'? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_8ca3c2e5-2dfc-4fe7-a454-1eacf7ff7c0b?mode=deep",
+    "timestamp": "2026-02-07 22:28:55.582907",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 257] [TipRequest Handling] Can the tip_req parameter be manipulated to query metadata at arbitrary historical chain tips, potentially exposing metadata that was later invalidated, forked, or should not be accessible via the API? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_40e7af07-0d1a-4713-8d58-d927338059d9?mode=deep",
+    "timestamp": "2026-02-07 22:29:14.531808",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 264-270] [Error Handling] In decode_clarity_metadata_response(), can get_http_payload_ok() fail in unexpected ways that cause the error to be misclassified or suppressed, hiding critical issues like network tampering or server errors? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_bcc01069-3a9b-4844-b0b6-ba550f27e313?mode=deep",
+    "timestamp": "2026-02-07 22:29:33.542114",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 266] [Type Coercion] Can the try_into() conversion from HttpResponsePayload to serde_json::Value be exploited with responses containing binary data, invalid UTF-8, or ambiguous encodings that cause parsing inconsistencies? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_3331da50-2a92-4521-8543-1c372372e134?mode=deep",
+    "timestamp": "2026-02-07 22:29:53.748792",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 267-268] [Deserialization] Can serde_json::from_value() be exploited with JSON values containing circular references, excessive nesting, or integer overflows to cause infinite loops, stack overflow, or memory exhaustion? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_0ca7ca46-e72b-405c-bd60-728a6b72be58?mode=deep",
+    "timestamp": "2026-02-07 22:30:12.928602",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 268] [Error Message Leakage] Does the generic 'Failed to load from JSON' error message in map_err hide critical deserialization failures (e.g., schema mismatches, data corruption) that should be reported for debugging or security monitoring? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_5c39a4c7-f97b-4cae-8319-6d3cf83e39f6?mode=deep",
+    "timestamp": "2026-02-07 22:30:33.024252",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 89-154] [Missing Access Control] Does try_parse_request() perform any authentication or authorization checks, or can any unauthenticated user query metadata for arbitrary contracts, potentially exposing sensitive implementation details? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_f894c031-83ac-49bc-bcc4-75b47e2fde29?mode=deep",
+    "timestamp": "2026-02-07 22:30:53.501885",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 166-227] [Missing Rate Limiting] Does try_handle_request() implement rate limiting to prevent attackers from overwhelming the node with expensive metadata queries, causing DoS through database resource exhaustion? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_059e0b8e-71a0-4fe5-8ca4-07d7d2564ea8?mode=deep",
+    "timestamp": "2026-02-07 22:31:14.924868",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 186-202] [Privilege Escalation] Can metadata queries be used to access internal system contracts, boot contracts, or privileged Clarity state that should be restricted to node operators or consensus-critical code paths? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_ed85b841-8e5a-46d7-9394-04ad2a1e3abf?mode=deep",
+    "timestamp": "2026-02-07 22:31:36.658567",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 179-184] [TOCTOU] Between load_stacks_chain_tip() and the actual metadata query, can a chain reorganization occur, causing metadata to be read from an orphaned or invalidated block without proper error handling? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_13d1e1d3-db85-400f-925a-5c30320a93be?mode=deep",
+    "timestamp": "2026-02-07 22:32:00.880750",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 186-202] [State Consistency] Does maybe_read_only_clarity_tx() guarantee that all metadata reads occur at the exact tip snapshot, or can partial reads from multiple tips occur if the clarity transaction spans block boundaries? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_d8691348-5f2e-4521-baf2-a7a577b199a1?mode=deep",
+    "timestamp": "2026-02-07 22:32:24.056217",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 193-196] [Data Validation] Can get_metadata() return metadata strings containing malicious content (e.g., script tags, SQL commands, shell metacharacters) that aren't sanitized before being sent in the JSON response? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_6374a98b-2c8b-4590-9db5-3e2bb9aa97d8?mode=deep",
+    "timestamp": "2026-02-07 22:32:49.084524",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 56-59] [Shared Mutable State] Is RPCGetClarityMetadataRequestHandler Clone implementation safe for concurrent use, or can cloning while fields are being modified lead to data races or inconsistent state? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_3517a786-140e-4303-9559-ecd80930b24a?mode=deep",
+    "timestamp": "2026-02-07 22:33:13.318807",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 160-163] [State Reset] Can restart() be called concurrently with try_parse_request() or try_handle_request(), causing fields to be cleared while being read, leading to None panics or incorrect behavior? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_4df1fdde-c652-4363-84c7-e763786edb25?mode=deep",
+    "timestamp": "2026-02-07 22:33:38.879979",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 172-177] [take() Race Condition] Can multiple threads call try_handle_request() simultaneously, causing take() to return None for one thread even though fields were set, leading to incorrect 'not set' errors? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_dc80c1e4-3697-48a5-a1c7-0422a945819d?mode=deep",
+    "timestamp": "2026-02-07 22:34:03.607878",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 193-196] [Unbounded Data] Can get_metadata() return arbitrarily large data strings (e.g., gigabytes of contract source code or analysis data) that cause memory exhaustion when loaded into the ClarityMetadataResponse? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_32d11011-96bb-415a-937d-7d170f1c2f6f?mode=deep",
+    "timestamp": "2026-02-07 22:34:28.944551",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/api/getclaritymetadata.rs] [Lines: 224-226] [Serialization DoS] Can extremely large metadata responses cause HttpResponseContents::try_from_json() to consume excessive CPU time during JSON serialization, blocking the RPC handler thread? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_17a274a6-0307-4751-9741-92539fb6b74b?mode=deep",
+    "timestamp": "2026-02-07 22:34:54.220868",
+    "report_generated": false
+  }
+]
