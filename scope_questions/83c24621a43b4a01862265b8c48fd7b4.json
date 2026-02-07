@@ -1,0 +1,127 @@
+[
+  {
+    "question": "stacks-core/stacks-common/src/util/secp256k1/mod.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_01b3b3d6-3d85-4d73-9a8b-95ed9697e907?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stacks-common/src/util/secp256k1/native.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_49bb83fe-4d72-4643-944e-0a87c4e08875?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stacks-common/src/util/secp256k1/wasm.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_947ec6ee-dcd8-419f-a4fa-eb3e57688226?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stacks-common/src/util/secp256r1.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_54a1ef65-ca4c-4f3d-84a2-6949a67a9740?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stacks-common/src/util/serde_serializers.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_dbe1fd58-546b-4404-9b46-b74e4f83e470?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stacks-common/src/util/uint.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_092006d2-8b28-4f59-9076-cd8925216071?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stacks-common/src/util/vrf.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_229052ab-89fd-40fb-b560-e75561df0335?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/burnchains/bitcoin/address.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_5ed4701a-c0ee-4577-905e-d62d88fd0e5a?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/burnchains/bitcoin/bits.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_9ba3640c-0aa0-469b-8891-d80956243941?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/burnchains/bitcoin/blocks.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_f2129cbf-5735-46da-8125-11ee9f16ffa8?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/burnchains/bitcoin/indexer.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_515d7b1c-5475-40fe-93b8-b22eef660f7c?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/burnchains/bitcoin/keys.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_2efdea90-cce1-460b-86a5-fcb4bace7928?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/burnchains/bitcoin/messages.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_ab0e08e4-ef20-4b33-ad5b-22da8704b636?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/burnchains/bitcoin/mod.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_d48e02b0-1f36-4161-86f4-61432239f224?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/burnchains/bitcoin/network.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_028e2c6f-bc69-4b2b-81d7-1b050445fe43?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/burnchains/bitcoin/spv.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_325bbbf2-cb7d-4b15-8879-d98c514bb3a8?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/burnchains/burnchain.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_c01b5f9b-e000-4c2d-8c0a-a5c1ae499e4f?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/burnchains/db.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_1907e30f-ba85-4813-bf8d-f01bf8e0d586?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/burnchains/indexer.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_c9a24a4e-9b25-4e10-8a4b-75779d4aa972?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/burnchains/mod.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_14896c8b-5f33-4b46-9b0b-d3bd170a220f?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/chainstate/burn/atc.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_7877ac16-347d-4ffa-bd20-3ffdbd4d40c0?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/chainstate/burn/db/mod.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_f538c0a5-1866-466d-80fd-26db3e18a62e?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/chainstate/burn/db/processing.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_604cae31-6b83-4263-9b33-3e3d2c8266bb?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/chainstate/burn/db/sortdb.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_582f5c6d-08e4-4177-aa55-479b16e2d8e3?mode=deep",
+    "questions_generated": false
+  },
+  {
+    "question": "stacks-core/stackslib/src/chainstate/burn/distribution.rs",
+    "url": "https://deepwiki.com/search/-generate-targeted-security-au_fe6c396d-4800-498d-a23e-03924138c9c7?mode=deep",
+    "questions_generated": false
+  }
+]
