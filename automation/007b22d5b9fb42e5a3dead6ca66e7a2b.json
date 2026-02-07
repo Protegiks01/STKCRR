@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/secp256k1/native.rs] [Function: Secp256k1PublicKey::recover_to_pubkey()] [Message Hash Validation] from_slice(msg) requires 32-byte hash - what happens if msg is not a hash, could raw messages be signed/verified bypassing hash security? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_8c644d76-cc11-4951-9e0c-bf2f9ee1ff93?mode=deep",
+    "timestamp": "2026-02-07 22:04:31.200235",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/secp256k1/native.rs] [Function: Secp256k1PublicKey::recover_to_pubkey()] [Signature Validation] to_secp256k1_recoverable() returns Option - returning None would error with 'failed to decode', but could malformed signatures bypass recovery and return wrong keys? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_8d46b9d4-0a34-4583-83e5-6b50171f19f1?mode=deep",
+    "timestamp": "2026-02-07 22:04:43.339609",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/secp256k1/native.rs] [Function: Secp256k1PublicKey::recover_to_pubkey()] [Recovery ID Attack] recover_ecdsa() may succeed with wrong recovery IDs returning different public keys - could attackers find alternative recovery paths for the same signature? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_ff9638a2-93a9-4725-a8ef-ce134bf77a95?mode=deep",
+    "timestamp": "2026-02-07 22:04:56.377564",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/secp256k1/native.rs] [Function: Secp256k1PublicKey::recover_to_pubkey()] [Compression Hardcode] Recovered key is always compressed=true - could this mismatch with uncompressed keys in transaction validation causing reject valid transactions? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_2692c568-2a33-40e5-82e6-e942dc88b80c?mode=deep",
+    "timestamp": "2026-02-07 22:05:09.308326",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/secp256k1/native.rs] [Function: Secp256k1PublicKey::recover_to_pubkey()] [Thread-Local Safety] _secp256k1.with() uses thread-local context - could context initialization failures or thread issues cause non-deterministic recovery results? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_db66c1bf-28d4-4c98-8db5-3589cc81a21e?mode=deep",
+    "timestamp": "2026-02-07 22:05:22.654102",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/secp256k1/native.rs] [Function: Secp256k1PublicKey::recover_to_pubkey()] [Error String Allocation] Error messages are static strings - could error handling allocate memory or fail in consensus-critical paths? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_da1cb67f-42a7-481f-a69f-04d582f035ec?mode=deep",
+    "timestamp": "2026-02-07 22:05:37.409105",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/secp256k1/native.rs] [Function: PublicKey::to_bytes()] [Deterministic Serialization] Conditional serialization based on compressed flag - could nodes with different compression settings serialize the same key differently causing consensus divergence? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_cf98876a-bd95-46c7-880a-6c920a037acd?mode=deep",
+    "timestamp": "2026-02-07 22:05:52.397752",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/secp256k1/native.rs] [Function: PublicKey::to_bytes()] [Length Consistency] serialize() returns 33 bytes, serialize_uncompressed() returns 65 bytes - could length mismatches in parsers cause buffer overflows or truncation? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_efb3946d-aaac-4390-9c97-89eaa8d91717?mode=deep",
+    "timestamp": "2026-02-07 22:06:08.715044",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/secp256k1/native.rs] [Function: PublicKey::verify()] [Message Length Validation] from_slice(data_hash) must be 32 bytes - could variable-length messages bypass this check and create signature malleability? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_bf546d77-e0af-49ae-aac1-998224e78bcc?mode=deep",
+    "timestamp": "2026-02-07 22:06:27.252619",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/secp256k1/native.rs] [Function: PublicKey::verify()] [Recovery-Based Verification] Verifies by recovering public key and comparing - could this be slower than direct verification enabling DoS attacks via expensive signature validation? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_c384fbb4-dac5-417b-bbf1-667bfee586a2?mode=deep",
+    "timestamp": "2026-02-07 22:06:45.235703",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/secp256k1/native.rs] [Function: PublicKey::verify()] [Key Comparison] recovered_pubkey != self.key comparison - could key normalization differences cause valid signatures to be rejected? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_5ec95b02-9509-46b1-9d5d-fc0a17d89428?mode=deep",
+    "timestamp": "2026-02-07 22:07:04.701007",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/secp256k1/native.rs] [Function: PublicKey::verify()] [High-S Rejection] normalize_s() creates low-S signature and compares - is this check consensus-critical, and could nodes without this check accept malleable signatures? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_195051b4-4506-4e52-b104-865658fabb3e?mode=deep",
+    "timestamp": "2026-02-07 22:07:25.087635",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/secp256k1/native.rs] [Function: PublicKey::verify()] [Signature Malleability] Explicit high-S rejection returns Err('Invalid signature: high-S') - but could high-S signatures with valid recovery still pass through other validation paths? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_de53c757-38fd-4a6c-8c73-e8d769f16351?mode=deep",
+    "timestamp": "2026-02-07 22:07:44.797675",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/secp256k1/native.rs] [Function: PublicKey::verify()] [Double Verification] Recovers key and then checks S value - could the recovery step succeed for high-S but normalized S comparison fail inconsistently? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_5a33766d-15ff-472e-9157-6fbf37f23eff?mode=deep",
+    "timestamp": "2026-02-07 22:08:06.582512",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/secp256k1/native.rs] [Function: PublicKey::verify()] [Return Value Semantics] Returns Ok(false) for wrong key but Err for high-S - could this inconsistent error handling confuse callers about signature validity? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_2d0f7524-4f94-4eda-8b78-e5cc96146991?mode=deep",
+    "timestamp": "2026-02-07 22:08:28.862546",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/secp256k1/native.rs] [Function: PublicKey::verify()] [Thread-Local Context] _secp256k1.with() called during verification - could context reuse or thread issues cause verification to be non-deterministic? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_e41cbade-d425-49b9-9d8d-3ee255ce1379?mode=deep",
+    "timestamp": "2026-02-07 22:08:51.823336",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/secp256k1/native.rs] [Function: Secp256k1PrivateKey::random()] [CSPRNG Quality] Uses rand::thread_rng() - is this cryptographically secure for consensus-critical key generation, or could weak RNG enable key prediction? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_e8e4401b-1ce8-4d3b-82e3-db450a2e106c?mode=deep",
+    "timestamp": "2026-02-07 22:09:15.343528",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/secp256k1/native.rs] [Function: Secp256k1PrivateKey::random()] [Infinite Loop Risk] Loop continues until valid key found - could adversarial RNG or entropy exhaustion cause infinite loop DoS? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_55878604-91f2-44fa-8d64-4b80fd2ef81c?mode=deep",
+    "timestamp": "2026-02-07 22:09:39.424400",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/secp256k1/native.rs] [Function: Secp256k1PrivateKey::random()] [Error Handling] from_slice() errors are ignored with continue - could this hide RNG failures that produce weak keys? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_bf88a6b4-ed64-4789-800f-04bfb3f0472c?mode=deep",
+    "timestamp": "2026-02-07 22:10:03.883891",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/secp256k1/native.rs] [Function: Secp256k1PrivateKey::random()] [Compression Default] Always sets compress_public=true - could this create incompatibility with legacy keys that expect uncompressed public keys? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_ec4a4ae7-7d67-4ca1-94ff-7c68bde6091e?mode=deep",
+    "timestamp": "2026-02-07 22:10:27.659010",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/secp256k1/native.rs] [Function: Secp256k1PrivateKey::from_seed()] [Seed Validation] If seed is valid private key, returns without hashing - could this create predictable keys from specific seed patterns? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_38be1165-41ef-4395-b4bb-a71475b407a6?mode=deep",
+    "timestamp": "2026-02-07 22:10:49.383957",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/secp256k1/native.rs] [Function: Secp256k1PrivateKey::from_seed()] [Hash Iteration] Repeatedly hashes until valid key found - could the number of iterations leak information about seed value? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_6083f093-d909-473c-bba0-ff1b67837cdd?mode=deep",
+    "timestamp": "2026-02-07 22:11:12.915608",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/secp256k1/native.rs] [Function: Secp256k1PrivateKey::from_seed()] [Determinism] SHA256 hashing is deterministic but are there seed values that take excessive iterations causing DoS? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_15ca30af-a1ec-44ac-b6df-34b1533fdeab?mode=deep",
+    "timestamp": "2026-02-07 22:11:36.807567",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/secp256k1/native.rs] [Function: Secp256k1PrivateKey::from_seed()] [Infinite Loop] While loop has no iteration limit - could invalid seeds cause infinite looping? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_d34f4613-00a5-433f-bd6c-da729abb7106?mode=deep",
+    "timestamp": "2026-02-07 22:12:01.028812",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/secp256k1/native.rs] [Function: Secp256k1PrivateKey::from_seed()] [Compression Mutation] Sets compress_public=true after key creation - could this cause inconsistency if from_slice() created key with different compression setting? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_d6fc0f25-698b-4301-b3b7-f8b28a239849?mode=deep",
+    "timestamp": "2026-02-07 22:12:26.043597",
+    "report_generated": false
+  }
+]
