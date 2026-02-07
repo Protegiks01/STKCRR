@@ -1,4 +1,0 @@
-[
-  "[File: stacks-core/stackslib/src/net/mod.rs] [Error Display implementation] [Error Message Content] The Display implementation for Error (lines 300-412) formats error messages - could error messages leak sensitive information like private keys, internal paths, or network topology? (Low)",
-  "[File: stacks-core/stackslib/src/net/mod.rs] [Error cause method] [Error Chain Termination] The cause method (lines 416-487) returns the underlying error cause - could error chains be cyclic or excessively deep, causing infinite loops or stack overflows when traversing causes? (Low)"
-]
