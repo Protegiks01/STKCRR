@@ -1,0 +1,10 @@
+[
+  "[File: stackslib/src/net/atlas/db.rs] [Index Performance] [Query Without Index] Are all queries covered by the indexes defined in ATLASDB_INDEXES, or could some queries cause full table scans under heavy load? (Medium)",
+  "[File: stackslib/src/net/atlas/db.rs] [Function: get_attachments_missing_at_page_index()] [Sparse Pages] If a page has very few instances, most of the bool_vector remains true (missing) - could this mislead peers about actual availability? (Medium)",
+  "[File: stackslib/src/net/atlas/db.rs] [Genesis Attachments] [Takeover] Genesis attachments use INSERT OR REPLACE - could a malicious genesis_attachments list overwrite legitimate attachments inserted earlier? (High)",
+  "[File: stackslib/src/net/atlas/db.rs] [Status Transition] [Invalid State Transitions] Could an instance transition from Checked back to Queued through UPDATE operations, creating invalid state? (Medium)",
+  "[File: stackslib/src/net/atlas/db.rs] [Database Version] [Downgrade Attack] If a node with v2 database is downgraded to software expecting v1, could the status column cause failures or undefined behavior? (High)",
+  "[File: stackslib/src/net/atlas/db.rs] [Attachment Hash] [Hash Function Change] If the hash() function implementation changes, would existing attachments become unfindable? (Critical)",
+  "[File: stackslib/src/net/atlas/db.rs] [Query Result Ordering] [SELECT * Ordering] Multiple queries use SELECT * without ORDER BY - could result ordering differences cause non-deterministic behavior? (Medium)",
+  "[File: stackslib/src/net/atlas/db.rs] [Memory Limits] [Large Query Results] find_unresolved_attachment_instances has no LIMIT clause - could returning thousands of instances cause memory exhaustion? (High)"
+]

@@ -1,0 +1,4 @@
+[
+  "[File: stackslib/src/net/api/postblock.rs] [Function: try_handle_request()] [Index Connection vs. Write Connection] The code uses sortdb.index_conn() at line 148 for a read-only lookup, but does process_new_anchored_block require a write connection, causing potential lock contention or transaction conflicts? (Medium)",
+  "[File: stackslib/src/net/api/postblock.rs] [Function: StacksBlockAcceptedData] [Response Structure] The struct at lines 33-37 only includes stacks_block_id and accepted, but should it also return validation error details to help legitimate miners understand rejection reasons? (Low)"
+]

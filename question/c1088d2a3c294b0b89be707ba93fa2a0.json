@@ -1,0 +1,6 @@
+[
+  "[File: stackslib/src/chainstate/stacks/boot/costs-2.clar] [Read-Only Functions] [State Access] All functions are define-read-only. Could an attacker repeatedly call these to cause state read DoS, even though they don't modify state? (Low)",
+  "[File: stackslib/src/chainstate/stacks/boot/costs-2.clar] [Contract Upgrades] [Migration] If this contract is upgraded to costs-3, how is the transition handled? Could transactions in-flight use mixed cost models and cause consensus issues? (High)",
+  "[File: stackslib/src/chainstate/stacks/boot/costs-2.clar] [Helper Functions] [Visibility] The runtime(), linear(), logn(), nlogn() helpers are define-private. Could malicious code elsewhere in boot contracts call them incorrectly if they become public? (Low)",
+  "[File: stackslib/src/chainstate/stacks/boot/costs-2.clar] [Cost Specification] [Field Completeness] Cost specifications have runtime, write_length, write_count, read_count, read_length. Are any other resource dimensions missing (e.g., memory, CPU cycles)? (Low)"
+]

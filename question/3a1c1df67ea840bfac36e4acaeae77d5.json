@@ -1,0 +1,22 @@
+[
+  "[File: stackslib/src/chainstate/stacks/boot/pox-3.clar] [Function: reject-pox()] [Integer Overflow] Can adding next-cycle-rejection-votes and balance overflow, causing the rejection total to wrap to a small value? (Critical)",
+  "[File: stackslib/src/chainstate/stacks/boot/pox-3.clar] [Function: reject-pox()] [Double Vote] Can a user call reject-pox multiple times in quick succession before stacking-rejectors is updated, casting multiple votes? (Critical)",
+  "[File: stackslib/src/chainstate/stacks/boot/pox-3.clar] [Function: reject-pox()] [State Consistency] Can the map-set operations fail to be atomic, leaving stacking-rejection updated but stacking-rejectors not updated? (High)",
+  "[File: stackslib/src/chainstate/stacks/boot/pox-3.clar] [Function: increase-reward-cycle-entry()] [Integer Overflow] Can incrementing reward-cycle overflow when processing the last cycle in a lock period? (Critical)",
+  "[File: stackslib/src/chainstate/stacks/boot/pox-3.clar] [Function: increase-reward-cycle-entry()] [State Consistency] Can unwrap-panic on map-get reward-cycle-pox-address-list cause runtime abort if the entry was deleted by another operation? (Critical)",
+  "[File: stackslib/src/chainstate/stacks/boot/pox-3.clar] [Function: increase-reward-cycle-entry()] [State Consistency] Can unwrap-panic on map-get reward-cycle-total-stacked cause runtime abort if the total was never initialized? (Critical)",
+  "[File: stackslib/src/chainstate/stacks/boot/pox-3.clar] [Function: increase-reward-cycle-entry()] [Integer Overflow] Can adding total-ustx and add-amount overflow, causing the reward cycle total to underflow? (Critical)",
+  "[File: stackslib/src/chainstate/stacks/boot/pox-3.clar] [Function: increase-reward-cycle-entry()] [Integer Overflow] Can adding total-ustx of existing-entry and add-amount overflow, underrepresenting the increased amount? (Critical)",
+  "[File: stackslib/src/chainstate/stacks/boot/pox-3.clar] [Function: increase-reward-cycle-entry()] [Validation] Can the stacker field mismatch check fail if is-eq doesn't properly compare optional principals? (High)",
+  "[File: stackslib/src/chainstate/stacks/boot/pox-3.clar] [Function: increase-reward-cycle-entry()] [Logic Error] Can returning none when the stacker doesn't match leave the fold operation in an incomplete state? (High)",
+  "[File: stackslib/src/chainstate/stacks/boot/pox-3.clar] [Function: stack-increase()] [Integer Overflow] Can adding cur-cycle and u1 overflow, causing first-increased-cycle to wrap to zero? (Critical)",
+  "[File: stackslib/src/chainstate/stacks/boot/pox-3.clar] [Function: stack-increase()] [State Consistency] Can unwrap! on map-get stacking-state return error for a user who is actually stacked, preventing legitimate increases? (High)",
+  "[File: stackslib/src/chainstate/stacks/boot/pox-3.clar] [Function: stack-increase()] [Validation] Can amount-stacked be u0 while stacking-state exists, indicating an inconsistent state? (High)",
+  "[File: stackslib/src/chainstate/stacks/boot/pox-3.clar] [Function: stack-increase()] [Validation] Can increase-by be u0 and still pass the >= u1 check due to off-by-one errors? (Medium)",
+  "[File: stackslib/src/chainstate/stacks/boot/pox-3.clar] [Function: stack-increase()] [Balance Check] Can amount-unlocked be less than increase-by due to concurrent transactions, but still pass the check? (High)",
+  "[File: stackslib/src/chainstate/stacks/boot/pox-3.clar] [Function: stack-increase()] [Validation] Can reward-set-indexes be empty for a direct stacker, incorrectly indicating delegation? (High)",
+  "[File: stackslib/src/chainstate/stacks/boot/pox-3.clar] [Function: stack-increase()] [Validation] Can delegated-to be some while reward-set-indexes is non-empty, indicating a corrupted state? (High)",
+  "[File: stackslib/src/chainstate/stacks/boot/pox-3.clar] [Function: stack-increase()] [State Consistency] Can the fold increase-reward-cycle-entry fail partway through, leaving some cycles increased and others not? (Critical)",
+  "[File: stackslib/src/chainstate/stacks/boot/pox-3.clar] [Function: stack-increase()] [Integer Overflow] Can adding amount-stacked and increase-by overflow in the return value, misreporting the total locked amount? (High)",
+  "[File: stackslib/src/chainstate/stacks/boot/pox-3.clar] [Function: stack-extend()] [State Consistency] Can unwrap! on get-stacker-info return error while stacking-state exists, indicating inconsistent expiry checks? (High)"
+]

@@ -1,0 +1,5 @@
+[
+  "[File: stackslib/src/net/api/getsortition.rs] [Line: 244] [Boolean Logic] Does the expression 'sortition_sn.sortition || is_shadow' correctly capture all cases where was_sortition should be true, or can edge cases cause false negatives/positives? (High)",
+  "[File: stackslib/src/net/api/getsortition.rs] [Line: 339] [Error Handling] Is ok_or_else(|| ChainError::NoSuchBlockError) the correct error for all None cases, or can it hide database corruption that should be treated differently? (Medium)",
+  "[File: stackslib/src/net/api/getsortition.rs] [Lines: 373-412] [Control Flow] Can the if let Some(last_sortition_ch) check on line 377 incorrectly skip the second lookup if last_sortition_ch is Some but contains an invalid consensus hash? (Medium)"
+]

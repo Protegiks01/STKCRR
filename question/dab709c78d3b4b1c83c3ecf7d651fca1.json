@@ -1,0 +1,7 @@
+[
+  "[File: stackslib/src/chainstate/stacks/boot/pox.clar] [Data Consistency] [Reward Cycle Lists] If reward-cycle-pox-address-list and reward-cycle-total-stacked diverge, which is authoritative for reward distribution? (Critical)",
+  "[File: stackslib/src/chainstate/stacks/boot/pox.clar] [Attack Vector] [Sybil Reward Slots] Can an attacker create many PoX addresses each below the minimum threshold, then aggregate-commit them to fill reward slots? (High)",
+  "[File: stackslib/src/chainstate/stacks/boot/pox.clar] [Attack Vector] [Delegation Expiry Grief] Can a malicious stacker delegate with very short until-burn-ht, then immediately stack themselves after expiry to grief the delegate? (Low)",
+  "[File: stackslib/src/chainstate/stacks/boot/pox.clar] [Attack Vector] [Contract Caller Chain] Can contract A authorize contract B, which authorizes contract C, creating a deep authorization chain that bypasses intended restrictions? (Medium)",
+  "[File: stackslib/src/chainstate/stacks/boot/pox.clar] [Attack Vector] [Reward Cycle Manipulation] Can an attacker manipulate burn-block-height (if possible) to change current-pox-reward-cycle mid-block, causing state inconsistency? (Critical)"
+]

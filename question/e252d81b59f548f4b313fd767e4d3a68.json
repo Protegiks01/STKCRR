@@ -1,0 +1,4 @@
+[
+  "[File: stackslib/src/burnchains/bitcoin/bits.rs] [Function: from_bitcoin_witness_pubkey_vecs()] [Point At Infinity] At line 151, does from_slice reject the point at infinity (all zeros), which should never be a valid public key? (Critical)",
+  "[File: stackslib/src/burnchains/bitcoin/bits.rs] [Function: from_bitcoin_pubkey_pushbytes()] [Invalid Curve Points] Does BitcoinPublicKey::from_slice at line 108 verify that the public key point lies on the secp256k1 curve? (Critical)"
+]

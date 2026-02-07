@@ -1,0 +1,18 @@
+[
+  "[File: stackslib/src/burnchains/bitcoin/address.rs] [Function: LegacyBitcoinAddress::from_string()] [Error Handling] Lines 600-604 convert from_b58 error to None. Could this hide important error information? (Low)",
+  "[File: stackslib/src/burnchains/bitcoin/address.rs] [Function: SegwitBitcoinAddress::from_string()] [Direct Call] Line 618 directly calls from_bech32(). Could this bypass important validation? (Low)",
+  "[File: stackslib/src/burnchains/bitcoin/address.rs] [Struct: LegacyBitcoinAddress] [Field Consistency] Lines 42-46 define addrtype, network_id, and bytes. Could these fields become inconsistent after construction? (Medium)",
+  "[File: stackslib/src/burnchains/bitcoin/address.rs] [Enum: SegwitBitcoinAddress] [Variant Safety] Lines 51-55 define three variants. Could unsafe code construct invalid variants? (Low)",
+  "[File: stackslib/src/burnchains/bitcoin/address.rs] [Enum: BitcoinAddress] [Exhaustive Matching] Lines 58-61 define Legacy and Segwit. Are all match statements exhaustive? (Low)",
+  "[File: stackslib/src/burnchains/bitcoin/address.rs] [Impl: From<LegacyBitcoinAddress>] [Conversion Safety] Lines 63-67 implement From. Could this hide validation errors? (Low)",
+  "[File: stackslib/src/burnchains/bitcoin/address.rs] [Impl: From<SegwitBitcoinAddress>] [Conversion Safety] Lines 69-73 implement From. Could automatic conversion bypass checks? (Low)",
+  "[File: stackslib/src/burnchains/bitcoin/address.rs] [Constant: ADDRESS_VERSION_MAINNET_SINGLESIG] [Value Correctness] Line 76 defines value as 0. Could this conflict with other protocol constants? (Low)",
+  "[File: stackslib/src/burnchains/bitcoin/address.rs] [Constant: ADDRESS_VERSION_TESTNET_MULTISIG] [Value Correctness] Line 79 defines value as 196. Could this conflict with future Bitcoin versions? (Low)",
+  "[File: stackslib/src/burnchains/bitcoin/address.rs] [Constant: SEGWIT_MAINNET_HRP] [String Correctness] Line 82 defines 'bc'. Could typos in HRP cause address generation failures? (High)",
+  "[File: stackslib/src/burnchains/bitcoin/address.rs] [Constant: SEGWIT_REGTEST_HRP] [String Correctness] Line 84 defines 'bcrt'. Is this consistent with all Bitcoin Core versions? (Medium)",
+  "[File: stackslib/src/burnchains/bitcoin/address.rs] [Constant: SEGWIT_V0] [Value Range] Line 87 defines value as 0. Could witness versions exceed u8 range? (Low)",
+  "[File: stackslib/src/burnchains/bitcoin/address.rs] [Constant: SEGWIT_V1] [Future Versions] Line 88 only defines v1. How are v2-v16 handled? (Medium)",
+  "[File: stackslib/src/burnchains/bitcoin/address.rs] [Test Helper: expect_legacy()] [Panic Behavior] Lines 540-546 use panic! for test failures. Could this be triggered in production code paths? (Low)",
+  "[File: stackslib/src/burnchains/bitcoin/address.rs] [Test Helper: expect_segwit()] [Panic Behavior] Lines 550-556 use panic! for test failures. Could malicious input trigger these panics? (Low)",
+  "[File: stackslib/src/burnchains/bitcoin/address.rs] [Test Helper: from_segwit()] [Hex Parsing] Lines 560-563 parse hex strings. Could invalid hex cause panics during testing? (Low)"
+]

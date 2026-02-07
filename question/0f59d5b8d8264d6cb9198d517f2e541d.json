@@ -1,0 +1,8 @@
+[
+  "[File: stackslib/src/net/api/gettenuretip.rs] [Function: try_handle_request()] [Resource Management] If find_highest_known_block_header_in_tenure() queries the database, are prepared statements or query caching used to prevent SQL-injection-like attacks on the database layer? (Medium)",
+  "[File: stackslib/src/net/api/gettenuretip.rs] [Function: metrics_identifier()] [Observability] Does the metrics identifier '/v3/tenures/tip/:consensus_hash' aggregate metrics across all consensus hashes, potentially hiding DoS attacks targeting specific tenures? (Low)",
+  "[File: stackslib/src/net/api/gettenuretip.rs] [Function: try_handle_request()] [Observability] Are there metrics tracking failed tenure lookups vs. successful ones that could help detect reconnaissance or scanning attacks? (Low)",
+  "[File: stackslib/src/net/api/gettenuretip.rs] [Function: try_handle_request()] [Type Safety] When returning header_info.anchored_header at line 124, is there type-level enforcement that this is a Nakamoto header and not an epoch 2.x header that shouldn't be served by this endpoint? (High)",
+  "[File: stackslib/src/net/api/gettenuretip.rs] [Function: try_parse_response()] [Serialization] Does the serialization/deserialization of StacksBlockHeaderTypes preserve all consensus-critical fields exactly, or could precision loss in numeric fields cause validation failures? (Critical)",
+  "[File: stackslib/src/net/api/gettenuretip.rs] [Function: try_handle_request()] [Type Safety] Is the conversion from header_info.anchored_header to the serialized JSON format at line 135 guaranteed to be lossless for all fields? (High)"
+]

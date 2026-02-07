@@ -1,0 +1,5 @@
+[
+  "[File: stacks-core/stackslib/src/chainstate/stacks/boot/signers-voting.clar] [Function: vote-for-aggregate-public-key()] [Re-entrancy] Can vote-for-aggregate-public-key be called recursively or re-entrantly through contract-call chains, potentially causing state corruption? (High)",
+  "[File: stacks-core/stackslib/src/chainstate/stacks/boot/signers-voting.clar] [Function: vote-for-aggregate-public-key()] [Gas Exhaustion] If a vote transaction runs out of execution costs midway, can this leave maps in partially updated states? (High)",
+  "[File: stacks-core/stackslib/src/chainstate/stacks/boot/signers-voting.clar] [Function: is-novel-aggregate-public-key()] [Key Uniqueness] The default-to logic seems counterintuitive - does it correctly enforce that keys are novel across cycles? (Critical)"
+]

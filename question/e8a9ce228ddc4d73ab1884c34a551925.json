@@ -1,0 +1,10 @@
+[
+  "[File: stackslib/src/chainstate/stacks/db/mod.rs] [Function: index_conn()] [Read-Only Access] Can index_conn() be used to modify state despite being a read-only connection? (Medium)",
+  "[File: stackslib/src/chainstate/stacks/db/mod.rs] [CHAINSTATE_SCHEMA_3] [Matured Rewards] Can the matured_rewards table have multiple rows with the same parent_index_block_hash and child_index_block_hash but different coinbase values? (High)",
+  "[File: stackslib/src/chainstate/stacks/db/mod.rs] [CHAINSTATE_SCHEMA_3] [Burnchain TXIDs] Can the burnchain_txids table be queried with a non-existent index_block_hash, returning empty results instead of an error? (Low)",
+  "[File: stackslib/src/chainstate/stacks/db/mod.rs] [Function: commit_block()] [Test Function] Is the #[cfg(test)] commit_block() accidentally available in production builds, allowing unsafe commits? (High)",
+  "[File: stackslib/src/chainstate/stacks/db/mod.rs] [Function: clarity_eval_read_only()] [Test Function] Can the unwrap() in clarity_eval_read_only crash the node if called in production? (High)",
+  "[File: stackslib/src/chainstate/stacks/db/mod.rs] [Function: with_read_only_unconfirmed_clarity_tx()] [State Restoration] If an error occurs during to_do execution, is unconfirmed_state properly restored? (Medium)",
+  "[File: stackslib/src/chainstate/stacks/db/mod.rs] [Function: chainstate_begin_unconfirmed()] [Unconfirmed Tip] Can the tip parameter point to a non-existent block, causing begin_unconfirmed to fail silently? (Medium)",
+  "[File: stackslib/src/chainstate/stacks/db/mod.rs] [Function: is_first_mined()] [First Block Check] Can is_first_mined() return incorrect values for genesis vs. first mined blocks? (Medium)"
+]

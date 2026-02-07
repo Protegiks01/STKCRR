@@ -1,0 +1,4 @@
+[
+  "[File: stacks-core/stackslib/src/net/stackerdb/db.rs] [Struct: StackerDBTx] [Config Access] The config field is accessible via self.config - can external code replace the config mid-transaction to bypass max_writes checks? (High)",
+  "[File: stacks-core/stackslib/src/net/stackerdb/db.rs] [Function: try_replace_chunk()] [Version Zero Handling] If slot_validation.version is NO_VERSION (0) and slot_desc.slot_version is 1, the check at line 423 passes - but is version 1 always the first valid version? (Low)"
+]

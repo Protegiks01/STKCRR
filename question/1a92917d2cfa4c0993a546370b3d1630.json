@@ -1,0 +1,9 @@
+[
+  "[File: stacks-core/stacks-node/src/burnchains/rpc/bitcoin_rpc_client/mod.rs] [Function: import_descriptors()] [Wallet Locking] Could concurrent import_descriptors calls to the same wallet cause race conditions or wallet corruption in Bitcoin Core? (High)",
+  "[File: stacks-core/stacks-node/src/burnchains/rpc/bitcoin_rpc_client/mod.rs] [Function: import_descriptors()] [Rescan Performance] Do timestamp values in descriptors affect rescanning performance, and could malicious timestamps cause excessive CPU usage? (Medium)",
+  "[File: stacks-core/stacks-node/src/burnchains/rpc/bitcoin_rpc_client/mod.rs] [Function: import_descriptors()] [Descriptor Conflicts] Can importing descriptors that conflict with existing wallet descriptors cause issues, and are conflicts properly reported in ImportDescriptorsResponse? (Medium)",
+  "[File: stacks-core/stacks-node/src/burnchains/rpc/bitcoin_rpc_client/mod.rs] [Function: import_descriptors()] [Internal Flag] When the internal flag at line 117 is set incorrectly, could change addresses be treated as receiving addresses or vice versa, affecting wallet balance calculations? (High)",
+  "[File: stacks-core/stacks-node/src/burnchains/rpc/bitcoin_rpc_client/mod.rs] [Function: get_block_hash()] [Height Validation] Is the height parameter validated to be within the current blockchain height, or could future heights cause errors or return unexpected values? (Medium)",
+  "[File: stacks-core/stacks-node/src/burnchains/rpc/bitcoin_rpc_client/mod.rs] [Function: get_block_hash()] [Negative Height] Since height is u64 at line 689, negative values are impossible, but could height 0 (genesis block) be handled incorrectly? (Low)",
+  "[File: stacks-core/stacks-node/src/burnchains/rpc/bitcoin_rpc_client/mod.rs] [Function: get_block_hash()] [Chain Reorg] During a chain reorganization, could get_block_hash return different hashes for the same height if called before and after the reorg, causing consensus confusion? (High)"
+]

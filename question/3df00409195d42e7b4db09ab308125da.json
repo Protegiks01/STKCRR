@@ -1,0 +1,7 @@
+[
+  "[File: stackslib/src/chainstate/stacks/boot/costs-2-testnet.clar] [Function: cost_user_function_application()] [Recursion] Can recursive function calls accumulate costs correctly or overflow before depth limit is reached? (High)",
+  "[File: stackslib/src/chainstate/stacks/boot/costs-2-testnet.clar] [Function: cost_list_cons()] [Size Limits] Does the linear formula prevent construction of lists that exceed memory or processing limits? (Medium)",
+  "[File: stackslib/src/chainstate/stacks/boot/costs-2-testnet.clar] [Function: cost_tuple_cons()] [Size Limits] Can the nlogn formula allow tuples with too many fields that cause consensus issues? (Medium)",
+  "[File: stackslib/src/chainstate/stacks/boot/costs-2-testnet.clar] [Function: cost_append()] [Size Limits] Does (n * 71 + 176) prevent appending to lists in ways that exceed protocol limits? (Medium)",
+  "[File: stackslib/src/chainstate/stacks/boot/costs-2-testnet.clar] [Function: cost_concat()] [Size Limits] Can (n * 75 + 244) be exploited to concatenate buffers beyond maximum allowed sizes? (Medium)"
+]

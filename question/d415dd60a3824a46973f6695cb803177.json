@@ -1,0 +1,8 @@
+[
+  "[File: stacks-core/stacks-node/src/event_dispatcher.rs] [Function: process_mined_block_event()] [Execution Cost] At lines 775-776, consumed and confirmed_microblock_cost are cloned - could extremely large ExecutionCost values cause memory issues during cloning? (Low)",
+  "[File: stacks-core/stacks-node/src/event_dispatcher.rs] [Function: process_mined_microblock_event()] [Sequence Number] At line 801, microblock.header.sequence is included - could sequence number overflow or invalid values mislead observers about microblock ordering? (Low)",
+  "[File: stacks-core/stacks-node/src/event_dispatcher.rs] [Function: process_mined_microblock_event()] [Anchor Block] At lines 803-804, anchor_block_consensus_hash and anchor_block are passed - could mismatched anchor data cause observers to incorrectly associate microblocks with blocks? (Medium)",
+  "[File: stacks-core/stacks-node/src/event_dispatcher.rs] [Function: process_mined_nakamoto_block_event()] [Block ID Computation] At lines 835-836, block.header.block_hash() and block_id() are computed - could failures in these computations cause panics during Nakamoto block mining? (Medium)",
+  "[File: stacks-core/stacks-node/src/event_dispatcher.rs] [Function: process_mined_nakamoto_block_event()] [Signer Signature] At lines 841-845, miner and signer signatures are cloned and hashes computed - could signature verification failures be silently included in events? (Medium)",
+  "[File: stacks-core/stacks-node/src/event_dispatcher.rs] [Function: mined_block_event()] [Target Burn Height] At line 259, target_burn_height is passed - could providing incorrect burn height mislead miners about which Bitcoin block to anchor to? (High)"
+]

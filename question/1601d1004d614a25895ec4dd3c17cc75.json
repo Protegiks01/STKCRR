@@ -1,0 +1,15 @@
+[
+  "[File: stackslib/src/chainstate/stacks/boot/mod.rs] [Function: make_testnet_cost_voting()] [String Replacement] Lines 150-159 do multiple replacen() calls - are the replacements order-dependent, and could they interfere with each other? (Low)",
+  "[File: stackslib/src/chainstate/stacks/boot/mod.rs] [Constant: SIGNERS_MAX_LIST_SIZE] [Bounds Checking] Value is 4000 at line 74 - is this limit enforced when creating signer lists, or could it be exceeded? (Medium)",
+  "[File: stackslib/src/chainstate/stacks/boot/mod.rs] [Struct: RawRewardSetEntry] [Field Validation] The signer field is Option<[u8; SIGNERS_PK_LEN]> at line 208 - is the 33-byte length always enforced, or could variable-length keys be stored? (Medium)",
+  "[File: stackslib/src/chainstate/stacks/boot/mod.rs] [Struct: RawRewardSetEntry] [Stacker Field] The stacker field being None vs Some changes unlock behavior - is this distinction always preserved correctly through serialization? (Medium)",
+  "[File: stackslib/src/chainstate/stacks/boot/mod.rs] [Struct: NakamotoSignerEntry] [Weight Overflow] Weight is u32 at line 261 - but if stacked_amt is very large, could weight calculation overflow during creation? (High)",
+  "[File: stackslib/src/chainstate/stacks/boot/mod.rs] [Struct: NakamotoSignerEntry] [Serialization Consistency] Custom hex serialization at line 236 - does deserialization at line 240 handle all edge cases like leading zeros? (Medium)",
+  "[File: stackslib/src/chainstate/stacks/boot/mod.rs] [Struct: RewardSet] [Serialization] The metadata_serialize at line 310 uses serde_json - could malformed JSON during deserialization at line 316 cause panics? (Medium)",
+  "[File: stackslib/src/chainstate/stacks/boot/mod.rs] [Struct: RewardSet] [Empty Check] The empty() constructor at line 298 creates empty lists - is this state valid, or should it be handled specially? (Low)",
+  "[File: stackslib/src/chainstate/stacks/boot/mod.rs] [Struct: RewardSet] [Optional Fields] signers and pox_ustx_threshold are Option types - are all code paths handling None correctly? (Medium)",
+  "[File: stackslib/src/chainstate/stacks/boot/mod.rs] [Struct: PoxStartCycleInfo] [Serialization] serialize() and deserialize() at lines 283-288 - if JSON structure changes, could old serialized data fail to deserialize? (Medium)",
+  "[File: stackslib/src/chainstate/stacks/boot/mod.rs] [Struct: PoxStartCycleInfo] [Empty State] is_empty() at line 291 only checks missed_reward_slots - could other fields indicate non-empty state? (Low)",
+  "[File: stackslib/src/chainstate/stacks/boot/mod.rs] [Cross-Function: Reward Set Construction] If make_signer_set returns None but make_reward_set proceeds with addresses, could this create a state where rewards exist but no valid signers? (Critical)",
+  "[File: stackslib/src/chainstate/stacks/boot/mod.rs] [Cross-Function: PoX Cycle Handling] If mark_pox_cycle_handled is called before handle_pox_cycle_missed_unlocks completes due to an error, could the cycle be marked as handled without processing unlocks? (Critical)"
+]

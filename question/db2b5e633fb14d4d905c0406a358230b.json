@@ -1,0 +1,5 @@
+[
+  "[File: stacks-core/stacks-node/src/syncctl.rs] [Function: interruptable_sleep()] [Graceful Shutdown] Does the 1-second sleep granularity mean shutdown can be delayed by up to 1 second, and could this cause issues if the node needs to shut down urgently to avoid processing invalid blocks? (Low)",
+  "[File: stacks-core/stacks-node/src/syncctl.rs] [Function: pox_sync_wait()] [Caller Invariant] Does calling code assume that max_sync_height is always greater than or equal to burnchain_tip.block_snapshot.block_height, and could violations of this assumption cause the caller to skip necessary burnchain sync? (High)",
+  "[File: stacks-core/stacks-node/src/syncctl.rs] [Function: pox_sync_wait()] [Progress Guarantee] If this function returns successfully, is the caller guaranteed that it's safe to process burnchain blocks up to max_sync_height, or could concurrent Stacks block downloads still be incomplete? (Critical)"
+]

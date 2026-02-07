@@ -1,0 +1,4 @@
+[
+  "[File: stackslib/src/net/stackerdb/config.rs] [Lazy Static: REQUIRED_FUNCTIONS] [Static Initialization] Lines 64-116 define a lazy_static with expect() calls - if any of these expects fail during static initialization, the program would panic at an unpredictable time. Are these guaranteed to never fail? (Medium)",
+  "[File: stackslib/src/net/stackerdb/config.rs] [Function: eval_signer_slots()] [Total Slots Zero] If all signers specify num_slots = 0, then total_num_slots = 0 at line 275 - is a StackerDB with zero total slots valid, and if so, what are the implications? (Medium)"
+]

@@ -1,0 +1,14 @@
+[
+  "[File: stackslib/src/core/mempool.rs] [Struct: CandidateCache] [Reset Logic] Appends next to cache, then swaps. Could this temporarily double memory usage if both cache and next are at max size? (Low)",
+  "[File: stackslib/src/core/mempool.rs] [Struct: TxTag] [SipHash Seed] Uses SipHasher with node-local seed. Could seed collisions between nodes cause identical txtag sets, reducing mempool sync effectiveness? (Low)",
+  "[File: stackslib/src/core/mempool.rs] [Struct: MemPoolTxInfo] [Transaction Verification] from_row() checks if tx.txid() matches metadata.txid. Could a database corruption where these don't match cause ParseError, preventing mempool reads? (Medium)",
+  "[File: stackslib/src/core/mempool.rs] [Struct: MemPoolTxInfoPartial] [Fee Rate Option] fee_rate is Option<f64>. Could None values in arithmetic operations cause panics or incorrect comparisons? (Low)",
+  "[File: stackslib/src/core/mempool.rs] [Function: get_tx_metadata_by_address()] [Dynamic SQL] Constructs SQL with format!() based on is_origin parameter. Could this create SQL injection vulnerability if parameter handling changes? (Low)",
+  "[File: stackslib/src/core/mempool.rs] [Function: find_origin_addresses_by_descending_fees()] [Offset Pagination] Uses OFFSET for pagination. Could large offsets cause performance degradation when scanning high-fee addresses? (Low)",
+  "[File: stackslib/src/core/mempool.rs] [Function: consensus_serialize() for TxTag] [No Length Prefix] Writes raw 8 bytes without length prefix. Could this cause deserialization to consume wrong bytes if TxTag format changes? (Low)",
+  "[File: stackslib/src/core/mempool.rs] [Function: consensus_serialize() for MemPoolSyncData] [Data ID Tag] Uses u8 enum for discriminant. Could unknown data_id values from newer protocol versions cause deserialization failures? (Medium)",
+  "[File: stackslib/src/core/mempool.rs] [Function: consensus_deserialize() for MemPoolSyncData] [Error Message] Returns descriptive error for unknown MemPoolSyncDataID. Could this leak information about internal protocol details to attackers? (Low)",
+  "[File: stackslib/src/core/mempool.rs] [Function: decode_tx_stream()] [MAX_MESSAGE_LEN Bound] Uses BoundReader with MAX_MESSAGE_LEN limit. Could a transaction stream just under the limit cause memory exhaustion when buffering? (Medium)",
+  "[File: stackslib/src/core/mempool.rs] [Function: decode_tx_stream()] [Retry Logic] Uses RetryReader for partial reads. Could an attacker craft a stream that triggers maximum retries on every transaction, causing DoS? (Medium)",
+  "[File: stackslib/src/core/mempool.rs] [Function: decode_tx_stream()] [Expect EOF Flag] Sets expect_eof flag after DeserializeError. Could legitimate deserialization errors be misinterpreted as EOF, causing valid transactions to be skipped? (High)"
+]

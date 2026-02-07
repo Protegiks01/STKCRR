@@ -1,0 +1,6 @@
+[
+  "[File: stacks-core/stackslib/src/net/api/blocksimulate.rs] [Function: parse_json()] [Empty Collections] Lines 72-90 accept empty transactions_hex and mint arrays. Is simulating a block with zero transactions and zero mints a valid use case, or does it cause division-by-zero or other errors in remine_nakamoto_block? (Low)",
+  "[File: stacks-core/stackslib/src/net/api/blocksimulate.rs] [Function: try_parse_request()] [Boundary Testing] Line 192 checks content_length > MAX_PAYLOAD_LEN. What happens at exactly MAX_PAYLOAD_LEN? Is there an off-by-one error that allows payloads of MAX_PAYLOAD_LEN+1 bytes? (Medium)",
+  "[File: stacks-core/stackslib/src/net/api/blocksimulate.rs] [Function: block_simulate()] [Genesis Block] Line 102 attempts to remine based on block_id. Can an attacker specify the genesis block ID, causing undefined behavior when trying to remine a block with no parent? (Medium)",
+  "[File: stacks-core/stackslib/src/net/api/blocksimulate.rs] [Function: try_parse_request()] [Unicode Handling] Line 159 compares auth_header (String) with password. If either contains non-ASCII characters or different Unicode normalization forms, could the comparison fail unexpectedly? (Low)"
+]

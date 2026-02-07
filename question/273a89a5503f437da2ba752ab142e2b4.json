@@ -1,0 +1,3 @@
+[
+  "[File: stackslib/src/net/api/getsigner.rs] [Function: try_parse_response()] [Dependency] Can parse_json at line 163 be exploited with malformed JSON that triggers panics in the serde deserializer? (Medium)"
+]

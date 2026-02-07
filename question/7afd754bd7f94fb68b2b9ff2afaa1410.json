@@ -1,0 +1,8 @@
+[
+  "[File: stacks-core/stacks-common/src/util/secp256k1/wasm.rs] [Cryptographic] [Side Channel] Do any operations (signing, verification, key derivation) execute in constant time, or could timing side channels leak information about keys or signatures? (Medium)",
+  "[File: stacks-core/stacks-common/src/util/secp256k1/wasm.rs] [Cryptographic] [Fault Injection] Could fault injection attacks during signature generation at line 340 or 369 produce signatures that leak the private key when analyzed? (High)",
+  "[File: stacks-core/stacks-common/src/util/secp256k1/wasm.rs] [Validation] [Signature Length] Before accessing indices 0-64 in signatures, is the length always validated to be exactly 65 bytes, or could shorter/longer signatures cause out-of-bounds access? (High)",
+  "[File: stacks-core/stacks-common/src/util/secp256k1/wasm.rs] [Validation] [Public Key Point] Is there validation that parsed public keys represent valid curve points (not just well-formed encodings), or could invalid curve points pass parsing? (Critical)",
+  "[File: stacks-core/stacks-common/src/util/secp256k1/wasm.rs] [Validation] [Private Key Range] Besides the curve order check, are there other range validations on private keys (e.g., rejecting specific weak values) that should be enforced? (Medium)",
+  "[File: stacks-core/stacks-common/src/util/secp256k1/wasm.rs] [Validation] [Message Digest] Should the sign and verify functions validate that the message is a properly formatted hash output (e.g., from SHA256), or can arbitrary 32-byte values be used? (Low)"
+]

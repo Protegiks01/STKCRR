@@ -1,0 +1,16 @@
+[
+  "[File: stacks-core/stacks-common/src/util/uint.rs] [Function: mul_u32()] [Upper Lower Split] The split into upper and lower at lines 94-95 assumes 32-bit boundaries - can this fail for values near u64::MAX? (Medium)",
+  "[File: stacks-core/stacks-common/src/util/uint.rs] [Function: mul_u32()] [Overflow Addition] The final addition `$name(ret) + $name(carry)` at line 105 could itself overflow - is this handled correctly? (High)",
+  "[File: stacks-core/stacks-common/src/util/uint.rs] [Function: Debug::fmt()] [Display Consistency] The Debug implementation at line 462 formats in big-endian (reversed), but does this match the expected display format for debugging? Can this cause confusion? (Low)",
+  "[File: stacks-core/stacks-common/src/util/uint.rs] [Function: Display::fmt()] [Display Delegation] The Display trait at line 470 delegates to Debug - is this appropriate, or should display differ from debug output? (Low)",
+  "[File: stacks-core/stacks-common/src/util/uint.rs] [Derive: Serialize/Deserialize] The types derive Serialize and Deserialize at line 54 - is the serialization format deterministic across all platforms and serde versions? (Critical)",
+  "[File: stacks-core/stacks-common/src/util/uint.rs] [Derive: Serialize/Deserialize] Can different serde serialization formats (JSON, bincode, etc.) produce different byte representations for the same value, causing consensus divergence? (Critical)",
+  "[File: stacks-core/stacks-common/src/util/uint.rs] [Struct Layout] The #[repr(C)] attribute at line 55 affects memory layout - can this cause unexpected padding or alignment that affects serde serialization? (Medium)",
+  "[File: stacks-core/stacks-common/src/util/uint.rs] [Function: Default::default()] [Zero Default] The Default implementation at line 352 returns BitArray::zero() - is this always the appropriate default for consensus-critical code, or should initialization be explicit? (Low)",
+  "[File: stacks-core/stacks-common/src/util/uint.rs] [Function: Mul::mul()] [Expensive Operation] The multiplication loop iterates 2 * $n_words times - for Uint512, this is 16 iterations. Can an attacker trigger many expensive multiplications to DoS transaction validation? (Medium)",
+  "[File: stacks-core/stacks-common/src/util/uint.rs] [Function: Div::div()] [Expensive Operation] The division loop can iterate up to `my_bits - your_bits` times - can an attacker provide inputs that maximize this, causing DoS? (Medium)",
+  "[File: stacks-core/stacks-common/src/util/uint.rs] [Function: bits()] [Loop Cost] The bits() function loops through all words - can repeated calls in tight loops cause performance degradation? (Low)",
+  "[File: stacks-core/stacks-common/src/util/uint.rs] [Function: from_u64()] [Type Confusion] Can the Uint256 and Uint512 types be confused due to similar interfaces, causing incorrect conversions in calling code? (Medium)",
+  "[File: stacks-core/stacks-common/src/util/uint.rs] [Function: low_u32()] [Implicit Truncation] Functions that extract lower bits like low_u32 and low_u64 - can callers misuse these expecting full value, leading to logic errors? (Medium)",
+  "[File: stacks-core/stacks-common/src/util/uint.rs] [General Usage] If these uint types are used for cryptographic operations (VRF, signatures), can arithmetic errors cause private key leakage or signature forgery? (Critical)"
+]

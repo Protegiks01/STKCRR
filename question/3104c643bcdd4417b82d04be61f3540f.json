@@ -1,0 +1,8 @@
+[
+  "[File: stackslib/src/net/download/epoch2x.rs] [Function: download_blocks()] [Inventory State Check] At lines 2355-2366, if no inventory state is available, NotConnected is returned - can this prevent downloads during initial sync? (High)",
+  "[File: stackslib/src/net/download/epoch2x.rs] [Function: download_blocks()] [Downloader Initialization] At lines 2368-2370, the downloader is initialized if None - can race conditions cause multiple initializations? (Low)",
+  "[File: stackslib/src/net/download/epoch2x.rs] [Function: download_blocks()] [Inventory State Access] At lines 2372-2379, inventory state is accessed without lock protection - can concurrent modifications cause issues? (Medium)",
+  "[File: stackslib/src/net/download/epoch2x.rs] [Function: download_blocks()] [Throttling Logic] At lines 2387-2401, downloads are throttled when not in IBD - can this prevent catching up to the chain tip during network partitions? (Medium)",
+  "[File: stackslib/src/net/download/epoch2x.rs] [Function: download_blocks()] [Inventory Update Detection] At line 2391, last_inv_update_at is compared to detect changes - can clock issues cause this comparison to fail? (Medium)",
+  "[File: stackslib/src/net/download/epoch2x.rs] [Function: download_blocks()] [Rescan Trigger] At lines 2403-2410, a rescan is triggered if the download interval has passed - can this cause excessive rescans? (Low)"
+]

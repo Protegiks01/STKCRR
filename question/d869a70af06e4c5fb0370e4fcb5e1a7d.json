@@ -1,0 +1,4 @@
+[
+  "[File: stacks-core/stackslib/src/net/api/getblock.rs] [Function: generate_next_chunk()] [Slow Read DoS] If the block file is on slow storage or network-mounted filesystem, could an attacker trigger many concurrent reads to exhaust I/O bandwidth or thread pool resources? (Medium)",
+  "[File: stacks-core/stackslib/src/net/api/getblock.rs] [Function: try_parse_request()] [CPU Exhaustion] The regex match and hex parsing occur on every request - could an attacker send many requests with invalid block IDs to consume CPU time in validation? (Low)"
+]

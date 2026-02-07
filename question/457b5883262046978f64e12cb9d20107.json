@@ -1,0 +1,4 @@
+[
+  "[File: stacks-core/stacks-common/build.rs] [Function: main()] [Rerun Directive] The cargo:rerun-if-changed directive only watches versions.toml - could changes to the build.rs script itself or git state go undetected, causing stale version information? (Low)",
+  "[File: stacks-core/stacks-common/build.rs] [Function: main()] [Generated Code Format] The generated Rust code has no header comment explaining it's auto-generated - could developers accidentally modify versions.rs thinking it's source code, causing build confusion? (Low)"
+]

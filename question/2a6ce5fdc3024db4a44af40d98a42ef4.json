@@ -1,0 +1,4 @@
+[
+  "[File: stacks-core/stacks-common/src/address/c32_old.rs] [Multiple Functions] [Integer Arithmetic] Are all bit shift operations throughout the file safe from undefined behavior when shift amounts equal or exceed the bit width of the operand type? (High)",
+  "[File: stacks-core/stacks-common/src/address/c32_old.rs] [Multiple Functions] [Memory Safety] Can crafted inputs cause excessive memory allocation in the Vec operations, leading to OOM conditions or DoS? (Medium)"
+]

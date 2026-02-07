@@ -1,0 +1,4 @@
+[
+  "[File: stackslib/src/net/neighbors/walk.rs] [Function: step()] [fmin/fmax Macros] The function uses `fmin!` and `fmax!` macros (lines 1538-1541), but are these defined correctly to handle NaN and infinity edge cases? (Medium)",
+  "[File: stackslib/src/net/neighbors/walk.rs] [Function: step()] [Degree Ratio Caching] The function calls `degree_ratio()` multiple times (lines 1513, 1535, 1537), but could caching these results improve performance and prevent timing-based attacks? (Low)"
+]

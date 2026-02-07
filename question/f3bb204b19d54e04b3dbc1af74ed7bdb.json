@@ -1,0 +1,17 @@
+[
+  "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: spawn_validation_thread()] [Thread Join Handle Unused] JoinHandle returned but caller may not wait - can orphaned threads accumulate? (Medium)",
+  "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: spawn_validation_thread()] [Callback Notification Race] receiver.notify_proposal_result called after validation - can race conditions cause missed notifications? (Medium)",
+  "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: validate()] [Error Conversion Loss] ChainError converted to BlockValidateRejectReason - can error details be lost in conversion? (Medium)",
+  "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: validate()] [Question Mark Operator] Multiple ? operators used - can error propagation skip cleanup logic? (Medium)",
+  "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: validate_replay()] [Early Return Impact] Multiple early returns in replay validation - can these leave state partially modified? (Medium)",
+  "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: validate()] [Tenure Change Payload] tenure_change extracted as Option - can blocks have invalid tenure change structures that pass as None? (High)",
+  "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: validate()] [MinerTenureInfoCause Derivation] Cause derived from TenureChange payload - can malformed payloads cause incorrect cause? (High)",
+  "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: validate_replay()] [Loop Break Conditions] Multiple break conditions in replay loop - can these be manipulated to skip validation? (High)",
+  "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: validate_replay()] [Continue After Error] continue statement allows dropping problematic replay txs - can this be abused to skip required transactions? (High)",
+  "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: validate()] [Size Bytes Calculation] get_bytes_so_far returns size - but is this accurate if block structure changed during validation? (High)",
+  "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: try_parse_request()] [MAX_PAYLOAD_LEN Check] Content-Length checked against MAX_PAYLOAD_LEN - but is actual body length verified? (High)",
+  "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: validate()] [Empty Transaction List] What happens if self.block.txs is empty - can empty blocks pass validation? (Medium)",
+  "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: validate()] [Transaction Ordering] Transactions iterated in order - but is this order validated against consensus rules? (High)",
+  "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: validate_replay()] [Empty Replay Set] If replay_txs is Some(vec![]) - does validation behave correctly? (Medium)",
+  "[File: stackslib/src/net/api/postblock_proposal.rs] [Function: validate_replay()] [Replay Set Clone] replay_txs cloned and converted to VecDeque - can clone fail for large sets? (Low)"
+]

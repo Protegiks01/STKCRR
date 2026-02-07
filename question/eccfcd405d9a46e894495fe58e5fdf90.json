@@ -1,0 +1,5 @@
+[
+  "[File: stackslib/src/net/api/getstackerdbmetadata.rs] [Function: try_handle_request()] [Dependency Vulnerabilities] The code relies on external parsing (get_contract_address, parse_json, serde_json). Are these dependencies audited for vulnerabilities that could be triggered through this endpoint? (Medium)",
+  "[File: stackslib/src/net/api/getstackerdbmetadata.rs] [Function: try_parse_request()] [Regex Compilation] Is the regex at lines 49-54 compiled once and reused, or compiled per request? Could regex compilation be a DoS vector if triggered repeatedly? (Low)",
+  "[File: stackslib/src/net/api/getstackerdbmetadata.rs] [Function: try_handle_request()] [Transaction Ordering] If StackerDB metadata changes during a tenure, could serving stale metadata cause clients to make incorrect decisions about slot writes, leading to rejected transactions? (Medium)"
+]

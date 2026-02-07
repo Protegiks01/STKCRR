@@ -1,0 +1,5 @@
+[
+  "[File: stackslib/src/burnchains/indexer.rs] [Trait: BurnchainIndexer] [Missing Constraint] Is there a maximum header range that read_headers() should enforce to prevent DoS, or is this left to implementations? (High)",
+  "[File: stackslib/src/burnchains/indexer.rs] [Trait: BurnchainIndexer] [Missing Constraint] Should sync_headers() enforce start_height <= end_height, or can implementations handle reversed ranges differently? (Medium)",
+  "[File: stackslib/src/burnchains/indexer.rs] [Trait: BurnchainBlockParser] [Missing Constraint] Should parse() enforce that block height matches the epoch_id parameter, or is this validation optional? (Critical)"
+]

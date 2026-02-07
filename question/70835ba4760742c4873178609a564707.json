@@ -1,0 +1,22 @@
+[
+  "[File: stackslib/src/burnchains/burnchain.rs] [Function: Burnchain::get_highest_burnchain_block()] [DB Not Initialized] Lines 1413-1416 handle NoDBError. Could other database errors be misinterpreted as no blocks processed? (Low)",
+  "[File: stackslib/src/burnchains/burnchain.rs] [Function: Burnchain::get_highest_burnchain_block()] [Missing Parent] Lines 1424-1427 handle MissingParentBlock as empty database. Could this hide actual data corruption? (Medium)",
+  "[File: stackslib/src/burnchains/burnchain.rs] [Function: Burnchain::handle_thread_join()] [Join Error] Lines 456-461 handle join errors. Could a thread panic without proper error propagation? (Medium)",
+  "[File: stackslib/src/burnchains/burnchain.rs] [Function: Burnchain::handle_thread_join()] [Result Unwrapping] Lines 457-461 match on Ok(Ok(val)). Could nested errors be mishandled? (Low)",
+  "[File: stackslib/src/burnchains/burnchain.rs] [Function: Burnchain::new()] [Network Validation] Lines 474-493 match on chain_name and network_name. Could an attacker provide values that match multiple branches? (Medium)",
+  "[File: stackslib/src/burnchains/burnchain.rs] [Function: Burnchain::new()] [PoX Constants] Lines 475-478 set PoxConstants based on network. Could misconfigured constants cause consensus divergence? (Critical)",
+  "[File: stackslib/src/burnchains/burnchain.rs] [Function: Burnchain::new()] [Unsupported Burnchain] Lines 490-492 return UnsupportedBurnchain error for unknown networks. Could this prevent future burnchain support? (Low)",
+  "[File: stackslib/src/burnchains/burnchain.rs] [Function: Burnchain::is_mainnet()] [Deprecated] Lines 511-515 implement is_mainnet() which is marked deprecated and broken. Could calling code still depend on this? (Medium)",
+  "[File: stackslib/src/burnchains/burnchain.rs] [Function: Burnchain::get_chainstate_path_str()] [Path Conversion] Lines 669-672 convert PathBuf to str. Could non-UTF8 paths cause unwrap() to panic? (Low)",
+  "[File: stackslib/src/burnchains/burnchain.rs] [Function: Burnchain::get_chainstate_config_path()] [Config Path] Lines 675-681 construct config path. Could path traversal allow reading arbitrary files? (Low)",
+  "[File: stackslib/src/burnchains/burnchain.rs] [Function: Burnchain::setup_chainstate_dirs()] [Directory Creation] Lines 688-691 create directories. Could an attacker create malicious symlinks before directory creation? (Low)",
+  "[File: stackslib/src/burnchains/burnchain.rs] [Function: Burnchain::get_db_path()] [Path Construction] Lines 719-725 construct database path. Could path injection allow writing to arbitrary locations? (Low)",
+  "[File: stackslib/src/burnchains/burnchain.rs] [Function: Burnchain::get_burnchaindb_path()] [Memory Path] Lines 729-731 check for :memory: string. Could this check be bypassed with Unicode tricks? (Low)",
+  "[File: stackslib/src/burnchains/burnchain.rs] [Function: Burnchain::setup_chainstate()] [Headers Path] Lines 698-705 get headers path and check existence. Could a race condition cause headers file to be deleted after check? (Low)",
+  "[File: stackslib/src/burnchains/burnchain.rs] [Function: Burnchain::setup_chainstate()] [Initial Sync] Lines 707-715 perform initial header sync. Could this fail partway and leave headers in an inconsistent state? (Medium)",
+  "[File: stackslib/src/burnchains/burnchain.rs] [Function: BurnchainBlock::block_height()] [Match Exhaustiveness] Line 405 matches only Bitcoin variant. Could future burnchain types cause this to fail? (Low)",
+  "[File: stackslib/src/burnchains/burnchain.rs] [Function: BurnchainBlock::header()] [Header Construction] Lines 440-446 construct BurnchainBlockHeader. Could the num_txs calculation overflow with u64? (Low)",
+  "[File: stackslib/src/burnchains/burnchain.rs] [Function: BurnchainRecipient::try_from_bitcoin_output()] [Output Parsing] Lines 392-399 parse Bitcoin output. Could a malformed output be accepted if PoxAddress parsing is lenient? (Medium)",
+  "[File: stackslib/src/burnchains/burnchain.rs] [Function: BurnchainStateTransitionOps::from()] [Data Loss] Lines 82-86 only copy accepted_ops and consumed_leader_keys. Could other fields from BurnchainStateTransition be needed? (Low)",
+  "[File: stackslib/src/burnchains/burnchain.rs] [Function: BurnchainStateTransition::from_block_ops()] [Prepare Phase Window] Lines 232-298 handle prepare phase windowing. If a reward cycle starts exactly at a prepare phase boundary, could window calculation be incorrect? (Critical)"
+]

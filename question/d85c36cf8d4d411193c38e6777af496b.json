@@ -1,0 +1,15 @@
+[
+  "[File: stackslib/src/net/api/poststackerdbchunk.rs] [Function: try_handle_request()] [Signer Validation] Does try_replace_chunk() at line 182 validate the signature against the correct public key for the slot, or can wrong-slot signatures be accepted? (Critical)",
+  "[File: stackslib/src/net/api/poststackerdbchunk.rs] [Function: try_handle_request()] [Authorization Check Bypass] Can the StackerDB not found checks at lines 166-181 be bypassed by exploiting race conditions in tx_begin() or get_stackerdb_id()? (High)",
+  "[File: stackslib/src/net/api/poststackerdbchunk.rs] [Function: try_handle_request()] [Slot Ownership] Does the system properly enforce that only the slot owner can write to their assigned slot_id, or can cross-slot writes occur? (Critical)",
+  "[File: stackslib/src/net/api/poststackerdbchunk.rs] [Function: try_handle_request()] [Log Injection] Can attacker-controlled data in test_debug!() at lines 187-193 or error!() at lines 199-202 inject malicious content into logs? (Low)",
+  "[File: stackslib/src/net/api/poststackerdbchunk.rs] [Function: try_handle_request()] [Sensitive Data Logging] Does debug!() at lines 254-260 log chunk data that might contain sensitive information visible in production logs? (Low)",
+  "[File: stackslib/src/net/api/poststackerdbchunk.rs] [Function: try_handle_request()] [Error Logging] Can error messages expose stack traces, memory addresses, or internal state that aids attackers? (Low)",
+  "[File: stackslib/src/net/api/poststackerdbchunk.rs] [Function: try_parse_request()] [Empty Body Edge Case] Does the content-length == 0 check at line 75 prevent all empty body attacks, or can whitespace-only bodies bypass it? (Low)",
+  "[File: stackslib/src/net/api/poststackerdbchunk.rs] [Function: try_handle_request()] [Zero Slot ID] Can slot_id = 0 be used to write to a special system slot or cause integer underflow in slot indexing? (Medium)",
+  "[File: stackslib/src/net/api/poststackerdbchunk.rs] [Function: try_handle_request()] [Maximum Version] Can slot_version = u32::MAX cause overflow when incrementing version numbers or comparing versions? (Medium)",
+  "[File: stackslib/src/net/api/poststackerdbchunk.rs] [Function: try_handle_request()] [Empty Chunk Data] Can stackerdb_chunk.data be an empty Vec causing zero-byte writes that might bypass validation or storage logic? (Low)",
+  "[File: stackslib/src/net/api/poststackerdbchunk.rs] [Function: try_parse_request()] [Content-Type Validation] Does the handler validate Content-Type header is application/json, or can other content types be sent causing parsing ambiguity? (Low)",
+  "[File: stackslib/src/net/api/poststackerdbchunk.rs] [Function: try_handle_request()] [HTTP Status Code] Does HttpResponsePreamble::ok_json() at line 291 always return 200 OK even for rejected chunks (accepted=false), violating HTTP semantics? (Medium)",
+  "[File: stackslib/src/net/api/poststackerdbchunk.rs] [Function: metrics_identifier()] [Metrics Confusion] Can the metrics identifier at lines 62-64 be exploited to pollute metrics with fake data or cause metric cardinality explosion? (Low)"
+]

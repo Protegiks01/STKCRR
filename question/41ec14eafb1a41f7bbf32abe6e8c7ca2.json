@@ -1,0 +1,7 @@
+[
+  "[File: stacks-core/stackslib/src/net/neighbors/rpc.rs] [Function: poll_next_reply()] [Socket Saturation] The HttpPeer::saturate_http_socket() call on line 292 attempts to flush data - can an attacker trigger this repeatedly with large payloads to cause CPU/bandwidth exhaustion? (Medium)",
+  "[File: stacks-core/stackslib/src/net/neighbors/rpc.rs] [Function: send_request()] [Event ID Overflow] Event IDs are represented as usize - can long-running nodes experience event_id overflow or wrap-around, causing event ID collisions and request/response mismatches? (Low)",
+  "[File: stacks-core/stackslib/src/net/neighbors/rpc.rs] [Function: collect_replies()] [Memory Leak] If poll_next_reply() repeatedly returns Ok(None) for a stuck connection that never completes, does the request remain in memory indefinitely until the node restarts? (High)",
+  "[File: stacks-core/stackslib/src/net/neighbors/rpc.rs] [Function: is_dead_or_broken()] [State Pollution] Once a neighbor is marked dead or broken, is there any mechanism to clear this state, or do these sets grow unbounded over the node's lifetime? (Medium)",
+  "[File: stacks-core/stackslib/src/net/neighbors/rpc.rs] [Function: send_request()] [Connection State Validation] Before calling connect_http(), does the code validate that the existing connection state is not in an inconsistent or error state that could cause undefined behavior? (Medium)"
+]

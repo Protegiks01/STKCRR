@@ -1,0 +1,10 @@
+[
+  "[File: stackslib/src/net/api/getinfo.rs] [Function: from_network()] [Consensus] Can stacks_tip_height be less than tenure_height, violating the invariant that tenure height should not exceed chain tip height? (High)",
+  "[File: stackslib/src/net/api/getinfo.rs] [Function: from_network()] [Consensus] Can burn_block_height be less than stable_burn_block_height due to a race condition or reorg, violating causality? (Critical)",
+  "[File: stackslib/src/net/api/getinfo.rs] [Function: from_network()] [Data Consistency] If exit_at_block_height is set and less than current stacks_tip_height, does this indicate the node should have stopped but hasn't? (Medium)",
+  "[File: stackslib/src/net/api/getinfo.rs] [Function: from_network()] [Performance] Do the multiple clone() operations (lines 119, 121, 127-128, 133, 137-138) cause performance issues when handling high volumes of /v2/info requests? (Low)",
+  "[File: stackslib/src/net/api/getinfo.rs] [Function: from_network()] [Memory Safety] Can any of the cloned fields contain dangling references or invalidated data if the source structures are modified concurrently? (Medium)",
+  "[File: stackslib/src/net/api/getinfo.rs] [Function: from_network()] [Validation] Is there any validation that the consensus_hash values are non-zero and properly formatted before being exposed in the response? (Medium)",
+  "[File: stackslib/src/net/api/getinfo.rs] [Function: from_network()] [Validation] Are block hashes validated to be non-zero and of correct length before being included in the response? (Medium)",
+  "[File: stackslib/src/net/api/getinfo.rs] [Function: from_network()] [Type Safety] Can the StacksBlockId type used for unanchored_tip at line 101 be constructed with invalid or malformed data? (Medium)"
+]

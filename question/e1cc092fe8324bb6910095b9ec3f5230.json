@@ -1,0 +1,4 @@
+[
+  "[File: stackslib/src/net/api/gettenureblocksbyhash.rs] [Struct: RPCNakamotoTenureBlocksByHashRequestHandler] [Concurrency] If the same handler instance is used across multiple threads, could concurrent access to the mutable burnchain_block_hash field at line 32 cause data races or undefined behavior? (High)",
+  "[File: stackslib/src/net/api/gettenureblocksbyhash.rs] [Function: try_handle_request()] [Error Handling] When an error occurs during stream creation or node state access, does the handler properly reset its internal state so it can handle subsequent requests, or could errors leave it in a corrupt state? (Medium)"
+]

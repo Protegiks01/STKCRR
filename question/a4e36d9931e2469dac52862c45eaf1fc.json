@@ -1,0 +1,14 @@
+[
+  "[File: stacks-core/stackslib/src/net/api/mod.rs] [Function: register_rpc_methods()] [Account Balance Race] Can getaccount (line 95) return account balances during state transitions, exposing intermediate inconsistent states? (Medium)",
+  "[File: stacks-core/stackslib/src/net/api/mod.rs] [Function: register_rpc_methods()] [STX Transfer Cost Manipulation] Can getstxtransfercost (line 123) return manipulated costs that cause transaction fee miscalculations? (Medium)",
+  "[File: stacks-core/stackslib/src/net/api/mod.rs] [Function: register_rpc_methods()] [Attachment DoS] Can getattachment (line 96) be exploited to retrieve unlimited-size attachments, causing memory exhaustion? (Medium)",
+  "[File: stacks-core/stackslib/src/net/api/mod.rs] [Function: register_rpc_methods()] [Inventory Flood] Can getattachmentsinv (line 97) return malicious inventory data that causes clients to request non-existent attachments? (Low)",
+  "[File: stacks-core/stackslib/src/net/api/mod.rs] [Function: register_rpc_methods()] [StackerDB Chunk Tampering] Can getstackerdbchunk (line 124) return tampered chunks if the underlying signature validation is bypassed? (High)",
+  "[File: stacks-core/stackslib/src/net/api/mod.rs] [Function: register_rpc_methods()] [Metadata Forgery] Can getstackerdbmetadata (lines 126-128) return forged metadata that causes clients to accept invalid StackerDB data? (High)",
+  "[File: stacks-core/stackslib/src/net/api/mod.rs] [Function: register_rpc_methods()] [Replica List Manipulation] Can liststackerdbreplicas (lines 151-153) return manipulated replica lists to redirect clients to malicious nodes? (Medium)",
+  "[File: stacks-core/stackslib/src/net/api/mod.rs] [Function: register_rpc_methods()] [Neighbor Poisoning] Can getneighbors (line 122) return malicious neighbor lists to eclipse attack targets? (High)",
+  "[File: stacks-core/stackslib/src/net/api/mod.rs] [Function: register_rpc_methods()] [Info Disclosure via Peer] Can getinfo (line 108) leak sensitive node configuration or internal state to attackers? (Medium)",
+  "[File: stacks-core/stackslib/src/net/api/mod.rs] [Function: register_rpc_methods()] [Transaction Visibility Race] Can gettransaction (line 148) and gettransaction_unconfirmed (lines 145-147) return conflicting transaction states? (Medium)",
+  "[File: stacks-core/stackslib/src/net/api/mod.rs] [Function: register_rpc_methods()] [Unconfirmed TX Manipulation] Can gettransaction_unconfirmed expose sensitive unconfirmed transactions that should remain private? (Low)",
+  "[File: stacks-core/stackslib/src/net/api/mod.rs] [Function: register_rpc_methods()] [Tenure Tip Inconsistency] Do gettenuretip (line 133) and get_tenure_tip_meta (lines 134-136) return consistent tenure tip information across all fork scenarios? (High)"
+]

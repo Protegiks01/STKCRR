@@ -1,0 +1,7 @@
+[
+  "[File: stackslib/src/net/httpcore.rs] [Function: StacksHttp::try_parse_error_response()] [JSON Parsing Failure] If serde_json::from_reader() fails, returns DeserializeError(\\",
+  "[File: stackslib/src/net/httpcore.rs] [Function: StacksHttp::preamble_size_hint()] [Size Hint Accuracy] Returns HTTP_PREAMBLE_MAX_ENCODED_SIZE. If actual preambles are much smaller, does the caller over-allocate buffers? Can attackers exploit this to cause memory exhaustion via many concurrent connections? (Low)",
+  "[File: stackslib/src/net/httpcore.rs] [Function: StacksHttp::payload_len()] [Length Availability] For Request, returns Some(content_length). For Response, returns content_length if present. If a Response has no Content-Length but also no Transfer-Encoding: chunked, does this return None incorrectly? (Medium)",
+  "[File: stackslib/src/net/httpcore.rs] [Function: StacksHttp::payload_len()] [Length Overflow] If content_length is near u64::MAX, casting to usize could truncate on 32-bit systems. Can attackers exploit this to bypass buffer size checks by sending huge content_length values? (High)",
+  "[File: stackslib/src/net/httpcore.rs] [Function: StacksHttp::verify_payload_bytes()] [No Verification] Returns Ok(()) unconditionally. The comment suggests signatures could be added. Can attackers exploit the lack of payload verification to send tampered responses that bypass integrity checks? (Medium)"
+]
