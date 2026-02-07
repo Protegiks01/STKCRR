@@ -1,4 +1,0 @@
-[
-  "[File: stacks-core/stackslib/src/net/prune.rs] [Scenario: Concurrent Pruning] Can concurrent calls to `prune_frontier` from multiple threads cause race conditions in peer removal, leading to double-free or use-after-free conditions? (Critical)",
-  "[File: stacks-core/stackslib/src/net/prune.rs] [Scenario: Asymmetric Pruning] If two nodes prune each other's connections non-deterministically due to RNG differences, can this lead to network instability or partitioning? (Medium)"
-]
