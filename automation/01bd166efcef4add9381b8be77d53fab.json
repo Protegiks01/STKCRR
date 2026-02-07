@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: stackslib/src/net/api/getattachment.rs] [Function: try_parse_request()] [Input Validation] Can an attacker bypass the 40-character hex string length check in the regex pattern by providing a hash string with leading zeros that gets normalized during Hash160::from_hex() parsing, potentially causing hash collisions or mismatched lookups? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_345803a2-7b80-4b30-ad90-05e319adf71e?mode=deep",
+    "timestamp": "2026-02-07 22:10:15.342524",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getattachment.rs] [Function: try_parse_request()] [DoS] Can an attacker trigger excessive CPU usage by sending requests with extremely long or malformed attachment_hash values that cause the regex engine to backtrack exponentially before rejection? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_2c6912cc-d743-4592-87a0-5958137daa39?mode=deep",
+    "timestamp": "2026-02-07 22:10:27.588479",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getattachment.rs] [Function: try_parse_request()] [Input Validation] Does the content-length check at line 65 properly handle integer overflow or negative content-length values in the preamble, potentially allowing non-zero body data to pass through? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_7b2af47d-c789-42a6-8046-c593184a3ca4?mode=deep",
+    "timestamp": "2026-02-07 22:10:41.050804",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getattachment.rs] [Function: try_parse_request()] [Parsing] Can Hash160::from_hex() at lines 79-80 accept invalid hex encodings (uppercase/lowercase mixing, non-hex characters) that could lead to inconsistent hash representation across different nodes? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_6aca4ce7-e5ee-4313-af42-338e46b9cfed?mode=deep",
+    "timestamp": "2026-02-07 22:10:54.239415",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getattachment.rs] [Function: try_parse_request()] [Error Handling] Does the DecodeError returned at line 80 leak sensitive information about the internal hash parsing implementation that could aid attackers in crafting bypass attempts? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_b8cb979d-e326-44d0-8ef7-c193532a48d5?mode=deep",
+    "timestamp": "2026-02-07 22:11:07.845543",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getattachment.rs] [Function: path_regex()] [ReDoS] Can the regex pattern at line 49 be exploited with specially crafted input strings to cause catastrophic backtracking, leading to DoS through CPU exhaustion? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_10b4aa94-47ab-47df-9343-a1d62f6715e7?mode=deep",
+    "timestamp": "2026-02-07 22:11:22.585806",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getattachment.rs] [Function: try_parse_request()] [State Corruption] If try_parse_request() is called multiple times on the same handler instance before restart(), can the attachment_hash field be overwritten in a way that causes subsequent requests to return incorrect attachments? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_cd7b5663-c6fb-4e02-ad5b-eea6fe728338?mode=deep",
+    "timestamp": "2026-02-07 22:11:37.811310",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getattachment.rs] [Function: try_parse_request()] [Input Validation] Does the query string parsing at line 83 properly validate and sanitize query parameters, or could malicious query strings cause injection attacks or unexpected behavior in downstream code? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_f801e624-6742-4a78-a260-dc4fe050e9bc?mode=deep",
+    "timestamp": "2026-02-07 22:11:54.077506",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getattachment.rs] [Function: try_parse_request()] [Bypass] Can an attacker provide an attachment_hash that is syntactically valid hex but represents a hash value with special meaning (all zeros, all ones, max value) to trigger edge cases in the AtlasDB lookup? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_5d90b93d-5427-4471-ac7e-1fbfbe8f7378?mode=deep",
+    "timestamp": "2026-02-07 22:12:11.861561",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getattachment.rs] [Function: try_parse_request()] [Race Condition] If multiple threads call try_parse_request() concurrently on the same handler instance, can the shared mutable state in self.attachment_hash lead to race conditions where one request returns another request's attachment? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_24aceb9a-c964-4501-9104-11b7a6e461b4?mode=deep",
+    "timestamp": "2026-02-07 22:12:29.860560",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getattachment.rs] [Function: try_handle_request()] [Authorization] Does the endpoint implement any authentication or authorization checks before serving attachments, or can any peer fetch any attachment by hash without permission controls? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_cc412b2c-8f05-452e-b2f7-19f3959b33f6?mode=deep",
+    "timestamp": "2026-02-07 22:12:51.079673",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getattachment.rs] [Function: try_handle_request()] [Information Disclosure] Does the error message at line 111 ('Unable to find attachment') leak information about whether an attachment hash exists but is inaccessible vs. truly doesn't exist, enabling enumeration attacks? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_23102dd1-0ec7-4064-982e-c1222c551b48?mode=deep",
+    "timestamp": "2026-02-07 22:13:11.356870",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getattachment.rs] [Function: try_handle_request()] [State Safety] Can the with_node_state() call at lines 104-119 be interrupted or fail in a way that leaves the StacksNodeState in an inconsistent state, affecting subsequent attachment queries? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_297b7687-5f94-481b-8669-8c1204de5410?mode=deep",
+    "timestamp": "2026-02-07 22:13:31.816800",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getattachment.rs] [Function: try_handle_request()] [DoS] Can an attacker request the same large attachment repeatedly to exhaust network bandwidth or memory, since there's no apparent rate limiting or caching logic in this handler? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_b6f3cfd4-5957-4983-8421-1841529517b4?mode=deep",
+    "timestamp": "2026-02-07 22:13:51.800522",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getattachment.rs] [Function: try_handle_request()] [Data Integrity] Does find_attachment() at line 107 verify that the returned attachment's content hash matches the requested attachment_hash, or could database corruption return wrong content? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_d6b3a987-2c1c-41db-be6f-6acebf7685fa?mode=deep",
+    "timestamp": "2026-02-07 22:14:12.814016",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getattachment.rs] [Function: try_handle_request()] [Error Handling] If find_attachment() returns Ok(None), the code logs and returns 404, but if it returns Err(), does this expose different error states that leak database implementation details? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_dbee0206-9f1d-4fad-a272-15dfbbfaab38?mode=deep",
+    "timestamp": "2026-02-07 22:14:33.741609",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getattachment.rs] [Function: try_handle_request()] [Cache Poisoning] Since attachments are identified only by hash, can an attacker who knows a valid hash but provides different HTTP headers/parameters cause incorrect caching behavior in intermediary proxies? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_ae3b7b79-6455-4893-8306-d30fb3c191db?mode=deep",
+    "timestamp": "2026-02-07 22:14:55.197716",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getattachment.rs] [Function: try_handle_request()] [Resource Exhaustion] Does the attachment size have bounds checking before serialization at line 128, or could extremely large attachments cause memory exhaustion during JSON encoding? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_73df11c0-71e2-4f97-9315-f0871f5034f9?mode=deep",
+    "timestamp": "2026-02-07 22:15:16.841621",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getattachment.rs] [Function: try_handle_request()] [Timing Attack] Does the response time differ between 'attachment not found' and 'attachment found but access denied' scenarios in a way that could leak information about the existence of private attachments? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_da38e648-1f1c-43d5-af45-f926d5388382?mode=deep",
+    "timestamp": "2026-02-07 22:15:37.322311",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getattachment.rs] [Function: try_handle_request()] [State Leakage] If attachment_hash is taken via take() at lines 99-102 but the request fails before completion, does this leave the handler in an invalid state that affects error recovery? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_b4396b2f-3a6c-4745-b475-0a383d73a788?mode=deep",
+    "timestamp": "2026-02-07 22:15:58.808815",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getattachment.rs] [Function: try_parse_response()] [Deserialization] Can parse_json() at line 140 be exploited with maliciously crafted JSON to cause DoS through excessive memory allocation or deeply nested structures? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_40046877-f3c8-427e-939c-144dd6250c2a?mode=deep",
+    "timestamp": "2026-02-07 22:16:21.195198",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getattachment.rs] [Function: try_parse_response()] [Type Confusion] If the JSON response contains unexpected fields or types beyond the GetAttachmentResponse schema, does parse_json() silently ignore them or could they cause deserialization errors that crash the node? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_3c4e7484-902c-4b3c-a19f-cb966a32cc32?mode=deep",
+    "timestamp": "2026-02-07 22:16:43.205501",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getattachment.rs] [Function: try_parse_response()] [Data Validation] After deserializing GetAttachmentResponse, is there any validation that the attachment content is non-empty and within expected size bounds before returning it? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_ff733a54-7aef-43be-9825-7ce5151f756f?mode=deep",
+    "timestamp": "2026-02-07 22:17:05.678405",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getattachment.rs] [Function: try_parse_response()] [Error Handling] Does parse_json() properly handle truncated or incomplete JSON responses, or could partial responses be accepted as valid and cause downstream corruption? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_3573ecf0-0abf-43c3-8e9b-ee7e09b57cd1?mode=deep",
+    "timestamp": "2026-02-07 22:17:25.931232",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/getattachment.rs] [Function: decode_atlas_get_attachment()] [Error Information Disclosure] Does the generic error message 'Failed to load from JSON' at line 163 hide important deserialization failures that could indicate protocol violations or attacks? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_911990a2-3b3c-4c6e-aa90-cf25ab2b07f5?mode=deep",
+    "timestamp": "2026-02-07 22:17:47.561035",
+    "report_generated": false
+  }
+]
