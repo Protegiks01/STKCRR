@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: stacks-core/stackslib/src/net/neighbors/rpc.rs] [Function: send_request()] [IP Substitution] When the code extracts data_ip from the conversation, can an attacker perform DNS rebinding or IP substitution after initial authentication to redirect requests to different endpoints? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_f719dfef-4af4-4e98-a5c7-3e56f09df1e9?mode=deep",
+    "timestamp": "2026-02-07 22:21:26.791264",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/neighbors/rpc.rs] [Function: poll_next_reply()] [Connection Hijacking] When get_conversation_and_socket() returns a conversation and socket for a given event_id, can an attacker hijack this event_id by closing and reopening a connection with the same ID? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_ecc42162-c233-4bb2-a647-6c04e720ca76?mode=deep",
+    "timestamp": "2026-02-07 22:21:39.618429",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/neighbors/rpc.rs] [Function: send_request()] [Data URL Validation] The code clones convo.data_url without validation before passing to connect_http() - can this contain malicious schemes (file://, javascript:, etc.) or localhost addresses that bypass network isolation? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_37d3915b-020e-48c4-ae86-4f04b259bb45?mode=deep",
+    "timestamp": "2026-02-07 22:21:52.844580",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/neighbors/rpc.rs] [Function: is_dead()/is_broken()] [Neighbor Key Collision] The is_dead() and is_broken() checks create DropNeighbor with Unknown reason/source for comparison - can an attacker craft NeighborAddresses that produce colliding neighbor_keys, causing incorrect dead/broken state? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_e851b578-b087-4ae5-8215-a997007b0b06?mode=deep",
+    "timestamp": "2026-02-07 22:22:06.636235",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/neighbors/rpc.rs] [Function: send_request()] [Authentication Bypass] When checking for an authenticated conversation via get_neighbor_convo(&nk), can the authentication state be revoked between the check and the actual connect_http() call? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_5b800cfa-8820-430c-bd56-9e0d44420bac?mode=deep",
+    "timestamp": "2026-02-07 22:22:21.300233",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/neighbors/rpc.rs] [Function: collect_replies()] [Error Classification] When poll_next_reply() returns an error, the code adds the neighbor to 'dead' with reason DeadConnection - can protocol violations or malicious behavior be misclassified as dead connections, avoiding proper 'broken' tracking? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_a7565ce5-0ca8-46a4-b105-df989be8ef0e?mode=deep",
+    "timestamp": "2026-02-07 22:22:38.392422",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/neighbors/rpc.rs] [Function: poll_next_reply()] [Incomplete Error Handling] The poll_next_reply() function returns Ok(None) for WaitingForDNS and InProgress errors when called from collect_replies(), but returns Err() when called directly - is this inconsistency exploitable? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_c6dc35c0-a0a3-4703-9dc2-a04a3db123b8?mode=deep",
+    "timestamp": "2026-02-07 22:22:55.433397",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/neighbors/rpc.rs] [Function: send_request()] [Silent Failure] When PeerNetwork::with_http() operations fail, does the error propagation always clean up the event_id and connection state, or can partial state remain? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_322e6b62-d9ce-49cc-a752-ac1de0a4a3ca?mode=deep",
+    "timestamp": "2026-02-07 22:23:14.590867",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/neighbors/rpc.rs] [Function: poll_next_reply()] [Panic Conditions] If http.get_conversation_and_socket(event_id) returns Some conversation but None socket (or vice versa), does the let else pattern handle this correctly, or can it panic? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_f601ff1c-2af8-478c-9160-773292c6f064?mode=deep",
+    "timestamp": "2026-02-07 22:23:36.199576",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/neighbors/rpc.rs] [Function: collect_replies()] [Error Recovery] When a neighbor is marked as dead in collect_replies(), the event_id remains in the network state but is removed from the NeighborRPC state - can this event_id be reused incorrectly? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_6f4f148b-57d4-4fb2-8ba2-b21882d98700?mode=deep",
+    "timestamp": "2026-02-07 22:23:58.209650",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/neighbors/rpc.rs] [Function: send_request()] [DNS Error Handling] When the code returns WaitingForDNS, the NeighborAddress is not added to the state HashMap - does this mean the caller loses track of the request attempt, and how is retry coordination handled? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_7c588504-8fe7-4b8e-ac17-89c8b49c259c?mode=deep",
+    "timestamp": "2026-02-07 22:24:20.718327",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/neighbors/rpc.rs] [Struct: NeighborRPC] [Thread Safety] The NeighborRPC struct contains HashMap and HashSet fields but doesn't implement Send/Sync - if used from multiple threads, can concurrent access cause data races or corruption? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_e46f37fb-d564-4a3e-92ab-246215018ee7?mode=deep",
+    "timestamp": "2026-02-07 22:24:45.684079",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/neighbors/rpc.rs] [Function: collect_replies()] [Reentrancy] If collect_replies() is called recursively or from multiple call sites simultaneously on the same NeighborRPC instance, can the drain() operation on line 128 cause state inconsistency? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_02258c38-d2f6-416f-97b8-8f063e9e3464?mode=deep",
+    "timestamp": "2026-02-07 22:25:11.439443",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/neighbors/rpc.rs] [Function: send_request()] [Concurrent Modification] If two threads call send_request() with the same NeighborAddress simultaneously, can both succeed in inserting into the state HashMap, causing the first request to be lost? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_6375fa86-ed62-43e5-8120-f10a3a70e551?mode=deep",
+    "timestamp": "2026-02-07 22:25:37.543910",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/neighbors/rpc.rs] [Function: take_dead()/take_broken()] [Concurrent Access] If take_dead() and collect_replies() are called concurrently, can add_dead() in collect_replies() race with the mem::replace() in take_dead(), causing dropped neighbors to be lost? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_14cd9ee3-c61b-473b-9291-0d65195a495c?mode=deep",
+    "timestamp": "2026-02-07 22:26:05.455190",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/neighbors/rpc.rs] [Function: poll_next_reply()] [Mutable Aliasing] The poll_next_reply() function takes &mut PeerNetwork and internally calls PeerNetwork::with_http() which also takes mutable references - can this cause mutable aliasing violations? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_10c16585-e8d7-4155-a421-10825a5da41a?mode=deep",
+    "timestamp": "2026-02-07 22:26:34.971858",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/neighbors/rpc.rs] [Function: add_dead()] [Reason/Source Ignored] The add_dead() and add_broken() methods accept reason and source parameters, but is_dead() and is_broken() create dummy DropNeighbor instances with Unknown values for comparison - does this mean different failure reasons are treated identically, preventing nuanced error handling? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_38f1a8d5-d7dc-4c70-838d-2b535a657c81?mode=deep",
+    "timestamp": "2026-02-07 22:27:02.527456",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/neighbors/rpc.rs] [Function: is_dead_or_broken()] [Semantic Clarity] The distinction between 'dead' (failed communication) and 'broken' (protocol violation) implies different handling, but does the codebase actually handle these cases differently, or are they treated equivalently downstream? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_872c9c7d-982c-4dfa-96d1-419da0472bdc?mode=deep",
+    "timestamp": "2026-02-07 22:27:31.747924",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/neighbors/rpc.rs] [Function: collect_replies()] [Partial Processing] When collect_replies() processes multiple neighbors and some fail, does the partial results vector get returned, and can callers handle partial success correctly without assuming all-or-nothing semantics? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_8f8f7a70-24d0-419d-b843-e3ae715e2516?mode=deep",
+    "timestamp": "2026-02-07 22:28:01.443939",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/neighbors/rpc.rs] [Function: poll_next_reply()] [Idle Detection] The code checks if !convo.is_idle() before returning Ok(None), but what if a conversation is stuck in a non-idle state permanently - does this cause infinite retry loops? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_b739b760-026c-475b-b5d7-e0e95b5145dd?mode=deep",
+    "timestamp": "2026-02-07 22:28:32.456667",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/neighbors/rpc.rs] [Function: has_inflight()] [Semantic Guarantee] The has_inflight() method only checks the state HashMap - does it provide a strong consistency guarantee about whether a request is truly in-flight, or can the actual network state diverge? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_03ec045b-06ff-4eaf-ba1f-d5dcc63a3370?mode=deep",
+    "timestamp": "2026-02-07 22:29:01.832693",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/neighbors/rpc.rs] [Function: send_request()] [Timeout Handling] There is no visible timeout mechanism in send_request() or poll_next_reply() - can an attacker cause requests to hang indefinitely by never sending responses, exhausting the in-flight request pool? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_bc146f1b-ca34-473d-91e8-64aad6d2d83f?mode=deep",
+    "timestamp": "2026-02-07 22:29:32.175426",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/neighbors/rpc.rs] [Function: collect_replies()] [Priority Inversion] When collect_replies() processes all neighbors equally via drain(), can an attacker flood the system with slow requests to low-priority peers, delaying responses from critical peers? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_77611368-5dda-41a4-84b7-a3b77e701965?mode=deep",
+    "timestamp": "2026-02-07 22:29:59.844381",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/neighbors/rpc.rs] [Function: send_request()] [Request Size Limits] Does the code enforce any limits on the size or complexity of StacksHttpRequest objects stored in the state HashMap, or can attackers store arbitrarily large requests causing memory exhaustion? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_100595b1-f14f-454a-a9e2-4854290f00a4?mode=deep",
+    "timestamp": "2026-02-07 22:30:23.626227",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/neighbors/rpc.rs] [Function: get_peer_host()] [Missing Validation] The get_peer_host() method can return None if no conversation exists, but does the caller always check this return value before proceeding, or can None propagate and cause panics? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_5df90ace-1957-4bc4-98a9-8e1b17175e6e?mode=deep",
+    "timestamp": "2026-02-07 22:30:47.033036",
+    "report_generated": false
+  }
+]
