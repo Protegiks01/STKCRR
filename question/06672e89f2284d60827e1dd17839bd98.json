@@ -1,9 +1,0 @@
-[
-  "[File: stacks-core/stacks-common/src/address/b58.rs] [Function: from()] [BASE58_CHARS Indexing] The comparison 'x == BASE58_CHARS[0]' at line 182 assumes BASE58_CHARS has at least one element. Is this guaranteed, and what happens if the constant is somehow corrupted? (Low)",
-  "[File: stacks-core/stacks-common/src/address/b58.rs] [Function: encode_iter_utf8()] [Capacity Zero Edge Case] If the size_hint returns (0, _), the capacity calculation '1 + 0 * 7 / 5 = 1' allocates one byte. Is this sufficient for encoding zero-length input? (Low)",
-  "[File: stacks-core/stacks-common/src/address/b58.rs] [Constant: BASE58_CHARS] The BASE58_CHARS constant is defined as a static byte string at line 22. Can this constant be modified at runtime through unsafe code or memory corruption, causing incorrect encoding/decoding? (Medium)",
-  "[File: stacks-core/stacks-common/src/address/b58.rs] [Constant: BASE58_DIGITS] The BASE58_DIGITS lookup table contains Option<u8> values. Are there any indices where the mapping is ambiguous or could cause confusion between similar-looking characters? (Low)",
-  "[File: stacks-core/stacks-common/src/address/b58.rs] [Constant: BASE58_DIGITS] The BASE58_DIGITS array has exactly 128 elements. Is this size based on ASCII character range, and what happens if the codebase moves to extended Unicode support? (Low)",
-  "[File: stacks-core/stacks-common/src/address/b58.rs] [Function: from()] [Error Type] The function returns Result<Vec<u8>, Error>. Are all error variants from the Error enum properly handled by callers to avoid silent failures? (Medium)",
-  "[File: stacks-core/stacks-common/src/address/b58.rs] [Function: from_check()] [Error Propagation] Errors from from() are propagated with the ? operator at line 192. Could error context be lost in this propagation, making debugging harder? (Low)"
-]
