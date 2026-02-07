@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: stackslib/src/net/api/liststackerdbreplicas.rs] [Function: try_parse_request()] [Input Validation] Can a malicious client bypass the content-length check by sending a request with Content-Length header set to 0 but with actual body data, potentially causing the handler to process unexpected data? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_6ba8ea67-7e86-4059-9db0-d1fa64d14862?mode=deep",
+    "timestamp": "2026-02-07 22:08:38.545787",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/liststackerdbreplicas.rs] [Function: try_parse_request()] [Regex Injection] Can an attacker craft a malicious contract address or name that exploits edge cases in STANDARD_PRINCIPAL_REGEX_STRING or CONTRACT_NAME_REGEX_STRING to cause ReDoS (Regular Expression Denial of Service) during path parsing? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_ee55dee7-93c0-4e47-8865-cd9df969228b?mode=deep",
+    "timestamp": "2026-02-07 22:08:50.702556",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/liststackerdbreplicas.rs] [Function: try_parse_request()] [Input Validation] Does request::get_contract_address properly validate that the contract identifier components extracted from captures are well-formed, or can malformed Unicode or boundary cases bypass validation? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_12d4c57f-8589-4dbd-98e3-acfc20ea0b06?mode=deep",
+    "timestamp": "2026-02-07 22:09:03.388747",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/liststackerdbreplicas.rs] [Function: try_parse_request()] [State Management] If try_parse_request is called multiple times on the same handler instance without restart(), can stale contract_identifier data from a previous request leak into a new request? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9d6122d3-a256-4bbb-9575-dc4929f98abf?mode=deep",
+    "timestamp": "2026-02-07 22:09:16.714002",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/liststackerdbreplicas.rs] [Function: try_parse_request()] [Error Handling] What happens if the query string parameter contains malformed UTF-8 or excessively long data - is it properly validated before being stored in HttpRequestContents? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_63801f73-5942-41e3-a1e1-ff7ac52051e9?mode=deep",
+    "timestamp": "2026-02-07 22:09:31.736182",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/liststackerdbreplicas.rs] [Function: try_handle_request()] [DoS/Resource Exhaustion] Can an attacker repeatedly query for non-existent or invalid contract identifiers to cause expensive database operations, given that PeerDB::find_stacker_db_replicas executes a database query each time? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_bfe7ac0f-bab7-43ff-8d1a-b95c28ec8a1e?mode=deep",
+    "timestamp": "2026-02-07 22:09:46.329770",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/liststackerdbreplicas.rs] [Function: try_handle_request()] [Integer Overflow] Can get_epoch_time_secs().saturating_sub(network.get_connection_opts().max_neighbor_age) produce an incorrect min_age value if max_neighbor_age is manipulated or exceeds epoch time, potentially returning stale or invalid replicas? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_6552b2f2-cf74-4739-aaaf-dc19e6381a39?mode=deep",
+    "timestamp": "2026-02-07 22:10:02.354095",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/liststackerdbreplicas.rs] [Constant: MAX_LIST_REPLICAS] [Resource Limits] Is MAX_LIST_REPLICAS=64 sufficient to prevent resource exhaustion in the response payload, or can returning 64 neighbors with large addresses cause memory/bandwidth DoS? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_ec740f49-e3ce-489f-8041-bd4c42646f69?mode=deep",
+    "timestamp": "2026-02-07 22:10:19.548274",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/liststackerdbreplicas.rs] [Function: try_handle_request()] [Race Condition] Between the time PeerDB::find_stacker_db_replicas queries the database and the response is sent, can the underlying peer data be modified, leading to inconsistent or invalid replica lists? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_3a26f3a1-e280-4998-a052-6c8fc283e414?mode=deep",
+    "timestamp": "2026-02-07 22:10:36.285634",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/liststackerdbreplicas.rs] [Function: try_handle_request()] [Error Information Disclosure] Does the error message 'Unable to list replicas of StackerDB' expose sensitive information about database state or internal errors that could aid an attacker? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_14c2128a-b3b7-47c9-a796-33b721c94a76?mode=deep",
+    "timestamp": "2026-02-07 22:10:55.064159",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/liststackerdbreplicas.rs] [Function: try_handle_request()] [State Consistency] If contract_identifier is None when try_handle_request is called, does the SendError provide sufficient context to debug why the state is invalid, or could this mask a deeper state management bug? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_1824b24b-9a25-48e2-8c57-588dae26a79a?mode=deep",
+    "timestamp": "2026-02-07 22:11:13.994010",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/liststackerdbreplicas.rs] [Function: try_handle_request()] [Information Disclosure] Can the anynet filtering (0.0.0.0 or ::) be bypassed by encoding the anynet address in an alternative representation that passes the is_anynet() check? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_1924a354-37cb-4e17-8a74-c26572f1053c?mode=deep",
+    "timestamp": "2026-02-07 22:11:33.773787",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/liststackerdbreplicas.rs] [Function: try_handle_request()] [Access Control] If allow_private is false but a peer advertises a private IP that barely falls outside the documented private ranges (e.g., 169.254.x.x link-local), will is_in_private_range() correctly filter it? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_8cd224af-90e3-4322-91b0-a7e4e8d7399b?mode=deep",
+    "timestamp": "2026-02-07 22:11:55.458406",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/liststackerdbreplicas.rs] [Function: try_handle_request()] [Information Disclosure] Can an attacker use the private_neighbors configuration difference between nodes to fingerprint node configurations or network topology by observing which addresses are returned? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_c2971ace-12e4-40de-8f61-abe80812d4ed?mode=deep",
+    "timestamp": "2026-02-07 22:12:16.847807",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/liststackerdbreplicas.rs] [Function: try_handle_request()] [IPv6 Handling] Does the filtering logic correctly handle IPv6 addresses with different representations (compressed vs uncompressed, IPv4-mapped IPv6), or can an attacker bypass filters using alternative encodings? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9c27e6d5-9a9a-4fd5-830a-a78ab713ef89?mode=deep",
+    "timestamp": "2026-02-07 22:12:39.516347",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/liststackerdbreplicas.rs] [Function: try_handle_request()] [Filter Bypass] If a NeighborAddress is constructed with addrbytes that are initially valid but later mutated, can the filtering logic be bypassed after the filter() check but before serialization? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_089a4504-1125-47a0-88db-1ded6c3d50b6?mode=deep",
+    "timestamp": "2026-02-07 22:13:03.453273",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/liststackerdbreplicas.rs] [Function: try_handle_request()] [Logic Error] The filter returns false to exclude addresses - is this double-negative logic prone to errors where a developer might think 'return false' means 'filter this out' when it actually means 'exclude from results'? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_5021608e-eb91-48d7-aa7b-d4df1cce5e22?mode=deep",
+    "timestamp": "2026-02-07 22:13:27.387504",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/liststackerdbreplicas.rs] [Function: try_handle_request()] [Privilege Escalation] Can an attacker manipulate local_peer.stacker_dbs to inject arbitrary contracts, causing the node to advertise itself as a replica for contracts it doesn't actually host? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_93fad945-128e-4034-97a9-60f5ce2dcdaa?mode=deep",
+    "timestamp": "2026-02-07 22:13:50.528847",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/liststackerdbreplicas.rs] [Function: try_handle_request()] [Logic Consistency] Why does the local peer get inserted at position 0 (front of list) - does this create a preference/priority that could be abused, or is this intentional for optimization? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9c50bd62-7dc5-417c-9dac-3475f3922779?mode=deep",
+    "timestamp": "2026-02-07 22:14:15.172825",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/liststackerdbreplicas.rs] [Function: try_handle_request()] [Filter Bypass] Does local_peer.to_public_neighbor_addr() apply the same anynet and private range filtering as the other replicas, or can the local peer bypass these filters? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_55cef713-78e2-4b61-b639-fe5840ff49fe?mode=deep",
+    "timestamp": "2026-02-07 22:14:37.898828",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/liststackerdbreplicas.rs] [Function: try_handle_request()] [Resource Exhaustion] If local_peer.stacker_dbs contains a very large list of contracts, can repeatedly checking 'find(|contract_id| contract_id == &&contract_identifier)' cause performance degradation? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_758229c3-9279-4560-b65c-1e415715e823?mode=deep",
+    "timestamp": "2026-02-07 22:14:58.763424",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/liststackerdbreplicas.rs] [Function: try_handle_request()] [Information Disclosure] By observing whether the local peer appears in the replica list, can an attacker determine which StackerDB contracts this node is hosting? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_8d4ab64f-f620-484b-8745-12bf6f0519fd?mode=deep",
+    "timestamp": "2026-02-07 22:15:19.077029",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/liststackerdbreplicas.rs] [Function: try_handle_request()] [Type Safety] The comparison uses '&&contract_identifier' - is this double reference necessary, or could it lead to subtle bugs in equality comparison? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_b71d33d3-b90a-4adc-8456-64cc4752eafd?mode=deep",
+    "timestamp": "2026-02-07 22:15:38.192040",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/liststackerdbreplicas.rs] [Function: try_handle_request()] [Serialization] Can HttpResponseContents::try_from_json fail for valid NeighborAddress vectors if they contain unusual but valid data (e.g., extremely long public key hashes), causing false negatives? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_b7331d3b-7678-4659-bddc-a5790273dff5?mode=deep",
+    "timestamp": "2026-02-07 22:15:58.637762",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stackslib/src/net/api/liststackerdbreplicas.rs] [Function: try_handle_request()] [DoS] If naddrs contains MAX_LIST_REPLICAS entries with maximum-length fields, can the JSON serialization produce an excessively large response that causes memory exhaustion or network congestion? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_c0d4feb1-e153-4670-997b-39733c24568c?mode=deep",
+    "timestamp": "2026-02-07 22:16:19.613593",
+    "report_generated": false
+  }
+]
