@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: stacks-core/stackslib/src/net/p2p.rs] [Function: NetworkHandle::send_request()] [Backpressure Failure] If chan_in.try_send() returns TrySendError::Full repeatedly, can requests be dropped silently while returning Ok(), leading to lost ban requests or block advertisements? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_0780df88-da27-435e-8fd1-a124b805a80f?mode=deep",
+    "timestamp": "2026-02-07 22:19:52.257466",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/p2p.rs] [Function: new_handle()] [Handle Leak] Does new_handle() properly track created handles, or can repeatedly creating handles without cleaning up the corresponding server channels cause memory leaks in the handles VecDeque? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_42ea9bab-eac0-4598-9b03-85f6f9634463?mode=deep",
+    "timestamp": "2026-02-07 22:20:04.181112",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/p2p.rs] [Function: process_new_sockets()] [Event ID Collision] If network.register() succeeds but the returned event_id is already in peers HashMap, the socket is deregistered but added to poll_state.new - can this cause the same socket to be processed twice? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_34568a78-24da-475d-be36-e90e4c024760?mode=deep",
+    "timestamp": "2026-02-07 22:20:16.653551",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/p2p.rs] [Function: process_connecting_sockets()] [Connection State Confusion] When a ConnectingPeer transitions to registered peer, if register_peer() fails, is the connecting entry properly removed, or can it remain in connecting HashMap indefinitely? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_389cc072-ff91-49ce-a441-a6135f131003?mode=deep",
+    "timestamp": "2026-02-07 22:20:29.696628",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/p2p.rs] [Function: process_ready_sockets()] [Error Propagation] If process_p2p_conversation() returns Err but the conversation is still partially functional, adding to to_remove and deregistering immediately might lose in-flight messages - is this acceptable? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_08757a3e-834d-4311-abf2-bfc61d985a4b?mode=deep",
+    "timestamp": "2026-02-07 22:20:44.084487",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/p2p.rs] [Function: with_p2p_convo()] [State Inconsistency] Between removing convo/socket from HashMaps and reinserting them after todo() executes, if another thread tries to access the same event_id, can it see inconsistent state? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_e31ca13f-b956-4d56-9bd0-51341cdaff9c?mode=deep",
+    "timestamp": "2026-02-07 22:20:59.737734",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/p2p.rs] [Function: process_p2p_conversation()] [Partial Message Handling] If convo.recv() returns PermanentlyDrained but convo.chat() still has buffered messages to process, are those messages handled before marking convo_dead=true? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_36c1d9c1-5db0-4cf5-914f-462ce1b0ea01?mode=deep",
+    "timestamp": "2026-02-07 22:21:14.769846",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/p2p.rs] [Function: queue_ping_heartbeats()] [Timestamp Manipulation] Can an attacker with access to system time manipulation cause convo.stats.last_send_time + heartbeat + timeout < now to always be false, preventing pings and allowing connections to appear alive without actual traffic? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_a91ec79e-73d4-404a-a532-16e8f9107420?mode=deep",
+    "timestamp": "2026-02-07 22:21:31.360244",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/p2p.rs] [Function: queue_ping_heartbeats()] [Ping Flooding] If many outbound authenticated peers become silent simultaneously, can queue_ping_heartbeats() create excessive relay_handles in a single iteration, exhausting resources? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_e01185b2-163b-458b-a70b-5fa5d5c4b7f7?mode=deep",
+    "timestamp": "2026-02-07 22:21:47.899905",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/p2p.rs] [Function: disconnect_unresponsive()] [Arithmetic Overflow] In timeout calculations like convo.stats.last_contact_time + convo.peer_heartbeat + timeout < now, can overflow occur if peer_heartbeat or last_contact_time values are near u64::MAX? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_87e55327-6a53-4019-be41-cd9d720aafcc?mode=deep",
+    "timestamp": "2026-02-07 22:22:05.405713",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/p2p.rs] [Function: deregister_peer()] [Inventory State Leak] When removing a peer from inv_state and inv_state_nakamoto, if the peer had pinned connections, are those pins properly released, or can they prevent pruning of other connections? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_db80392b-9bc1-414b-9b1a-9acb64c550c5?mode=deep",
+    "timestamp": "2026-02-07 22:22:23.303590",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/p2p.rs] [Function: count_outbound_stackerdb_replicas()] [Incorrect Counting] Does count_outbound_stackerdb_replicas() count only authenticated and outbound peers, or can unauthenticated peers that claim to replicate a StackerDB be counted, causing overestimation? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_ec57bf43-e068-49ae-be8d-e18abbeb1ccd?mode=deep",
+    "timestamp": "2026-02-07 22:22:42.379429",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/p2p.rs] [Function: run()] [Burnchain View Inconsistency] If refresh_burnchain_view() fails with a logged warning but execution continues, can the node operate with stale burnchain_tip while processing new p2p messages, causing validation errors? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_39397785-c5b6-496c-94e3-54854d7bc5db?mode=deep",
+    "timestamp": "2026-02-07 22:23:01.356566",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/p2p.rs] [Function: find_outbound_neighbor()] [Neighbor Key Confusion] If find_outbound_neighbor() returns a reciprocal_neighbor_key but that peer has since disconnected and reconnected with a different event_id, can stale neighbor keys be used for message routing? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_7e2863d6-fd55-4d82-87c2-b2a8a5b98c61?mode=deep",
+    "timestamp": "2026-02-07 22:23:21.972803",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/p2p.rs] [Function: lookup_peer()] [Expired Key Usage] The comment says 'Get the neighbor if we know of it and it's public key is unexpired' but the condition checks if neighbor.expire_block < cur_block_height (meaning expired returns true) - is this logic inverted? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_081fd2fe-1e33-4fd5-9e2d-0d4ec8ea0a99?mode=deep",
+    "timestamp": "2026-02-07 22:23:41.987171",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/p2p.rs] [Function: rekey()] [Authentication Break] During rekey(), handshake messages are signed with the old private key - if peers don't properly handle the transition and reject messages signed with the old key before the new handshake completes, can all connections break simultaneously? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_dda2e8ee-3805-4973-bc5e-a5a29a8e8dc2?mode=deep",
+    "timestamp": "2026-02-07 22:24:02.444453",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/p2p.rs] [Function: sign_for_neighbor()] [Event ID Stale Reference] If sign_for_neighbor() retrieves an event_id from events HashMap but that conversation disconnects before sign_for_p2p() executes, can it access a stale peer causing a panic or undefined behavior? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_cd52d9f9-a3f8-407b-a34c-4ce989c71eb9?mode=deep",
+    "timestamp": "2026-02-07 22:24:22.545442",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/p2p.rs] [Struct: PeerNetwork] [State Synchronization] With multiple state machines (inv_state, inv_state_nakamoto, block_downloader, block_downloader_nakamoto) running concurrently, can inconsistent state arise if one updates chainstate while another reads it? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_fa148aa8-26b8-4433-9441-61b3e7c0e0b4?mode=deep",
+    "timestamp": "2026-02-07 22:24:42.935335",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/p2p.rs] [Function: try_get_url_ip()] [DNS Rebinding] When parsing UrlString and extracting IP addresses, if a domain resolves to different IPs between parsing and connection, can an attacker leverage DNS rebinding to bypass IP-based access controls? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_70d00093-c915-4274-b55c-8fdccccda707?mode=deep",
+    "timestamp": "2026-02-07 22:25:03.868426",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/p2p.rs] [Function: with_network_state()] [Panic on None] If with_network_state() closure is called when network is None, it returns net_error::NotConnected, but are all call sites properly handling this error, or can some panic on unwrap()? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_b8903028-3504-45b8-a1f0-1c7c861878ec?mode=deep",
+    "timestamp": "2026-02-07 22:25:25.904488",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/p2p.rs] [Function: bind()] [Port Binding Race] If bind() succeeds but another process binds to the same port before network registration completes, can network operations fail silently, leaving the node in an inconsistent state? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_909fbac3-fa6b-4602-89f6-dbcd81394ffb?mode=deep",
+    "timestamp": "2026-02-07 22:25:46.851650",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/p2p.rs] [Function: load_local_peer()] [State Desynchronization] When load_local_peer() refreshes local_peer from PeerDB but preserves public_ip_address from self, can the public_ip become stale if PeerDB updates it independently? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_905b0b5f-17a5-4850-a435-e645e5ea7abd?mode=deep",
+    "timestamp": "2026-02-07 22:26:09.025019",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/p2p.rs] [Function: try_push_local_data_epoch2x()] [Inventory Invalidation Attack] After pushing blocks, the code invalidates inventory for affected neighbors at lowest_reward_cycle_with_missing_block - can an attacker force repeated inventory invalidation by claiming to have missing blocks, causing excessive bandwidth use? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_26ea3b42-aac1-4482-b9a7-d20b9386335e?mode=deep",
+    "timestamp": "2026-02-07 22:26:30.046578",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/p2p.rs] [Function: try_push_local_data_epoch2x()] [Reward Cycle Wrap-Around] When antientropy_start_reward_cycle wraps around to 0 and then resets to num_inventory_reward_cycles - 1, can this cause blocks in cycle 0 to be repeatedly pushed? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_c1653f98-b1d8-4dad-b83a-65e4693c3f17?mode=deep",
+    "timestamp": "2026-02-07 22:26:51.659972",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/p2p.rs] [Function: find_next_push_block()] [Chain Tip Race Condition] The check 'if consensus_hash == highest_snapshot.consensus_hash' skips newly sortitioned blocks - can this skip legitimate blocks if highest_snapshot is updated between iterations? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_ab8dffcc-4d8d-4b2a-a608-0515e1f12220?mode=deep",
+    "timestamp": "2026-02-07 22:27:14.589532",
+    "report_generated": false
+  }
+]
