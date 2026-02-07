@@ -1,0 +1,14 @@
+[
+  {
+    "question": "[File: stacks-core/stackslib/src/net/mod.rs] [Error Display implementation] [Error Message Content] The Display implementation for Error (lines 300-412) formats error messages - could error messages leak sensitive information like private keys, internal paths, or network topology? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_1a255237-823d-4fe7-9334-db54b8670c94?mode=deep",
+    "timestamp": "2026-02-07 22:09:25.182421",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stackslib/src/net/mod.rs] [Error cause method] [Error Chain Termination] The cause method (lines 416-487) returns the underlying error cause - could error chains be cyclic or excessively deep, causing infinite loops or stack overflows when traversing causes? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_6140905e-305d-465f-8dcf-ad462899b97d?mode=deep",
+    "timestamp": "2026-02-07 22:09:38.542229",
+    "report_generated": false
+  }
+]
