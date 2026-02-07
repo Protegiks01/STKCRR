@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/hash.rs] [Macro: impl_serde_json_hex_string] [Type Safety] The macro at lines 44-76 is instantiated for Hash20, Hash32, Hash64 - if a hash type is incorrectly sized, could the hardcoded $len cause buffer overflows when copying to byte_slice? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9e56b29b-18a9-40c9-86ce-640f182bdc93?mode=deep",
+    "timestamp": "2026-02-07 22:05:28.070853",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/hash.rs] [Function: hex_bytes()] [Input Validation] At lines 579-597, the parser uses char.to_digit(16) - could an attacker provide Unicode characters that look like hex digits (homoglyph attack) but parse differently, causing consensus divergence? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_30010ba9-04e8-4bd1-95e7-ef3a2dc19c3d?mode=deep",
+    "timestamp": "2026-02-07 22:05:40.566359",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/hash.rs] [Function: hex_bytes()] [DoS Attack] The loop at lines 583-591 processes characters without length limits - could an attacker provide a gigabyte-sized hex string, causing excessive memory allocation in the Vec::with_capacity(s.len() / 2)? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_70e96532-74e7-4b35-966e-fc1c416b7485?mode=deep",
+    "timestamp": "2026-02-07 22:05:54.105136",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/hash.rs] [Function: hex_bytes()] [Odd Length Handling] At lines 593-595, if s.len() is odd, a BadLength error is returned - but could an attacker provide a string with an even number of characters where one is invalid, causing the error to occur after partial parsing and wasted resources? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_d1546609-747d-437e-9b5c-cebb70200dcf?mode=deep",
+    "timestamp": "2026-02-07 22:06:07.221075",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/hash.rs] [Function: hex_bytes()] [Integer Arithmetic] At line 588, the calculation (f * 0x10 + s) is performed - if f or s is 15 (0xf), could this overflow u8 bounds, or is the as u8 cast at line 588 guaranteed safe? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9088ba3b-05cf-4102-a2ef-1de1721aba68?mode=deep",
+    "timestamp": "2026-02-07 22:06:21.203204",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/hash.rs] [Function: hex_bytes()] [Case Sensitivity] The to_digit(16) call accepts both upper and lowercase hex - could this lead to non-deterministic hash representations where two strings with different casing parse to the same hash but serialize differently? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_e9fd58eb-62d5-4922-a827-5641b917f20e?mode=deep",
+    "timestamp": "2026-02-07 22:06:36.355730",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/hash.rs] [Function: bin_bytes()] [DoS Attack] At lines 600-620, the function processes string characters in reverse without length limits - could an attacker provide a binary string of billions of characters, causing memory exhaustion? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_3430d66d-209a-4f54-ae2a-e9858ebaf8f1?mode=deep",
+    "timestamp": "2026-02-07 22:06:52.902756",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/hash.rs] [Function: bin_bytes()] [Input Validation] At lines 604-606, only '0' and '1' are accepted - but the error is returned after iterating through all characters - could this be exploited for timing attacks to probe for valid prefixes? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_a52e61c4-03bd-49ac-ba48-2e2c949a9c97?mode=deep",
+    "timestamp": "2026-02-07 22:07:10.988602",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/hash.rs] [Function: bin_bytes()] [Bit Shifting] At line 608, next |= 1 << (i % 8) performs bit shifting - if i approaches usize::MAX, could the modulo operation have platform-specific behavior affecting consensus? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_06c0e64c-8304-43a4-be43-681b5c6ad9cc?mode=deep",
+    "timestamp": "2026-02-07 22:07:29.578718",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/hash.rs] [Function: bin_bytes()] [Leading Zeros] At lines 615-617, when the length is not a multiple of 8, the last partial byte is pushed - could this create ambiguity where",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_cb450a81-74e4-464f-96a2-c9f5366b64c7?mode=deep",
+    "timestamp": "2026-02-07 22:07:47.618436",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/hash.rs] [Function: MerkleTree::find_siblings()] [Panic Condition] At lines 468-470, a panic occurs if row_index == nodes.len() - 1 (root) - could an attacker trigger this by calling find_siblings during tree traversal with a carefully crafted tree structure? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_bfa8ddfa-8ee6-478f-8464-173f3698d917?mode=deep",
+    "timestamp": "2026-02-07 22:08:06.955416",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/hash.rs] [Function: MerkleTree::find_siblings()] [Panic Condition] At lines 472-477, multiple panic conditions check row_index bounds - if these panics are triggered during consensus-critical block validation, could an attacker cause a DoS by crafting blocks that trigger these conditions? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_677687b6-bad6-4440-9bcd-bd9eeae7cdc7?mode=deep",
+    "timestamp": "2026-02-07 22:08:27.463269",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/hash.rs] [Function: MerkleTree::find_siblings()] [Panic Condition] At lines 488-491, a panic occurs if hash_index is even and the last item in a row - could this indicate a corrupt tree that was constructed incorrectly, suggesting a bug in the tree construction logic at lines 400-402? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_0766c586-dce4-4b91-886c-36ed48b4dd33?mode=deep",
+    "timestamp": "2026-02-07 22:08:46.807735",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/hash.rs] [Function: MerkleTree::find_siblings()] [Index Manipulation] At lines 493-504, siblings are retrieved using hash_index ± 1 - could an attacker manipulate tree construction to create a scenario where hash_index - 1 underflows or hash_index + 1 overflows? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_4913f5ff-1ff9-4671-9944-986fbdd2bb80?mode=deep",
+    "timestamp": "2026-02-07 22:09:07.877867",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/hash.rs] [Function: MerkleTree::find_hash_index()] [Panic Condition] At lines 451-456, a panic occurs if row_index >= nodes.len() - could this be triggered by providing a malformed tree where nodes.len() is unexpectedly small? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_ec1815ba-acf0-431f-a177-75ff59c5e8a1?mode=deep",
+    "timestamp": "2026-02-07 22:09:29.647749",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/hash.rs] [Function: MerkleTree::path()] [Consensus Divergence] At lines 523-552, the path is generated by traversing from leaf to root - if find_hash_index returns None at line 548, the function returns None, but could a valid transaction be incorrectly rejected due to hash comparison issues? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_5146bcac-8613-42d5-a093-3146097af793?mode=deep",
+    "timestamp": "2026-02-07 22:09:51.688672",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/hash.rs] [Function: MerkleTree::path()] [Memory Allocation] At line 527, Vec::with_capacity(nodes.len()) pre-allocates path storage - if nodes.len() is corrupted or extremely large, could this cause excessive memory allocation before the function discovers the leaf doesn't exist? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_74aa74ad-8e66-408d-8259-985e0a8b5674?mode=deep",
+    "timestamp": "2026-02-07 22:10:13.699526",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/hash.rs] [Function: MerkleTree::path()] [Logic Error] At lines 533-545, the left/right determination uses next_hash == left - but if there's a hash collision where left == right, which path point would be selected, and could this break path verification? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_065f3c9d-d83c-43c5-ad75-8bbe885e7ab6?mode=deep",
+    "timestamp": "2026-02-07 22:10:36.644684",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/hash.rs] [Function: MerkleTree::path()] [Index Calculation] At line 547, get_node_hash is called and then find_hash_index searches for it at i+1 - if the tree has inconsistent structure, could find_hash_index fail to find the calculated hash, causing a None return? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_66abd0ab-6251-40d3-a0e2-e901a1516445?mode=deep",
+    "timestamp": "2026-02-07 22:10:59.649894",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/hash.rs] [Function: MerkleTree::root()] [Empty Tree Handling] At lines 509-519, multiple checks ensure nodes is not empty - but could the nested checks with nodes[nodes.len()-1] cause an off-by-one error if nodes.len() is 1 and nodes[0] is empty? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_825df13a-6e49-4893-aab7-c426f5a1df1c?mode=deep",
+    "timestamp": "2026-02-07 22:11:23.582498",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/hash.rs] [Function: MerkleTree::root()] [Consensus Divergence] At lines 517-518, H::empty() is returned for empty trees - if different hash types implement empty() differently (all zeros vs some other pattern), could nodes disagree on the root of an empty transaction set? (Critical)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_8bfc2b8c-6391-4602-a310-26d80eb428d5?mode=deep",
+    "timestamp": "2026-02-07 22:11:47.524209",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/hash.rs] [Function: MerkleTree::root()] [Clone Operation] At line 512, the root hash is cloned - could the clone operation have any side effects or performance issues with large hash types that affect block validation timing? (Low)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_9d8b4ff2-111b-4cfd-afe9-43100adc6f64?mode=deep",
+    "timestamp": "2026-02-07 22:12:11.185762",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/hash.rs] [Function: Hash160::from_sha256()] [Hash Initialization] At lines 173-178, RIPEMD160 is applied to SHA256 output - if the SHA256 hash is all zeros (from empty input), could the resulting Hash160 be predictable or exploitable? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_f2fcbcc8-b26a-43e4-ab86-8b6de2c9d8f9?mode=deep",
+    "timestamp": "2026-02-07 22:12:35.766963",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/hash.rs] [Function: Hash160::from_data()] [Double Hashing] At lines 182-186, SHA256 then RIPEMD160 is performed - is this double hashing necessary for security, or could an attacker exploit properties of the RIPEMD160(SHA256(x)) construction? (Medium)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_be5e826d-ed96-462e-8b7b-2739d85c60da?mode=deep",
+    "timestamp": "2026-02-07 22:12:58.069399",
+    "report_generated": false
+  },
+  {
+    "question": "[File: stacks-core/stacks-common/src/util/hash.rs] [Function: Hash160::from_node_public_key()] [Key Format] At lines 188-190, compressed public key bytes are hashed - if the public key is malformed or uncompressed, could this function produce an unexpected hash that bypasses signature verification? (High)",
+    "url": "https://deepwiki.com/search/-stackscore-security-audit-pro_e645b773-3db7-4a84-b9d1-b9b58bce9d7e?mode=deep",
+    "timestamp": "2026-02-07 22:13:20.938875",
+    "report_generated": false
+  }
+]
